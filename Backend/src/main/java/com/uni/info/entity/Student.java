@@ -26,6 +26,7 @@ public class Student implements UserDetails {
     private String name;
     private String email;
     private String password;
+    @Enumerated(value = EnumType.STRING)
     private Role userType;
     private Boolean isActive;
     private String ssoType;

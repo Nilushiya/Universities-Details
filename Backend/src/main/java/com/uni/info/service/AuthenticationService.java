@@ -32,7 +32,7 @@ public class AuthenticationService {
         Student user = new Student();
         user.setEmail(request.getEmail());
         user.setName(request.getName());
-        user.setUserType(Role.USER);
+        user.setUserType(request.getUserType());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         user = studentRepo.save(user);
