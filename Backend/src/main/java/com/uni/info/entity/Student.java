@@ -28,7 +28,7 @@ public class Student implements UserDetails {
     private String password;
     @Enumerated(value = EnumType.STRING)
     private Role userType;
-    private Boolean isActive;
+    private Boolean isActive = true;
     private String ssoType;
     private DateTime loginAt;
     private Integer loginCount;

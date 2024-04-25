@@ -1,2 +1,36 @@
-package com.uni.info.entity;public class StudentInfo {
+package com.uni.info.entity;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Getter
+@Setter
+
+public class StudentInfo {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer studentInfoId;
+
+    private String autho;
+
+    private String address;
+
+    private String selectedUniversity;
+
+    private String gender;
+
+    private String language;
+
+    private String selectedCourse;
+
+    @ManyToOne
+    @JoinColumn(name = "stu_id", referencedColumnName = "student_id")
+    private Student student;
+
+    // Constructors, getters, and setters
 }

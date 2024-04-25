@@ -1,12 +1,14 @@
 package com.uni.info.service;
 
-import com.uni.info.entity.AuthenticationResponse;
+import com.uni.info.dto.AuthenticationResponse;
+import com.uni.info.dto.SigninRequestDto;
+import com.uni.info.dto.SignupRequestDto;
 import com.uni.info.entity.Role;
 import com.uni.info.entity.Student;
 import com.uni.info.repository.StudentRepo;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -28,18 +30,18 @@ public class AuthenticationService {
     }
 
 
-    public AuthenticationResponse register(Student request){
+    public Student register(SignupRequestDto request){
         Student user = new Student();
         user.setEmail(request.getEmail());
         user.setName(request.getName());
-        user.setUserType(request.getUserType());
+        user.setUserType(Role.valueOf(request.getUserType()));
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
-        user = studentRepo.save(user);
-        String token = jwtService.generateToken(user);
-        return new AuthenticationResponse(token);
+        return studentRepo.save(user);
+//        String token = jwtService.generateToken(user);
+//        return new AuthenticationResponse(token);
     }
-    public AuthenticationResponse authenticate(Student request){
+    public AuthenticationResponse authenticate(SigninRequestDto request){
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
@@ -52,4 +54,22 @@ public class AuthenticationService {
         return new AuthenticationResponse(token);
 
     }
-}
+
+
+    public boolean signinVerify(SigninRequestDto request) {
+        System.out.println("re"+request);
+        String userEmail = request.getEmail();
+        System.out.println("userEmail" + userEmail);
+        Optional<Student> userOptional = studentRepo.findByEmail(userEmail);
+        System.out.println("ddd" + userOptional);
+        if (userOptional.isPresent()) {
+           System.out.println("lll");
+            Student user = userOptional.get();
+
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            return passwordEncoder.matches(request.getPassword(),user.getPassword());
+        }
+        else{
+            return false;
+        }
+}}

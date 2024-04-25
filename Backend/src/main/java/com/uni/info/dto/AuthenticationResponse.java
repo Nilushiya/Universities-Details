@@ -1,4 +1,4 @@
-package com.uni.info.entity;
+package com.uni.info.dto;
 
 public class AuthenticationResponse {
     private String token;
