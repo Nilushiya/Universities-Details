@@ -8,6 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudentInfoDto {
+    private  Long studentInfoId;
 
     private String address;
 
@@ -18,4 +19,6 @@ public class StudentInfoDto {
     private String language;
 
     private String selectedCourse;
+
+    private Long stu_id;
 }

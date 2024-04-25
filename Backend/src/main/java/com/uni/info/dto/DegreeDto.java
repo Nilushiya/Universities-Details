@@ -8,8 +8,8 @@ import lombok.*;
 @Getter
 @Setter
 
-public class CourseDto {
-    private Long course_id;
-    private String courseName;
+public class DegreeDto {
+    private Long degree_id;
+    private String degreeName;
     private Long d_id;
 }

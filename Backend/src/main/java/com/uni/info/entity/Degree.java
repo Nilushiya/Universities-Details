@@ -10,11 +10,11 @@ import lombok.*;
 @Getter
 @Setter
 
-public class Course {
+public class Degree {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long course_id;
-    private String courseName;
+    private Long degree_id;
+    private String degreeName;
 
     @ManyToOne
     @JoinColumn(name = "d_id", referencedColumnName = "dep_id")

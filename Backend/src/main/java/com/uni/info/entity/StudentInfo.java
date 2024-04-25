@@ -16,8 +16,6 @@ public class StudentInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer studentInfoId;
 
-    private String autho;
-
     private String address;
 
     private String selectedUniversity;
@@ -29,8 +27,6 @@ public class StudentInfo {
     private String selectedCourse;
 
     @ManyToOne
-    @JoinColumn(name = "stu_id", referencedColumnName = "student_id")
+    @JoinColumn(name = "stu_id", referencedColumnName = "studentId")
     private Student student;
-
-    // Constructors, getters, and setters
 }
