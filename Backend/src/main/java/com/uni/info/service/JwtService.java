@@ -48,7 +48,7 @@ public class JwtService {
     public String generateToken(Student student){
         String token = Jwts
                 .builder()
-                .subject(student.getUsername())
+//                .subject(student.getUsername())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + 24*60*60*1000))
                 .signWith(getSigninKey())

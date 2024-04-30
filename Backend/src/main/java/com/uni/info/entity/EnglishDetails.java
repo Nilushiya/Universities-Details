@@ -1,15 +1,12 @@
 package com.uni.info.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Data
 @AllArgsConstructor
-@NamedEntityGraph
+@NoArgsConstructor
 @Getter
 @Setter
 

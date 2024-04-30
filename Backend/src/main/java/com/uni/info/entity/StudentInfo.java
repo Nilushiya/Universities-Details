@@ -14,7 +14,7 @@ public class StudentInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer studentInfoId;
+    private Long studentInfoId;
 
     private String address;
 

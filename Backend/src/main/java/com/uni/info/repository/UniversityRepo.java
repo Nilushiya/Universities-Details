@@ -1,2 +1,12 @@
-package com.uni.info.repository;public interface UniversityRepo {
+package com.uni.info.repository;
+
+import com.uni.info.entity.University;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.stereotype.Repository;
+
+
+@Repository
+
+public interface UniversityRepo extends JpaRepository<University, Long> {
 }

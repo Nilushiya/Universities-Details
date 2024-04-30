@@ -30,16 +30,16 @@ public class AuthenticationService {
     }
 
 
-    public Student register(SignupRequestDto request){
+    public String register(SignupRequestDto request){
         Student user = new Student();
         user.setEmail(request.getEmail());
         user.setName(request.getName());
         user.setUserType(Role.valueOf(request.getUserType()));
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+        studentRepo.save(user);
+        String token = jwtService.generateToken(user);
 
-        return studentRepo.save(user);
-//        String token = jwtService.generateToken(user);
-//        return new AuthenticationResponse(token);
+        return token;
     }
     public AuthenticationResponse authenticate(SigninRequestDto request){
         authenticationManager.authenticate(
@@ -57,17 +57,27 @@ public class AuthenticationService {
 
 
     public boolean signinVerify(SigninRequestDto request) {
-        System.out.println("re"+request);
+        System.out.println("re  : "+request);
         String userEmail = request.getEmail();
         System.out.println("userEmail" + userEmail);
         Optional<Student> userOptional = studentRepo.findByEmail(userEmail);
-        System.out.println("ddd" + userOptional);
+        System.out.println("ddd :"+userOptional );
         if (userOptional.isPresent()) {
-           System.out.println("lll");
             Student user = userOptional.get();
+            System.out.println("user :"+user);
 
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            return passwordEncoder.matches(request.getPassword(),user.getPassword());
+            if(passwordEncoder.matches(request.getPassword(), user.getPassword())){
+                System.out.println("lll");
+
+                return true;
+            }
+            else{
+                System.out.println("fff");
+
+                return false;
+            }
+
         }
         else{
             return false;
