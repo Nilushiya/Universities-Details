@@ -2,13 +2,13 @@ package com.uni.info.service;
 
 import com.uni.info.dto.DepartmentDto;
 import com.uni.info.entity.Department;
-import com.uni.info.entity.Faculty;
 import com.uni.info.exception.DepartmentServiceException;
-import com.uni.info.exception.FacultyServiceException;
 import com.uni.info.repository.DepartmentRepo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class DepartmentServiceImp implements DepartmentService{
@@ -38,5 +38,10 @@ public class DepartmentServiceImp implements DepartmentService{
     @Override
     public void updateFaculty(Long dep_id, String departmentName) {
         departmentRepo.update(dep_id , departmentName);
+    }
+
+    @Override
+    public List<Department> groupDepartment(Long f_id) {
+        return departmentRepo.groupDep(f_id);
     }
 }

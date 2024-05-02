@@ -10,13 +10,13 @@ public class EnglishDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long edetails_id;
     private Integer edegreeDuration;
-    private String image;
+    @Lob
+    private byte[] imageData;
     private String edegreeDescription1;
-    private String edegreeDescription2;
     private String edegreeJobs;
-
-    @ManyToOne
-    @JoinColumn(name = "edeg_id", referencedColumnName = "degree_id")
-    private Degree degree;
+    private Long edeg_id;
+//    @ManyToOne
+//    @JoinColumn(name = "edeg_id", referencedColumnName = "degree_id")
+//    private Degree degree;
 
 }
