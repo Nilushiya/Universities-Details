@@ -5,12 +5,6 @@ import lombok.*;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-
-
 public class EnglishDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

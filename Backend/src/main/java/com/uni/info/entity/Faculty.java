@@ -15,8 +15,9 @@ public class Faculty {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long fac_id;
     private String facultyName;
-
-    @ManyToOne
-    @JoinColumn(name = "u_id", referencedColumnName = "uni_id")
-    private University university;
+    private Long uId;
+//    @ManyToOne
+//    @JoinColumn(name = "u_id", referencedColumnName = "uni_id")
+//    private Long u_id;
+//    private University university;
 }

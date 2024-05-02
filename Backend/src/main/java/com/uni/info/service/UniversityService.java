@@ -11,4 +11,6 @@ public interface UniversityService {
     UniversityDto createUniversities(UniversityDto universityDto) throws Exception;
 
     List<University> getUniversities();
+
+    int updateuniname(Long uniId, String uniName);
 }

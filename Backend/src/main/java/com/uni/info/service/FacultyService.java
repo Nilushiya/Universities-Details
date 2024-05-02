@@ -1,15 +1,19 @@
 package com.uni.info.service;
 
-import com.uni.info.dto.UniversityDto;
-import com.uni.info.entity.University;
+import com.uni.info.dto.FacultyDto;
+import com.uni.info.entity.Faculty;
+import com.uni.info.exception.FacultyServiceException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 
 public interface FacultyService {
-    List<University> getFaculties();
+    List<Faculty> getFaculties();
 
-    UniversityDto createFaculties(UniversityDto universityDto);
+    FacultyDto createFaculties(FacultyDto facultyDto) throws FacultyServiceException;
+
+    List<Faculty> groupedByUniversity(Long u_id);
+
+    void updateFaculty(Long facId, String facultyName);
 }

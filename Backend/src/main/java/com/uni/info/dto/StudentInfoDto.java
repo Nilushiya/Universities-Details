@@ -3,10 +3,7 @@ package com.uni.info.dto;
 import lombok.*;
 
 @Data
-@Setter
-@Getter
 @AllArgsConstructor
-@NoArgsConstructor
 public class StudentInfoDto {
     private  Long studentInfoId;
 

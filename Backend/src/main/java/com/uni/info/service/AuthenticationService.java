@@ -3,11 +3,12 @@ package com.uni.info.service;
 import com.uni.info.dto.AuthenticationResponse;
 import com.uni.info.dto.SigninRequestDto;
 import com.uni.info.dto.SignupRequestDto;
-import com.uni.info.entity.Role;
+import com.uni.info.enums.Role;
 import com.uni.info.entity.Student;
 import com.uni.info.repository.StudentRepo;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -37,19 +38,19 @@ public class AuthenticationService {
         user.setUserType(Role.valueOf(request.getUserType()));
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         studentRepo.save(user);
-        String token = jwtService.generateToken(user);
+        String token = jwtService.generateToken(user, String.valueOf(user.getUserType()), user.getStudentId());
 
         return token;
     }
     public AuthenticationResponse authenticate(SigninRequestDto request){
-        authenticationManager.authenticate(
+        Authentication auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
                         request.getPassword()
                 ));
 
         Student user = studentRepo.findByEmail(request.getEmail()).orElseThrow();
-        String token = jwtService.generateToken(user);
+        String token = jwtService.generateToken(user, String.valueOf(auth.getAuthorities().stream().findAny().get()), user.getStudentId());
 
         return new AuthenticationResponse(token);
 

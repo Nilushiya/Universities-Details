@@ -4,10 +4,6 @@ import lombok.*;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-
 public class DegreeDto {
     private Long degree_id;
     private String degreeName;

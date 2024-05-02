@@ -5,8 +5,6 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-
 public class SignupRequestDto {
     private String name;
     private String email;

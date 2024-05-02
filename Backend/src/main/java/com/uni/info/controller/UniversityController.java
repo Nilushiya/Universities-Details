@@ -19,7 +19,7 @@ public class UniversityController {
     @Autowired
     private UniversityService universityService;
 
-    @PostMapping("/")
+    @PostMapping("/create")
     public ResponseEntity<?> createUniversities(@RequestBody UniversityDto universityDto) {
         try {
             System.out.println("okey");
@@ -27,12 +27,23 @@ public class UniversityController {
             UniversityDto createdUniversity = universityService.createUniversities(universityDto);
             return ResponseEntity.ok(createdUniversity);
         } catch (Exception e) {
+            System.out.println("okeyh");
+
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
 
-    @GetMapping("/")
+    @GetMapping("/get")
     public List<University> getAllUniversities() {
         return universityService.getUniversities();
+    }
+
+
+    @PutMapping("/updateuni/{uni_id}")
+    public String updateUniversity(@PathVariable Long uni_id , @RequestParam String uniName){
+        System.out.println("uniname " + uni_id );
+
+        int update = universityService.updateuniname(uni_id , uniName);
+        return "update okay";
     }
 }

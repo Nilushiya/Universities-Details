@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 
 public class UniversityServiceImp implements UniversityService{
@@ -34,5 +35,13 @@ public class UniversityServiceImp implements UniversityService{
     @Override
     public List<University> getUniversities() {
         return universityRepo.findAll();
+    }
+
+    @Override
+    public int updateuniname(Long uni_id, String uniName) {
+//        Optional<University> entity = universityRepo.findById(uni_id);
+//        System.out.println("repo : " + universityRepo.updateUniversity(uni_id,uniName));
+        universityRepo.updateUniversity(uni_id, uniName);
+        return 0;
     }
 }

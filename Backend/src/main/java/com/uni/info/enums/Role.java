@@ -1,4 +1,4 @@
-package com.uni.info.entity;
+package com.uni.info.enums;
 
 public enum Role {
     USER,

@@ -1,23 +1,17 @@
 package com.uni.info.entity;
 
+import com.uni.info.enums.Role;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.joda.time.DateTime;
-import org.joda.time.LocalDateTime;
+import java.time.LocalDateTime;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import java.math.BigInteger;
 import java.util.Collection;
 import java.util.List;
 
-//@Getter
-//@Setter
 @Entity
 @Data
 @DynamicInsert
@@ -35,7 +29,7 @@ public class Student implements UserDetails{
     private Role userType;
     private Boolean isActive = true;
     private String ssoType;
-    private DateTime loginAt;
+    private LocalDateTime loginAt;
     private Integer loginCount;
     private LocalDateTime createdAt;
     private LocalDateTime  updatedAt;

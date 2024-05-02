@@ -4,14 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
-@Getter
-@Setter
-
 public class StudentInfo {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long studentInfoId;

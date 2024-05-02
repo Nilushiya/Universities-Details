@@ -1,7 +1,7 @@
 package com.uni.info.confic;
 
+import com.uni.info.enums.Role;
 import com.uni.info.service.StudentDetailsImp;
-import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,10 +29,19 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        System.out.println(Role.ADMIN.name());
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
+
                         req -> req.requestMatchers("/login").permitAll()
+//                                .requestMatchers("/api/v1/university/**").hasAnyAuthority(Role.ADMIN.name())
+                                .requestMatchers("/api/v1/university/**").permitAll()
+//                                .requestMatchers("/api/v1/university/get").permitAll()
+                                .requestMatchers("/api/v1/faculty/**").permitAll()
+                                .requestMatchers("/api/v1/department/**").permitAll()
+//                                .requestMatchers("/api/v1/university/get").permitAll()
+//                                .requestMatchers("/api/v1/faculty/").permitAll()
                                 .anyRequest()
                                 .authenticated()
                 ).userDetailsService(studentDetailsImp)
