@@ -6,14 +6,15 @@ import org.w3c.dom.Text;
 
 @Entity
 @Data
-@Table(name = "EnglishDetails")
-public class english_details {
+@Table(name = "english_details")
+public class English_details {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long edetails_id;
     private Integer edegree_duration;
-//    @Lob
-//    private byte[] image_data;
+    @Lob
+    private byte[] image_data;
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String edegree_description1;
     private String edegree_jobs;
     private Long edeg_id;

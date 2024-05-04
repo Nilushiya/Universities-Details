@@ -5,22 +5,22 @@ import lombok.*;
 
 @Entity
 @Data
+@Table(name = "Student_info")
 public class StudentInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long studentInfoId;
-
+    private Long studentinfo_id;
     private String address;
-
-    private String selectedUniversity;
-
+    private String selected_university;
     private String gender;
-
     private String language;
-
-    private String selectedCourse;
-
-    @ManyToOne
-    @JoinColumn(name = "stu_id", referencedColumnName = "studentId")
-    private Student student;
+    private Integer phone;
+    @Lob
+    private byte[] image;
+    private String academic_year;
+    private String selected_course;
+    private Long stu_id;
+//    @ManyToOne
+//    @JoinColumn(name = "stu_id", referencedColumnName = "studentId")
+//    private Student student;
 }

@@ -40,7 +40,7 @@ public class SecurityConfig {
 //                                .requestMatchers("/api/v1/university/get").permitAll()
                                 .requestMatchers("/api/v1/faculty/**").permitAll()
                                 .requestMatchers("/api/v1/department/**").permitAll()
-//                                .requestMatchers("/api/v1/degree/**").permitAll()
+                                .requestMatchers("/api/v1/EngDetails/**").permitAll()
 //                                .requestMatchers("/api/v1/faculty/").permitAll()
                                 .anyRequest()
                                 .authenticated()
