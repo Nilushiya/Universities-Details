@@ -35,13 +35,12 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
 
                         req -> req.requestMatchers("/login").permitAll()
-//                                .requestMatchers("/api/v1/university/**").hasAnyAuthority(Role.ADMIN.name())
+                                .requestMatchers("/register").permitAll()
                                 .requestMatchers("/api/v1/university/**").permitAll()
-//                                .requestMatchers("/api/v1/university/get").permitAll()
                                 .requestMatchers("/api/v1/faculty/**").permitAll()
                                 .requestMatchers("/api/v1/department/**").permitAll()
                                 .requestMatchers("/api/v1/EngDetails/**").permitAll()
-//                                .requestMatchers("/api/v1/faculty/").permitAll()
+                                .requestMatchers("/api/v1/studentInfo/**").permitAll()
                                 .anyRequest()
                                 .authenticated()
                 ).userDetailsService(studentDetailsImp)
