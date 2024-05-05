@@ -9,11 +9,14 @@ import java.util.List;
 
 @Repository
 public interface StudentInfoRepo extends JpaRepository<StudentInfo , Long> {
-    @Query("Select s from StudentInfo s where s.academic_year = :academicYear")
-    List<StudentInfo> findGroupByYear(String academicYear);
-    @Query("Select s from StudentInfo s where s.academic_year = :academicYear and s.selected_university = :selectedUniversity")
-    List<StudentInfo> findUniversity(String academicYear, String selectedUniversity);
-    @Query("Select s from StudentInfo s where s.academic_year = :academicYear and s.selected_university = :selectedUniversity and s.language = :language")
+    @Query("SELECT s , st FROM StudentInfo s JOIN Student st ON s.stu_id = st.studentId where s.academic_year = :academicYear")
+    List<Object[]> findGroupByYear(String academicYear);
+    @Query("Select s , st FROM StudentInfo s JOIN Student st ON s.stu_id = st.studentId where s.academic_year = :academicYear and s.selected_university = :selectedUniversity")
+    List<Object[]> findUniversity(String academicYear, String selectedUniversity);
+    @Query("Select s , st FROM StudentInfo s JOIN Student st ON s.stu_id = st.studentId where s.academic_year = :academicYear and s.selected_university = :selectedUniversity and s.language = :language")
 
-    List<StudentInfo> findLanguage(String academicYear, String selectedUniversity, String language);
+    List<Object[]> findLanguage(String academicYear, String selectedUniversity, String language);
+    @Query("Select s , st FROM StudentInfo s JOIN Student st ON s.stu_id = st.studentId where s.studentinfo_id = :studentinfoId")
+
+    List<Object[]> findFriend(Long studentinfoId);
 }
