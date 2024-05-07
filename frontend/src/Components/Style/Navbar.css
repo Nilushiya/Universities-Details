@@ -1,2 +1,97 @@
-@import './color.css'
+@import './color.css';
+@import url('https://fonts.googleapis.com/css2?family=Freeman&display=swap');
 
+#nav{
+    background-color: var(--blue);
+    font-family: "Freeman", sans-serif;
+    font-weight: 600;
+    font-size: 100%;
+}
+#nav .uniDropdown{
+    background-color: var(--orange);
+    margin-left: 9%;
+    padding: 0 2%;
+    width: 150px;
+    border-radius: 10px;
+}
+
+#nav .uniDropdownItem{
+    background-color: var(--orange);
+    color: var(--blue);
+    font-weight: 600;
+    font-size: 100%;
+}
+#nav .uniDropdownItem:hover{
+    color: var(--orange);
+    background-color: var(--blue);
+}
+#nav .brand{
+    margin: 0;
+    padding-left: 3%;
+}
+
+#nav .brand img{
+    width: 55px;
+    height: 50px;
+}
+
+#basic-nav-dropdown{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--blue);
+}
+
+.flexRight{
+    display: flex;
+    gap: 20px;
+}
+
+#nav .navbutt{
+    background-color: var(--orange);
+    width: 100px;
+    height: 45px;
+    border-radius: 10px;
+    border: 2px solid var(--blue);
+    text-align: center;
+    color: var(--blue);
+}
+
+#nav .navFriend{
+    color: var(--blue);
+    background-color: var(--orange);
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 990px) {
+    #nav .brand{
+        padding-left: 3%;
+    }
+    #nav .uniDropdown{
+        margin-top: 3%;
+        margin-left: 4%;
+    }
+    #nav .navbutt{
+        margin-top: 3%;
+        margin-left: 4%;
+    }
+    #nav .navicon :nth-child(1){
+        padding-left: 5%;
+    }
+    #nav .navFriend{
+        margin-left: 4%;
+        width: 45px;
+        padding: 8px;
+    }
+  }
