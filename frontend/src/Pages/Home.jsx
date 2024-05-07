@@ -10,6 +10,7 @@ import Peradeniya from '../Components/Assets/Pera.jpg'
 import Rayarata from '../Components/Assets/Rayarata.jpg'
 import Ruhuna from '../Components/Assets/Ruhuna.jpg'
 import Uwa from '../Components/Assets/Uwa.jpg'
+import About from '../Components/About';
 // import './HomeDp.css'
 
 const Home = () => {
@@ -115,7 +116,8 @@ const Home = () => {
         <h1>University of Uva Wellassa</h1>
       </Carousel.Caption>
     </Carousel.Item>
-  </Carousel>
+    </Carousel>
+    <About />
   </div>
   )
 }

@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Freeman&family=Sedan+SC&display=swap');
 :root {
+    font-family: "Sedan SC", serif;
     --blue: #072040;
     --pink: #FFB0B0;
     --orange: #ff5b25;
