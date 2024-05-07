@@ -1,10 +1,15 @@
-import React from 'react'
+import axios from 'axios'
 
-const UserContext = () => {
-    
-  return (
-    <div>UserContext</div>
-  )
-}
+const BASE_URL = 'http://localhost:8080/api/v1';
 
-export default UserContext
+export const fetchUniversity = async() =>{
+    try{
+        const Universities = await axios.get(`${BASE_URL}/university/get`);
+        console.log("respones   : " , Universities.data);
+        return Universities.data;
+    }
+    catch(err){
+        console.error("Error in Fetch Universities" , err);
+        throw err;
+    }
+}                           

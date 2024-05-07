@@ -12,7 +12,7 @@
     margin-left: 9%;
     padding: 0 2%;
     width: 150px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 #nav .uniDropdownItem{
@@ -22,6 +22,10 @@
     font-size: 100%;
 }
 #nav .uniDropdownItem:hover{
+    background-color: var(--blue);
+    color: var(--orange);
+}
+#nav .uniDropdownItem:focus{
     color: var(--orange);
     background-color: var(--blue);
 }
@@ -47,12 +51,15 @@
     display: flex;
     gap: 20px;
 }
-
+ /* #nav .navicon{
+    border: 2px solid var(--orange);
+    border-radius: 5px;
+ } */
 #nav .navbutt{
     background-color: var(--orange);
     width: 100px;
     height: 45px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 2px solid var(--blue);
     text-align: center;
     color: var(--blue);
@@ -61,7 +68,8 @@
 #nav .navFriend{
     color: var(--blue);
     background-color: var(--orange);
-    border-radius: 10px;
+    border-radius: 5px;
+    margin-right: 20px;
 }
 
 
@@ -83,11 +91,12 @@
         margin-left: 4%;
     }
     #nav .navbutt{
-        margin-top: 3%;
+        margin-top: 25px;
         margin-left: 4%;
     }
     #nav .navicon :nth-child(1){
         padding-left: 5%;
+
     }
     #nav .navFriend{
         margin-left: 4%;
