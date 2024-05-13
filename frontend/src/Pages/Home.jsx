@@ -118,7 +118,9 @@ const Home = () => {
       </Carousel.Caption>
     </Carousel.Item>
     </Carousel>
+    <br />
     <About />
+    <br />
     <Contact />
   </div>
   )
