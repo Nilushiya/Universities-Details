@@ -12,4 +12,16 @@ export const fetchUniversity = async() =>{
         console.error("Error in Fetch Universities" , err);
         throw err;
     }
-}                           
+}   
+
+export const sendQuestions = async (question) => {
+    try {
+      const response = await axios.post(`${BASE_URL}/question/`, {
+        question: question
+      });console.log("Response: ", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Error in sending question: ", error);
+      throw error;
+    }
+  };

@@ -1,21 +1,25 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-
+import {sendQuestions} from '../Context/UserContext'
 
 const Contact = () => {
 
   const [question , setQuestion] = useState('');
-
-  const handleSubmit = (e) => {
+console.log("question   : " , question);
+  const handleSubmit = async(e) => {
     e.preventDefault();
     if(!question.trim()){
       alert("Pleace send any question");
       return;
     }
-    else{
-      alert("Questions have send");
+    try {
+      const response = await sendQuestions(question);
+      alert("Question has been sent successfully");
+      setQuestion('');
+    } catch (error) {
+      console.error(error);
+      alert("Error in sending the question");
     }
-    setQuestion('');
   }
   const token = 1;
   return (

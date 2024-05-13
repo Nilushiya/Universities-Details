@@ -15,8 +15,10 @@ public class QuestionServiceImp implements QuestionService{
     private QuestionRepo questionRepo;
     @Override
     public void questions(QuestionDto questionDto) {
+
         Question question = new Question();
         BeanUtils.copyProperties(questionDto , question);
+        System.out.println("Okaby");
         questionRepo.save(question);
     }
 
