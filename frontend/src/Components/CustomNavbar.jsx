@@ -33,7 +33,7 @@ const CustomNavbar = () => {
         <Nav className="me-auto" >
           <NavDropdown title="Universities" id="basic-nav-dropdown" className='uniDropdown'>
           {universities.map((university) => (
-    <NavDropdown.Item href={`/${university.uni_id}/${university.uniName}`} className='uniDropdownItem'>{university.uniName}</NavDropdown.Item>
+    <NavDropdown.Item href={`university/${university.uni_id}/${university.uniName}`} className='uniDropdownItem'>{university.uniName}</NavDropdown.Item>
 ))}
 
           </NavDropdown>
