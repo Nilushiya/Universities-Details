@@ -2,9 +2,9 @@ import React from 'react'
 
 const About = () => {
   return (
-    <div className='about'>
+    <div className='about m-0'>
         <div className="row m-0">
-            <div className="col-lg-6 col-md-12 col-12">
+            <div className="col-lg-6 col-md-12 col-12 m-0">
             <h1>About</h1>
                 <div className="aboutleft1">  
                         <p>we understand the importance of making informed decisions about your academic journey. Whether you're an undergraduate student exploring your options or looking for additional resources to enhance your learning experience, we're here to help.
@@ -17,7 +17,7 @@ const About = () => {
 Our platform offers comprehensive details about various university courses, providing you with insights into what each program entails. From curriculum outlines to potential career paths, we strive to equip you with the information you need to make confident decisions about your education.</p>
                 </div>
             </div>
-            <div className="col-lg-6 col-md-12 col-12">
+            <div className="col-lg-6 col-md-12 col-12 m-0">
                 <div className="aboutright">
                 <h2>Connect with Peers</h2>
                 <p>As an undergraduate student, connecting with peers who share your academic interests can be invaluable. Through our platform, you can network with fellow students, exchange ideas, and seek guidance from those who have walked a similar path. Don't worry if you're new to the area or don't have many contacts yet – our community is here to support you every step of the way.</p>

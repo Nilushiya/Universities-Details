@@ -12,6 +12,7 @@ import Ruhuna from '../Components/Assets/Ruhuna.jpg'
 import Uwa from '../Components/Assets/Uwa.jpg'
 import About from '../Components/About';
 import Contact from '../Components/Contact';
+// import { checklogin } from '../Context/UserContext';
 // import './HomeDp.css'
 
 const Home = () => {

@@ -25,3 +25,18 @@ export const sendQuestions = async (question) => {
       throw error;
     }
   };
+
+  export const checklogin = async(formData) => {
+    try{
+      
+      const response = await axios.post(`${BASE_URL}/login`,formData);
+      const token = response.data.token;
+      console.log("token : ",token);
+      console.log("response :" , response);
+      localStorage.setItem('token' , token );
+      window.location.href = '/';
+    }
+    catch(error){
+      console.error("Email or Password not match" , error);
+    }
+  }

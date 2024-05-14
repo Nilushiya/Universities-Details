@@ -6,6 +6,7 @@ import com.uni.info.dto.SignupRequestDto;
 import com.uni.info.enums.Role;
 import com.uni.info.entity.Student;
 import com.uni.info.repository.StudentRepo;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

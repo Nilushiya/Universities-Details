@@ -4,7 +4,7 @@ import brand from './Assets/Brand.png'
 import { navbar } from './Style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faUserGroup } from '@fortawesome/free-solid-svg-icons';
-import {fetchUniversity} from '../Context/UserContext'
+import {fetchUniversity , checklogin} from '../Context/UserContext'
 
 const CustomNavbar = () => {
   const [universities , setuniversities]  = useState([]);
@@ -24,9 +24,9 @@ const CustomNavbar = () => {
   } , [])
 
 
-  const token = null;
+   const token = null;
   return (
-    <BootstrapNavbar  expand="lg" id='nav'>
+    <BootstrapNavbar  expand="lg" id='nav' > 
       <BootstrapNavbar.Brand href="/" className='brand'><img src={brand} alt="" /></BootstrapNavbar.Brand>
       <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" style={{ backgroundColor:'#ff5b25'}}/>
       <BootstrapNavbar.Collapse id="basic-navbar-nav" >
