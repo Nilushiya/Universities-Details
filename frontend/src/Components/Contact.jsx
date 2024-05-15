@@ -5,7 +5,7 @@ import {sendQuestions} from '../Context/UserContext'
 const Contact = () => {
 
   const [question , setQuestion] = useState('');
-console.log("question   : " , question);
+// console.log("question   : " , question);
   const handleSubmit = async(e) => {
     e.preventDefault();
     if(!question.trim()){

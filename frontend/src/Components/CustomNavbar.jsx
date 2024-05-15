@@ -4,11 +4,11 @@ import brand from './Assets/Brand.png'
 import { navbar } from './Style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faUserGroup } from '@fortawesome/free-solid-svg-icons';
-import {fetchUniversity , checklogin} from '../Context/UserContext'
+import {fetchUniversity , checklogin, decodeToken} from '../Context/UserContext'
 
 const CustomNavbar = () => {
   const [universities , setuniversities]  = useState([]);
-  console.log("uni  : " , universities);
+  // console.log("uni  : " , universities);
   // console.log("uniname  : " , universities[0].uniName);
   useEffect(() => {
     const fetchUniApi = async() =>{
@@ -24,7 +24,8 @@ const CustomNavbar = () => {
   } , [])
 
 
-   const token = null;
+   const decode = decodeToken();
+   const userId = decode.studentId;
   return (
     <BootstrapNavbar  expand="lg" id='nav' > 
       <BootstrapNavbar.Brand href="/" className='brand'><img src={brand} alt="" /></BootstrapNavbar.Brand>
@@ -33,14 +34,14 @@ const CustomNavbar = () => {
         <Nav className="me-auto" >
           <NavDropdown title="Universities" id="basic-nav-dropdown" className='uniDropdown'>
           {universities.map((university) => (
-    <NavDropdown.Item href={`university/${university.uni_id}/${university.uniName}`} className='uniDropdownItem'>{university.uniName}</NavDropdown.Item>
+    <NavDropdown.Item key={university.uni_id} href={`university/${university.uni_id}/${university.uniName}`} className='uniDropdownItem'>{university.uniName}</NavDropdown.Item>
 ))}
 
           </NavDropdown>
         </Nav>
-        <Nav className='flexRight'>{token ? 
+        <Nav className='flexRight'>{userId ? 
               <Nav.Link className='navbutt' href='/login'>
-                Login
+                Logout
               {/* <button  className='navBtn'>Login</button> */}
             </Nav.Link>
             : <Nav.Link className='navbutt' href='/register'>
@@ -48,12 +49,12 @@ const CustomNavbar = () => {
             {/* <button  className='navBtn'>SignUp</button> */}
           </Nav.Link>
             }
-          <Nav.Link className='navicon' href={token ? '/profile'  : '/login'}>
+          <Nav.Link className='navicon' href={userId ? '/profile'  : '/login'}>
             {
               <FontAwesomeIcon icon={faUser} color='#ff5b25' className='friendIcon' size='xl'/> 
             }
           </Nav.Link>
-          <Nav.Link className='navicon navFriend' href={token ? '/friend' : '/login'}>
+          <Nav.Link className='navicon navFriend' href={userId ? '/friend' : '/login'}>
             {
               <FontAwesomeIcon icon={faUserGroup}  className='friendIcon' size='xl'/> 
             }

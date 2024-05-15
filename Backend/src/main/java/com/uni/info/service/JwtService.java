@@ -51,8 +51,8 @@ public class JwtService {
 //                .subject(student.getUsername())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + 24*60*60*1000*5))
-                .claim("role",userType)
-                .claim("uId",studentId)
+                .claim("userType",userType)
+                .claim("studentId",studentId)
                 .signWith(getSigninKey())
                 .compact();
 

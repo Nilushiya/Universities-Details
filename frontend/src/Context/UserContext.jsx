@@ -1,11 +1,14 @@
 import axios from 'axios'
+import {jwtDecode} from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
+
 
 const BASE_URL = 'http://localhost:8080/api/v1';
 
 export const fetchUniversity = async() =>{
     try{
         const Universities = await axios.get(`${BASE_URL}/university/get`);
-        console.log("respones   : " , Universities.data);
+        // console.log("respones   : " , Universities.data);
         return Universities.data;
     }
     catch(err){
@@ -27,16 +30,19 @@ export const sendQuestions = async (question) => {
   };
 
   export const checklogin = async(formData) => {
-    try{
-      
-      const response = await axios.post(`${BASE_URL}/login`,formData);
-      const token = response.data.token;
-      console.log("token : ",token);
-      console.log("response :" , response);
-      localStorage.setItem('token' , token );
-      window.location.href = '/';
-    }
-    catch(error){
-      console.error("Email or Password not match" , error);
+    try {
+      const response = await axios.post(`${BASE_URL}/login`, formData);
+      return response
+    } 
+    catch (error) {
+      console.error("Email or Password not match", error);
     }
   }
+
+  export const decodeToken = () => {
+     const token = localStorage.getItem('token');
+     const decodeToken = jwtDecode(token);
+
+     return decodeToken;
+  }
+  

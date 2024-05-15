@@ -3,7 +3,7 @@ import{login} from '../Components/Style/index.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { Link, Navigate } from 'react-router-dom'
-import { checklogin } from '../Context/UserContext.jsx';
+import { checklogin, decodeToken } from '../Context/UserContext.jsx';
 
 const Login = () => {
     const [formdata , setFormdata] = useState({
@@ -26,20 +26,28 @@ const Login = () => {
         else{
             try{
                 const loginda = await checklogin(formdata); 
+                const token = loginda.data.token; 
+
+                localStorage.setItem('token', token);
+                const decoded = decodeToken();
+                // console.log('lo :', decoded.userType)
+                const userType = decoded.userType
+              
+            if(userType == 'USER')
+            window.location.href = '/';
+            else   
+            window.location.href = '/register'
             }
             catch(err){
-                alert('error');
+                alert('error', err);
             }
     }
         setFormdata({ email: '', password: '' });
       };
   return (
     <div className='login'>
-        <div className="box1"></div>
-        {/* <div className="shape">
-            <div className="s1"></div>
-            <div className="s2"></div>
-        </div> */}
+         <div className="box1"></div>
+     
         <div className="loginBox">
             <div className="heder">
                 <h1>Login</h1>
@@ -76,7 +84,7 @@ const Login = () => {
                   </form>  
             </div>
         </div>
-        <div className="box2"></div>
+        <div className="box2"></div> 
     </div>
   )
 }
