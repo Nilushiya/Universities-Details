@@ -1,0 +1,108 @@
+@import './color.css';
+@import url('https://fonts.googleapis.com/css2?family=Freeman&display=swap');
+body{
+    width: 100vw;
+    /* height: 100vh; */
+    background-color: var(--blue);
+}
+.register{
+    width: 100vw;
+    height: 100vh ;
+    background-color: var(--blue);
+    color: var(--blue);
+    font-family: "Freeman", sans-serif;
+    padding-top:7.5%;
+    background:linear-gradient(var(--blue),var(--orange));
+}
+.register .registerbox{
+    width: 500px;
+    height: 480px;
+    background-color: var(--white);
+    padding: 20px;
+    margin: auto;
+    background:linear-gradient(var(--orange),var(--blue));
+    border-radius: 30px;
+}
+.register .registerbox .heder{
+    text-align: center;
+    padding-top: 25px;  
+    color: var(--blue);
+}
+.register .registerbox .registerbody{
+    padding: 10px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+
+}
+.register .registerbox .registerbody form{
+    display: flex;
+    flex-direction: column;
+}
+.register .registerbox form input{
+    width: 300px;
+    height: 40px;
+    border: 2px solid var(--orange);
+    border-left: none;
+    color: var(--blue);
+    padding: 10px;
+    border-top-right-radius: 60px;
+    border-bottom-right-radius: 60px;
+    background-color: var(--white);
+    outline: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.register .registerbody form .envelope , .lock{
+    padding: 6px;
+    border: 2px solid var(--orange);
+    border-right: none;
+    margin-bottom: -7px;
+    color: var(--white);
+}
+.register .registerbox form button{
+    margin-top: 15px;
+    margin-left: 40%;
+    width: 100px;
+    background-color: var(--orange);
+    border: none;
+    border-radius: 10px;
+    color: var(--blue);
+    font-weight: 600;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+@media only screen and (max-width: 1075px) {
+    .register{
+        padding:4%;
+    }
+   
+
+}
+@media only screen and (max-width: 560px) {
+    .register{
+        /* padding:10px; */
+    }
+    .register .registerbox{
+        width: 290px;
+        height: 500px;
+    }
+    .register .registerbox form input{
+        width: 200px;
+    }
+
+}
+@media only screen and (max-width: 480px) {
+    .register{
+        padding-top:8%;
+    }
+    .register .registerbox{
+        width: 300px;
+        height: 500px;
+    }
+    .register .registerbox form input{
+        width: 200px;
+    }
+
+}
+

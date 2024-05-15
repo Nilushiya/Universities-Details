@@ -1,25 +1,26 @@
 @import './color.css';
-@import url('https://fonts.googleapis.com/css2?family=Freeman&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Freeman&display=swap');
 body{
     width: 100%;
     height: 100%;
     background-color: var(--blue);
 }
-
 .login{
-    width: 100%;
+    min-width: 100vw;
     min-height: 100vh;
     background-color: var(--blue);
-    color: var(--orange);
-    font-family: "Kanit", sans-serif;
+    color: var(--blue);
+    font-family: "Freeman", sans-serif;
 }
-.login .loginBox{
-    width: 400px;
-    height: 300px;
-    background-color: var(--white);
-    margin: auto;
-}
+    .login .loginBox{
+        width: 400px;
+        height: 300px;
+        background:linear-gradient(var(--orange),var(--blue));
+        opacity: .9;
+        margin: auto;
+        border-radius: 20px;
+        margin: 4.84% auto;
+    }
 .login .loginBox .heder{
     text-align: center;
     padding-top: 15px;
@@ -27,65 +28,70 @@ body{
 .box1{
     width: 100%;
     height: 100px;
-    background:linear-gradient(green,blue);
+    background:linear-gradient(var(--blue),var(--orange));
     border-bottom-right-radius: 600px;
-    /* border-bottom-left-radius: 60px; */
     opacity: 50%;
 }
-/* .shape{
-    display: flex;
-    flex-direction: row;
-}
-.s1 ,.s2{
-    background-color: aqua;
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
-} */
 .box2{
     width: 100%;
     height: 100px;
-    background-color: chartreuse;
-    /* border-bottom-right-radius: 600px; */
+    background:linear-gradient(var(--blue),var(--orange));  
      border-top-right-radius: 60px;
 } 
-form { 
+.loginBox form { 
     padding: 20px;
      text-align: center; 
      display: flex;
     flex-direction: column;
 } 
-form input{
+.loginBox form input{
     margin-top: 10px;
     border: 2px solid var(--orange);
     border-left: none;
     color: var(--blue);
-    width: 300px;
+    width: 250px;
     height: 30px;
     padding: 7px;
     border-top-right-radius: 60px;
     border-bottom-right-radius: 60px;
     background-color: var(--white);
+    outline: none;
 }
-form input:hover{
-    border: 2px solid var(--blue);
-    border-left: none;
-}
-form .envelope , .lock{
+.loginBox form .envelope , .lock{
     padding: 5px;
     border: 2px solid var(--orange);
     border-right: none;
     margin-bottom: -7px;
 }
-form .envelope:hover , .lock:hover{
-    border: 2px solid var(--blue);
-    border-right: none;
-}
-form .forgot{
+.loginBox form .forgot{
     text-align: right;
     margin-top: 10px;
 }
-.register{
+.loginBox form button{
+    width: 100px;
+    background-color: var(--blue);
+    border: none;
+    margin-top: 10px;
+    margin-left: 35%;
+    border-radius: 10px;
+    color: var(--white);
+    padding: 5px;
+}
+.reg{
     position: relative;
     bottom: 26px;
+    margin-right: 75%;
+}
+
+@media only screen and (max-width: 480px) {
+    .login{
+        min-width: 300px;
+    }
+    .login .loginBox{
+        width: 250px;
+        margin: 7.2% auto;
+    }
+    .loginBox form input{
+        width: 150px;
+    }
 }

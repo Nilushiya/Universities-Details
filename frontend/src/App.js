@@ -8,7 +8,7 @@ import Register from "./Pages/Register";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
        <BrowserRouter>
           {/* <CustomNavbar />    */}
           <Routes>

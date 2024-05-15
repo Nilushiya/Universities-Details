@@ -10,20 +10,18 @@ const Login = () => {
         email : '',
         password : ''
     })
-    const [emailError, setEmailError] = useState('');
-    const [passwordError, setPasswordError] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('Email:', formdata.email);
         console.log('Password:', formdata.password);
-        if(!formdata.email){
-            setEmailError('Email cannot be empty.');
-        }
-        else if(!formdata.password){
-            setPasswordError('Password cannot be empty.');
-        }
-        else{
+        // if(!formdata.email){
+        //     setEmailError('Email cannot be empty.');
+        // }
+        // else if(!formdata.password){
+        //     setPasswordError('Password cannot be empty.');
+        // }
+        // else{
             try{
                 const loginda = await checklogin(formdata); 
                 const token = loginda.data.token; 
@@ -41,7 +39,7 @@ const Login = () => {
             catch(err){
                 alert('error', err);
             }
-    }
+    // }
         setFormdata({ email: '', password: '' });
       };
   return (
@@ -64,7 +62,7 @@ const Login = () => {
                             onChange={(e) => setFormdata({...formdata, email:e.target.value})}
                             required
                         />
-                        {emailError && <h6 style={{color:"red"}}>{emailError}</h6>}
+                        {/* {emailError && <h6 style={{color:"red"}}>{emailError}</h6>} */}
                     </div>
                     <div className="pass">
                         <FontAwesomeIcon icon={faLock}  className='lock' size='x'/> 
@@ -76,11 +74,11 @@ const Login = () => {
                             onChange={(e) => setFormdata({...formdata, password:e.target.value})}
                             required
                         />
-                         {passwordError && <h6 style={{color:"red"}}>{passwordError}</h6>}
+                         {/* {passwordError && <h6 style={{color:"red"}}>{passwordError}</h6>} */}
                     </div>
                     <button type='submit'>Submit</button>
                     <Link to='/' className='forgot'>Forgot password</Link>
-                    <Link to='/register' className='register'>Signup</Link>
+                    <Link to='/register' className='reg'>Signup</Link>
                   </form>  
             </div>
         </div>
