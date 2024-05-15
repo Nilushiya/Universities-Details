@@ -28,10 +28,23 @@ export const sendQuestions = async (question) => {
       throw error;
     }
   };
+  export const checkRegister = async(formData) => {
 
+    try {
+      console.log("formdata   : ",formData)
+      const response = await axios.post(`${BASE_URL}/register`, formData);
+      console.log("response  :" , response)
+      return response
+    } 
+    catch (error) {
+      console.error("Email or Password not match", error);
+    }
+  }
   export const checklogin = async(formData) => {
+
     try {
       const response = await axios.post(`${BASE_URL}/login`, formData);
+      console.log("response  :" , response)
       return response
     } 
     catch (error) {

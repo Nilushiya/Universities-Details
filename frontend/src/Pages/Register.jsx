@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Link, Navigate } from 'react-router-dom'
-import { checklogin, decodeToken } from '../Context/UserContext.jsx';
+import { checkRegister, decodeToken } from '../Context/UserContext.jsx';
 import { register } from '../Components/Style';
 const Register = () => {
   const [formdata , setFormdata] = useState({
@@ -12,11 +12,11 @@ const Register = () => {
     confirmPassword:'',
     userType: 'USER'
 })
-
+// console.log('form : ',formdata)
 const handleSubmit = async (e) => {
   e.preventDefault();
-  console.log('Email:', formdata.email);
-  console.log('Password:', formdata.password);
+//   console.log('Email:', formdata.email);
+//   console.log('Password:', formdata.password);
   // if(!formdata.email){
   //     setEmailError('Email cannot be empty.');
   // }
@@ -25,18 +25,23 @@ const handleSubmit = async (e) => {
   // }
   // else{
       try{
-          const loginda = await checklogin(formdata); 
-          const token = loginda.data.token; 
-
-          localStorage.setItem('token', token);
-          const decoded = decodeToken();
-          // console.log('lo :', decoded.userType)
-          const userType = decoded.userType
+        if(formdata.password == formdata.confirmPassword){
+            const loginda = await checkRegister(formdata); 
+            const token = loginda.data.token; 
+  
+            localStorage.setItem('token', token);
+            const decoded = decodeToken();
+            const userType = decoded.userType
+          
+            if(userType == 'USER')
+            window.location.href = '/';
+            else   
+            window.location.href = '/register'
+        }
+        else{
+            alert('Confirm password not match')
+        }
         
-      if(userType == 'USER')
-      window.location.href = '/';
-      else   
-      window.location.href = '/register'
       }
       catch(err){
           alert('error', err);
