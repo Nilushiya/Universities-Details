@@ -53,7 +53,7 @@ const Login = () => {
             <div className="loginbody">
                   <form action="" onSubmit={handleSubmit}>
                     <div className="mail">
-                        <FontAwesomeIcon icon={faEnvelope}  className='envelope' size='x'/> 
+                        <FontAwesomeIcon icon={faEnvelope}  className='envelope' size='xl'/> 
                         <input 
                             type='email'
                             value={formdata.email}
@@ -65,7 +65,7 @@ const Login = () => {
                         {/* {emailError && <h6 style={{color:"red"}}>{emailError}</h6>} */}
                     </div>
                     <div className="pass">
-                        <FontAwesomeIcon icon={faLock}  className='lock' size='x'/> 
+                        <FontAwesomeIcon icon={faLock}  className='lock' size='xl'/> 
                         <input 
                             type='password'
                             value={formdata.password}

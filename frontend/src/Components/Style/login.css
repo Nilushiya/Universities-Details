@@ -50,7 +50,7 @@ body{
     border-left: none;
     color: var(--blue);
     width: 250px;
-    height: 30px;
+    height: 40px;
     padding: 7px;
     border-top-right-radius: 60px;
     border-bottom-right-radius: 60px;
@@ -60,6 +60,7 @@ body{
 .loginBox form .envelope , .lock{
     padding: 5px;
     border: 2px solid var(--orange);
+    color: var(--white);
     border-right: none;
     margin-bottom: -7px;
 }

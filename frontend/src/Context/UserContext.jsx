@@ -40,9 +40,14 @@ export const sendQuestions = async (question) => {
   }
 
   export const decodeToken = () => {
-     const token = localStorage.getItem('token');
-     const decodeToken = jwtDecode(token);
-
-     return decodeToken;
+    try{
+      const token = localStorage.getItem('token');
+      const decodeToken = jwtDecode(token);
+      return decodeToken;
+    }
+    catch(err){
+      return null;
+    }
+  
   }
   

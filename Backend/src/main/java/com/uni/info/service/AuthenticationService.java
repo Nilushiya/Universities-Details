@@ -39,7 +39,7 @@ public class AuthenticationService {
         user.setUserType(Role.valueOf(request.getUserType()));
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         studentRepo.save(user);
-        String token = jwtService.generateToken(user, String.valueOf(user.getUserType()), user.getStudentId());
+        String token = jwtService.generateToken(user, String.valueOf(user.getUserType()),  String.valueOf(user.getUsername()), user.getStudentId());
 
         return token;
     }
@@ -51,7 +51,7 @@ public class AuthenticationService {
                 ));
 
         Student user = studentRepo.findByEmail(request.getEmail()).orElseThrow();
-        String token = jwtService.generateToken(user, String.valueOf(auth.getAuthorities().stream().findAny().get()), user.getStudentId());
+        String token = jwtService.generateToken(user, String.valueOf(auth.getAuthorities().stream().findAny().get()), user.getName(), user.getStudentId());
 
         return new AuthenticationResponse(token);
 

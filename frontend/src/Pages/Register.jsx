@@ -53,7 +53,7 @@ const handleSubmit = async (e) => {
         <div className="registerbody">
             <form action="" onSubmit={handleSubmit}>
                 <div className="name">
-                    <FontAwesomeIcon icon={faUser}  className='envelope' size='x'/> 
+                    <FontAwesomeIcon icon={faUser}  className='envelope' size='xl'/> 
                     <input 
                         type='text'
                         value={formdata.name}
@@ -65,7 +65,7 @@ const handleSubmit = async (e) => {
                     {/* {emailError && <h6 style={{color:"red"}}>{emailError}</h6>} */}
                 </div>
                 <div className="mail">
-                    <FontAwesomeIcon icon={faEnvelope}  className='envelope' size='x'/> 
+                    <FontAwesomeIcon icon={faEnvelope}  className='envelope' size='xl'/> 
                     <input 
                         type='email'
                         value={formdata.email}
@@ -77,7 +77,7 @@ const handleSubmit = async (e) => {
                     {/* {emailError && <h6 style={{color:"red"}}>{emailError}</h6>} */}
                 </div>
                 <div className="pass">
-                    <FontAwesomeIcon icon={faLock}  className='lock' size='x'/> 
+                    <FontAwesomeIcon icon={faLock}  className='lock' size='xl'/> 
                     <input 
                         type='password'
                         value={formdata.password}
@@ -89,7 +89,7 @@ const handleSubmit = async (e) => {
                     {/* {passwordError && <h6 style={{color:"red"}}>{passwordError}</h6>} */}
                 </div>
                 <div className="conpass">
-                    <FontAwesomeIcon icon={faLock}  className='lock' size='x'/> 
+                    <FontAwesomeIcon icon={faLock}  className='lock' size='xl'/> 
                     <input 
                         type='password'
                         value={formdata.confirmPassword}

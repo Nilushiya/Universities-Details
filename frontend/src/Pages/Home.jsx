@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel';
 import CustomNavbar from '../Components/CustomNavbar';
 import kelaniya from '../Components/Assets/Kelaniya.jpg'
@@ -12,10 +12,26 @@ import Ruhuna from '../Components/Assets/Ruhuna.jpg'
 import Uwa from '../Components/Assets/Uwa.jpg'
 import About from '../Components/About';
 import Contact from '../Components/Contact';
+import { decodeToken } from '../Context/UserContext';
+import {about} from '../Components/Style/index'
 // import { checklogin } from '../Context/UserContext';
 // import './HomeDp.css'
 
 const Home = () => {
+  const[name , setName] = useState('');
+  useEffect(() => {
+    const decode = decodeToken();
+    if(decode){
+      const userName = decode.name;
+      setName(userName)
+    }
+    else{
+      const userName = null
+      setName(userName)
+    }
+   
+  },[])
+ 
   return (
     <div>
       <CustomNavbar />
@@ -27,6 +43,7 @@ const Home = () => {
         alt="First slide"
       />
       <Carousel.Caption>
+       <h1 className='username'>Hi, {name}</h1>
        <h1>University of Kelaniya</h1>
       </Carousel.Caption>
     </Carousel.Item>
@@ -38,6 +55,7 @@ const Home = () => {
       />
 
       <Carousel.Caption>
+        <h1 className='username'>Hi, {name}</h1>
         <h1>University of Moratuwa</h1>
       </Carousel.Caption>
     </Carousel.Item>
@@ -49,6 +67,7 @@ const Home = () => {
       />
 
       <Carousel.Caption>
+        <h1 className='username'>Hi, {name}</h1>
         <h1>University of Colombo</h1>
       </Carousel.Caption>
     </Carousel.Item>
@@ -60,6 +79,7 @@ const Home = () => {
       />
 
       <Carousel.Caption>
+        <h1 className='username'>Hi, {name}</h1>
         <h1 style={{color:'black'}}>University of Jaffna</h1>
       </Carousel.Caption>
     </Carousel.Item>
@@ -71,6 +91,7 @@ const Home = () => {
       />
 
       <Carousel.Caption>
+        <h1 className='username'>Hi, {name}</h1>
         <h1>University of Jayawarthanapura</h1>
       </Carousel.Caption>
     </Carousel.Item>
@@ -82,6 +103,7 @@ const Home = () => {
       />
 
       <Carousel.Caption>
+        <h1 className='username'>Hi, {name}</h1>
         <h1>University of Peradeniya</h1>
       </Carousel.Caption>
     </Carousel.Item>
@@ -93,6 +115,7 @@ const Home = () => {
       />
 
       <Carousel.Caption>
+        <h1 className='username'>Hi, {name}</h1>
         <h1  style={{color:'black'}}>University of Rayarata</h1>
       </Carousel.Caption>
     </Carousel.Item>
@@ -104,6 +127,7 @@ const Home = () => {
       />
 
       <Carousel.Caption>
+        <h1 className='username'>Hi, {name}</h1>
         <h1  style={{color:'black'}}>University of Ruhuna</h1>
       </Carousel.Caption>
     </Carousel.Item>
@@ -115,6 +139,7 @@ const Home = () => {
       />
 
       <Carousel.Caption>
+        <h1 className='username' >Hi,{name}</h1>
         <h1>University of Uva Wellassa</h1>
       </Carousel.Caption>
     </Carousel.Item>

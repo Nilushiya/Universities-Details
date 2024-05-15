@@ -8,6 +8,8 @@ import {fetchUniversity , checklogin, decodeToken} from '../Context/UserContext'
 
 const CustomNavbar = () => {
   const [universities , setuniversities]  = useState([]);
+  const[userId , setUserId] = useState('');
+ 
   // console.log("uni  : " , universities);
   // console.log("uniname  : " , universities[0].uniName);
   useEffect(() => {
@@ -23,9 +25,23 @@ const CustomNavbar = () => {
     fetchUniApi();
   } , [])
 
+  const logout = () => {
+    localStorage.removeItem('token');
+    // window.location.href('/')
+  }
 
-   const decode = decodeToken();
-   const userId = decode.studentId;
+  useEffect(() => {
+    const decode = decodeToken();
+    if(decode){
+     const user = decode.studentId;
+     setUserId(user);
+    }
+    else{
+     const user = null;
+     setUserId(user);
+    }
+  },[])
+
   return (
     <BootstrapNavbar  expand="lg" id='nav' > 
       <BootstrapNavbar.Brand href="/" className='brand'><img src={brand} alt="" /></BootstrapNavbar.Brand>
@@ -40,7 +56,7 @@ const CustomNavbar = () => {
           </NavDropdown>
         </Nav>
         <Nav className='flexRight'>{userId ? 
-              <Nav.Link className='navbutt' href='/login'>
+              <Nav.Link className='navbutt' href='/' onClick={logout}>
                 Logout
               {/* <button  className='navBtn'>Login</button> */}
             </Nav.Link>
