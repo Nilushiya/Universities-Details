@@ -31,7 +31,7 @@ export const sendQuestions = async (question) => {
   export const checkRegister = async(formData) => {
 
     try {
-      console.log("formdata   : ",formData)
+      console.log("mdata   : ",formData)
       const response = await axios.post(`${BASE_URL}/register`, formData);
       console.log("response  :" , response)
       return response

@@ -6,7 +6,7 @@ import { checkRegister, decodeToken } from '../Context/UserContext.jsx';
 import { register } from '../Components/Style';
 const Register = () => {
   const [formdata , setFormdata] = useState({
-    name:'',
+    customerName:'',
     email : '',
     password : '',
     confirmPassword:'',
@@ -26,8 +26,8 @@ const handleSubmit = async (e) => {
   // else{
       try{
         if(formdata.password == formdata.confirmPassword){
-            const loginda = await checkRegister(formdata); 
-            const token = loginda.data.token; 
+            const response = await checkRegister(formdata); 
+            const token = response.data; 
   
             localStorage.setItem('token', token);
             const decoded = decodeToken();
@@ -61,10 +61,10 @@ const handleSubmit = async (e) => {
                     <FontAwesomeIcon icon={faUser}  className='envelope' size='xl'/> 
                     <input 
                         type='text'
-                        value={formdata.name}
-                        name='name'
+                        value={formdata.customerName}
+                        name='customerName'
                         placeholder='Enter your name'
-                        onChange={(e) => setFormdata({...formdata, name:e.target.value})}
+                        onChange={(e) => setFormdata({...formdata, customerName:e.target.value})}
                         required
                     />
                     {/* {emailError && <h6 style={{color:"red"}}>{emailError}</h6>} */}

@@ -9,9 +9,10 @@ import {fetchUniversity , checklogin, decodeToken} from '../Context/UserContext'
 const CustomNavbar = () => {
   const [universities , setuniversities]  = useState([]);
   const[userId , setUserId] = useState('');
- 
-  // console.log("uni  : " , universities);
-  // console.log("uniname  : " , universities[0].uniName);
+  const[name , setName] = useState('');
+
+   
+
   useEffect(() => {
     const fetchUniApi = async() =>{
       try{
@@ -34,10 +35,15 @@ const CustomNavbar = () => {
     const decode = decodeToken();
     if(decode){
      const user = decode.studentId;
+     const userName = decode.name;
+     setName(userName)
      setUserId(user);
+     console.log('name' , name);
     }
     else{
      const user = null;
+     const userName = null
+     setName(userName)
      setUserId(user);
     }
   },[])
@@ -54,6 +60,7 @@ const CustomNavbar = () => {
 ))}
 
           </NavDropdown>
+          <h4 style={{color:"White"}}>Hi{name}</h4>
         </Nav>
         <Nav className='flexRight'>{userId ? 
               <Nav.Link className='navbutt' href='/' onClick={logout}>
