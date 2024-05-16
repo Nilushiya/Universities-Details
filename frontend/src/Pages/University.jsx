@@ -1,118 +1,58 @@
 import React, { useEffect, useState } from 'react'
-import {
-  CDBSidebar,
-  CDBSidebarHeader,
-  CDBSidebarMenuItem,
-  CDBSidebarContent,
-  CDBSidebarMenu,
-  CDBSidebarSubMenu,
-  CDBSidebarFooter,
-  CDBBadge,
-  CDBContainer,
-} from 'cdbreact';
+import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container } from 'react-bootstrap';
+import { fetchFaculty } from '../Context/UserContext';
+
 
 const University = () => {
   const [id, setId] = useState(null);
   const [name, setName] = useState(null);
+  useEffect(() =>{
+    const fetchFacultyApi = async() => {
+      try{
+        const response = await fetchFaculty(id);
+        console.log("response" ,response)
+      }
+      catch(err){
+        console.log("Error in Fetch Faculty " , err);
+      }
+    }
+  },[])
 
   useEffect(() => {
     const url = new URL(window.location.href);
     const pathSegments = url.pathname.split('/');
     const universityId = pathSegments[2]; 
     const universityName = pathSegments[3];
-    // console.log('universityId', universityId);
-    // console.log('universityName' , universityName)
     setId(universityId);
-    setName(decodeURIComponent(universityName));
-   
+    setName(decodeURIComponent(universityName)); 
   }, []);
-  // console.log('id', id);
-  // console.log('name' , name)
+console.log(id);
   return (
     <div className='university'>
       <div className="row">
-      <div className="col-lg-4">
-      <CDBSidebar textColor="#fff" backgroundColor="#333">
-          <CDBSidebarHeader prefix={<CDBIcon icon="bars" size="lg" />}>
-            Contrast Multi Level
-          </CDBSidebarHeader>
-
-          <CDBSidebarContent>
-            <CDBSidebarMenu>
-              <CDBSidebarMenuItem
-                suffix={
-                  <CDBBadge color="danger" size="small" borderType="pill">
-                    new
-                  </CDBBadge>
-                }
-                icon="th-large"
-              >
-                Dashboard
-              </CDBSidebarMenuItem>
-              <CDBSidebarMenuItem
-                icon="sticky-note"
-                suffix={
-                  <CDBBadge color="danger" size="small" borderType="pill">
-                    new
-                  </CDBBadge>
-                }
-              >
-                Components
-              </CDBSidebarMenuItem>
-            </CDBSidebarMenu>
-            <CDBSidebarMenu>
-              <CDBSidebarSubMenu title="Sidemenu" icon="th">
-                <CDBSidebarMenuItem> submenu 1</CDBSidebarMenuItem>
-                <CDBSidebarMenuItem> submenu 2</CDBSidebarMenuItem>
-                <CDBSidebarMenuItem> submenu 3</CDBSidebarMenuItem>
-              </CDBSidebarSubMenu>
-              <CDBSidebarSubMenu
-                title="Sidemenu2"
-                icon="book"
-                suffix={
-                  <CDBBadge color="danger" size="small" borderType="pill">
-                    new
-                  </CDBBadge>
-                }
-              >
-                <CDBSidebarMenuItem>submenu 1</CDBSidebarMenuItem>
-                <CDBSidebarMenuItem>submenu 2</CDBSidebarMenuItem>
-                <CDBSidebarMenuItem>submenu 3</CDBSidebarMenuItem>
-              </CDBSidebarSubMenu>
-              <CDBSidebarSubMenu title="MultiLevel with Icon" icon="table">
-                <CDBSidebarMenuItem>submenu 1 </CDBSidebarMenuItem>
-                <CDBSidebarMenuItem>submenu 2 </CDBSidebarMenuItem>
-                <CDBSidebarSubMenu title="submenu 3">
-                  <CDBSidebarMenuItem>submenu 3.1 </CDBSidebarMenuItem>
-                  <CDBSidebarMenuItem>submenu 3.2 </CDBSidebarMenuItem>
-                  <CDBSidebarSubMenu title="subnt">
-                    <CDBSidebarMenuItem>submenu 3.3.1 </CDBSidebarMenuItem>
-                    <CDBSidebarMenuItem>submenu 3.3.2 </CDBSidebarMenuItem>
-                    <CDBSidebarMenuItem>submenu 3.3.3 </CDBSidebarMenuItem>
-                  </CDBSidebarSubMenu>
-                </CDBSidebarSubMenu>
-              </CDBSidebarSubMenu>
-            </CDBSidebarMenu>
-          </CDBSidebarContent>
-
-          <CDBSidebarFooter style={{ textAlign: 'center' }}>
-            <div
-              className="sidebar-btn-wrapper"
-              style={{
-                padding: '20px 5px',
-              }}
-            >
-              Sidebar Footer
-            </div>
-          </CDBSidebarFooter>
-        </CDBSidebar>
-      </div>
-      <div className="col-lg-8">
-          <h1>Welcome to </h1>
-          <h1>{name}</h1>
-      </div>
+        <div className="col-lg-3 leftSideBar">
+            <Navbar  expand="lg" style={{backgroundColor:"#072040"}}>
+          <Container style={{backgroundColor:"#072040"}}>
+            <Navbar.Toggle aria-controls="navbar-nav" style={{backgroundColor:"#072040" }}/>
+            <Navbar.Collapse id="navbar-nav" style={{backgroundColor:"#072040", borderRadius:"20px", borderRadius:"20px"}}>
+        <Nav className="me-auto navList" style={{display:"flex" , flexDirection:"column",backgroundColor:"#072040"}}>
+          <div className="dropdown-column" style={{backgroundColor:"#ff5b25",marginBottom:"10px", borderRadius:"10px",padding:"10px"}}>
+            <NavDropdown title="Services 1" id="services-dropdown-1">
+              <NavDropdown.Item href="#" style={{backgroundColor:"#ff5b25",":hover": { backgroundColor: "blue" }}}>Service Name 1</NavDropdown.Item>
+            </NavDropdown>
+          </div>
+        </Nav>
+      </Navbar.Collapse>
+          </Container>
+            </Navbar>
+        </div>
+        <div className="col-lg-8 rightBody">
+            <h1>Welcome to </h1>
+            <h1>{name}</h1>
+        </div>
       </div>
     </div>
+   
   )
 }
 
