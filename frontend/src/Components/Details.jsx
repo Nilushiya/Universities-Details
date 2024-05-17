@@ -35,8 +35,9 @@ Welcome to {name}</h1></div>
         <div className="fac">
           <h3>Here you can see our Faculties</h3>
           {faculties.map((fac, index) => (
-            <div key={index}>
-              {index+1}={fac.facultyName}
+            <div className='facname' key={index}>
+              {index+1} = {fac.facultyName}
+              {/* <hr /> */}
             </div>
           ))}
         </div>

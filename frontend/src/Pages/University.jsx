@@ -45,7 +45,7 @@ const University = () => {
         <div className="col-lg-3 leftSideBar">
             <Navbar  expand="lg" style={{backgroundColor:"#072040"}}>
           <Container style={{backgroundColor:"#072040"}}>
-            <Navbar.Toggle aria-controls="navbar-nav" style={{backgroundColor:"#072040" }}/>
+            <Navbar.Toggle aria-controls="navbar-nav" style={{backgroundColor:"#072040" ,color:"white" }}/>
             <Navbar.Collapse id="navbar-nav" style={{backgroundColor:"#072040", borderRadius:"20px"}}>
         <Nav className="me-auto navList" style={{display:"flex" , flexDirection:"column",backgroundColor:"#072040"}}>
           <div className="dropdown-column" style={{backgroundColor:"#ff5b25", borderRadius:"10px" ,width:"300px"}}>

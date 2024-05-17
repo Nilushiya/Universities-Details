@@ -59,7 +59,10 @@ public class EnglishDetailsServiceImp implements EnglishDetailsService {
         }
     }
 
-
+    @Override
+    public List<English_details> courseDetail(Long edeg_id) {
+        return englishDetailsRepo.findCourse(edeg_id);
+    }
 
 
 //    @Override

@@ -51,26 +51,11 @@ public class EnglishDetailsController {
         return saveUpdate;
     }
 
-    }
-//    public ResponseEntity<String> createEngDetails(@RequestParam(value = "imageData") MultipartFile file,
-//                                                           @RequestParam("edegreeDuration") Integer edegreeDuration,
-//                                                           @RequestParam("edegreeDescription1") String edegreeDescription1,
-//                                                           @RequestParam("edegreeJobs") String edegreeJobs,
-//                                                           @RequestParam("edeg_id") Long edeg_id) throws IOException {
-//
-//     try {
-//             if (file != null) {
-//                 englishDetailsService.saveDetailsFromFile(file, edegreeDuration, edegreeDescription1, edegreeJobs, edeg_id);            }
-//              else {
-//                 System.out.println("eeee : "+file);
-//                    return ResponseEntity.badRequest().body("Either 'file' or 'imageUrl' parameter is required.");
-//            }
-//                    return ResponseEntity.ok("Image uploaded successfully.");
-//        } catch (IOException e) {
-//         System.out.println("err :"+e.getMessage());
-//         System.out.println("erroer :"+file);
-//        e.printStackTrace();
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload image.");
-//        }
-//}
+
+    @GetMapping("getDetails/{edeg_id}")
+    public List<English_details> getDetail(@PathVariable ("edeg_id") Long edeg_id){
+    List<English_details> details = englishDetailsService.courseDetail(edeg_id);
+    return details;
+    }}
+
 
