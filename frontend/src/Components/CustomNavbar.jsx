@@ -5,14 +5,18 @@ import { navbar } from './Style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faUserGroup } from '@fortawesome/free-solid-svg-icons';
 import {fetchUniversity , checklogin, decodeToken} from '../Context/UserContext'
+import { useNavigate } from 'react-router-dom';
 
 const CustomNavbar = () => {
   const [universities , setuniversities]  = useState([]);
   const[userId , setUserId] = useState('');
   const[name , setName] = useState('');
 
+  const navigate = useNavigate();
+  const handleNavigate = (uni_id, uniName) => {
+    navigate(`/university/${uni_id}/${uniName}`);
+  };
    
-
   useEffect(() => {
     const fetchUniApi = async() =>{
       try{
@@ -55,33 +59,35 @@ const CustomNavbar = () => {
       <BootstrapNavbar.Collapse id="basic-navbar-nav" >
         <Nav className="me-auto" >
           <NavDropdown title="Universities" id="basic-nav-dropdown" className='uniDropdown'>
-          {universities.map((university) => (
-    <NavDropdown.Item key={university.uni_id} href={`university/${university.uni_id}/${university.uniName}`} className='uniDropdownItem'>{university.uniName}</NavDropdown.Item>
-))}
-
+            {universities.map((university) => (
+              <NavDropdown.Item
+                key={university.uni_id}
+                onClick={() => handleNavigate(university.uni_id, university.uniName)}
+                className='uniDropdownItem'
+              >
+              {university.uniName}
+              </NavDropdown.Item>
+            ))}
           </NavDropdown>
           <h4 style={{color:"White"}}>Hi{name}</h4>
         </Nav>
-        <Nav className='flexRight'>{userId ? 
-              <Nav.Link className='navbutt' href='/' onClick={logout}>
-                Logout
-              {/* <button  className='navBtn'>Login</button> */}
-            </Nav.Link>
-            : <Nav.Link className='navbutt' href='/register'>
-              SignUp
-            {/* <button  className='navBtn'>SignUp</button> */}
-          </Nav.Link>
-            }
-          <Nav.Link className='navicon' href={userId ? '/profile'  : '/login'}>
-            {
-              <FontAwesomeIcon icon={faUser} color='#ff5b25' className='friendIcon' size='xl'/> 
-            }
-          </Nav.Link>
-          <Nav.Link className='navicon navFriend' href={userId ? '/friend' : '/login'}>
-            {
-              <FontAwesomeIcon icon={faUserGroup}  className='friendIcon' size='xl'/> 
-            }
-          </Nav.Link>
+        <Nav className='flexRight'>{userId
+               ? <Nav.Link className='navbutt' href='/' onClick={logout}>
+                  Logout
+                 </Nav.Link>
+               : <Nav.Link className='navbutt' href='/register'>
+                  SignUp
+                 </Nav.Link>}
+                 <Nav.Link className='navicon' href={userId ? '/profile'  : '/login'}>
+                    {
+                      <FontAwesomeIcon icon={faUser} color='#ff5b25' className='friendIcon' size='xl'/> 
+                    }
+                 </Nav.Link>
+                 <Nav.Link className='navicon navFriend' href={userId ? '/friend' : '/login'}>
+                    {
+                      <FontAwesomeIcon icon={faUserGroup}  className='friendIcon' size='xl' /> 
+                    }
+                 </Nav.Link>
         </Nav>
       </BootstrapNavbar.Collapse>
     </BootstrapNavbar>

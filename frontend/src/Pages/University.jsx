@@ -4,7 +4,7 @@ import { fetchDepartments, fetchFaculty } from '../Context/UserContext';
 import { useParams } from 'react-router-dom';
 import Details from '../Components/Details';
 import CustomNavbar from '../Components/CustomNavbar';
-
+import { university } from '../Components/Style';
 
 const University = () => {
 
@@ -46,14 +46,14 @@ const University = () => {
             <Navbar  expand="lg" style={{backgroundColor:"#072040"}}>
           <Container style={{backgroundColor:"#072040"}}>
             <Navbar.Toggle aria-controls="navbar-nav" style={{backgroundColor:"#072040" }}/>
-            <Navbar.Collapse id="navbar-nav" style={{backgroundColor:"#072040", borderRadius:"20px", borderRadius:"20px"}}>
+            <Navbar.Collapse id="navbar-nav" style={{backgroundColor:"#072040", borderRadius:"20px"}}>
         <Nav className="me-auto navList" style={{display:"flex" , flexDirection:"column",backgroundColor:"#072040"}}>
-          <div className="dropdown-column" style={{backgroundColor:"#ff5b25",marginBottom:"10px", borderRadius:"10px",padding:"10px"}}>
+          <div className="dropdown-column" style={{backgroundColor:"#ff5b25", borderRadius:"10px" ,width:"300px"}}>
 
           {faculties.map((faculty, index) => (
-        <NavDropdown title={faculty.facultyName} id={`services-dropdown-${index}`} key={faculty.fac_id} onClick={() =>fetchDepartment(faculty.fac_id)}>
+        <NavDropdown title={faculty.facultyName} id={`services-dropdown-${index}`} key={faculty.fac_id} onClick={() =>fetchDepartment(faculty.fac_id)} style={{padding:"10px",border:"1px solid #072040"}}>
           {departments.map((department) => (
-          <NavDropdown.Item   key={department.dep_id} style={{ backgroundColor: "#ff5b25", ":hover": { backgroundColor: "blue" } }} >
+          <NavDropdown.Item   key={department.dep_id} style={{color:"#072040",backgroundColor: "#ff5b25",border:"1px solid #072040",paddingTop:"10px" }} >
             {department.departmentName}
           </NavDropdown.Item>))}
         </NavDropdown>
