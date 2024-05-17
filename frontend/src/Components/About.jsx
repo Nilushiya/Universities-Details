@@ -1,4 +1,5 @@
 import React from 'react'
+import { about } from './Style'
 
 const About = () => {
   return (

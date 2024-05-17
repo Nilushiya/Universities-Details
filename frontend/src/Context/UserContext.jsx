@@ -19,12 +19,21 @@ export const fetchUniversity = async() =>{
 
 export const fetchFaculty = async(id) => {
   try{
-      const response = await axios.get(`${BASE_URL}/university/get/${id}`,id);
+      const response = await axios.get(`${BASE_URL}/faculty/getfaculty/${id}`,id);
       return response
   }
   catch(err){
-    console.error("Api error" , err)
-    return null
+    console.log("Api error" , err)
+  }
+}
+
+export const fetchDepartments = async(fac_id) => {
+  try{
+      const response = await axios.get(`${BASE_URL}/department/gruopedepartment/${fac_id}`,fac_id)
+      return response
+  }
+  catch(err){
+    console.log("Error in Axios ",err);
   }
 }
 

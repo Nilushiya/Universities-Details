@@ -1,7 +1,7 @@
 @import './color.css';
 @import url('https://fonts.googleapis.com/css2?family=Freeman&display=swap');
 body{
-    width: 100vw;
+    /* width: 100vw; */
     /* height: 100vh; */
     background-color: var(--blue);
 }

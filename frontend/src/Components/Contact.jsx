@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {sendQuestions} from '../Context/UserContext'
-
+import { contact } from './Style'
 const Contact = () => {
 
   const [question , setQuestion] = useState('');
