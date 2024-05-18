@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container } from 'react-bootstrap';
-import { fetchDepartments, fetchFaculty } from '../Context/UserContext';
+import { fetchCourseDetails, fetchDepartments, fetchFaculty } from '../Context/UserContext';
 import { useParams } from 'react-router-dom';
 import Details from '../Components/Details';
 import CustomNavbar from '../Components/CustomNavbar';
 import { university } from '../Components/Style';
+import EngCourseDetails from '../Components/EngCourseDetails';
 
 const University = () => {
 
   const [faculties , setFaculty] = useState([])
   const [ departments , setDepartment] = useState([])
+  const[course , setCourse] = useState([])
+  const[display , setDisplay] = useState(false)
 
   const URLParams = useParams() 
   const id = URLParams.uni_id
@@ -28,7 +31,22 @@ const University = () => {
     fetchFacultyApi(id)
   },[id])
 
+  
+  const fetchCourse = async(dep_id) =>{
+    setDisplay(true)
+    try{
+      const CourseRespone = await fetchCourseDetails(dep_id)
+      console.log("course  : ",CourseRespone )
+      setCourse(CourseRespone.data)
+    }
+    catch(err){
+      console.log("Error in call Api" , err);
+    }
+  }
+
+
   const fetchDepartment = async(fac_id) =>{
+    // setDisplay(false)
     try{
       const depRespone = await fetchDepartments(fac_id)
       setDepartment(depRespone.data)
@@ -37,41 +55,41 @@ const University = () => {
       console.log("Error in call Api" , err);
     }
   }
-
+  console.log("boolean  : ",display)
+// console.log("dep" ,departments )
   return (
     <div className='university'>
       <CustomNavbar />
       <div className="row m-0">
         <div className="col-lg-3 leftSideBar">
-            <Navbar  expand="lg" style={{backgroundColor:"#072040"}}>
-          <Container style={{backgroundColor:"#072040"}}>
-            <Navbar.Toggle aria-controls="navbar-nav" style={{backgroundColor:"#072040" ,color:"white" }}/>
-            <Navbar.Collapse id="navbar-nav" style={{backgroundColor:"#072040", borderRadius:"20px"}}>
-        <Nav className="me-auto navList" style={{display:"flex" , flexDirection:"column",backgroundColor:"#072040"}}>
-          <div className="dropdown-column" style={{backgroundColor:"#ff5b25", borderRadius:"10px" ,width:"300px"}}>
-
-          {faculties.map((faculty, index) => (
-        <NavDropdown title={faculty.facultyName} id={`services-dropdown-${index}`} key={faculty.fac_id} onClick={() =>fetchDepartment(faculty.fac_id)} style={{padding:"10px",border:"1px solid #072040"}}>
-          {departments.map((department) => (
-          <NavDropdown.Item   key={department.dep_id} style={{color:"#072040",backgroundColor: "#ff5b25",border:"1px solid #072040",paddingTop:"10px" }} >
-            {department.departmentName}
-          </NavDropdown.Item>))}
-        </NavDropdown>
-      ))}
-          </div>
-        </Nav>
-      </Navbar.Collapse>
-          </Container>
-            </Navbar>
+          <Navbar  expand="lg" style={{backgroundColor:"#072040"}}>
+            <Container style={{backgroundColor:"#072040"}}>
+              <Navbar.Toggle aria-controls="navbar-nav" style={{backgroundColor:"#072040" ,color:"white",border:"2px solid white" }}/>
+                <Navbar.Collapse id="navbar-nav" style={{backgroundColor:"#072040", borderRadius:"20px"}}>
+                  <Nav className="me-auto navList" style={{display:"flex" , flexDirection:"column",backgroundColor:"#072040"}}>
+                    <div className="dropdown-column" style={{backgroundColor:"#ff5b25", borderRadius:"10px" ,width:"300px"}}>
+                      {faculties.map((faculty, index) => (
+                        <NavDropdown title={faculty.facultyName} id={`services-dropdown-${index}`} key={faculty.fac_id} onClick={() =>fetchDepartment(faculty.fac_id)} style={{padding:"10px",border:"1px solid #072040"}}>
+                          {departments.map((department) => (
+                            <NavDropdown.Item   key={department.dep_id} style={{color:"#072040",backgroundColor: "#ff5b25",border:"1px solid #072040",paddingTop:"10px" }} onClick = {() =>fetchCourse(department.dep_id) } >
+                              {department.departmentName}
+                            </NavDropdown.Item>))}
+                        </NavDropdown>))
+                      }
+                    </div>
+                  </Nav>
+                </Navbar.Collapse>
+            </Container>
+          </Navbar>
         </div>
-        <div className="col-lg-8 rightBody">
-          {/* {faculties.map((faculty) => ( */}
+          <div className="col-lg-8 rightBody">
+            {display  ? 
+            <EngCourseDetails 
+              course = {course}     />   :  
             <Details 
-            name = {name}
-            faculties = {faculties}
-            />
-          {/* ))} */}
-        </div>
+              name = {name}
+              faculties = {faculties}/>}
+          </div>
       </div>
     </div>
    

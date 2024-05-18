@@ -47,6 +47,16 @@ export const fetchDepartments = async(fac_id) => {
   }
 }
 
+export const fetchCourseDetails = async(dep_id) => {
+  try{
+      const response = await axios.get(`${BASE_URL}/EngDetails/getDetails/${dep_id}`,dep_id)
+      return response
+  }
+  catch(err){
+    console.log("Error in Axios ",err);
+  }
+}
+
 export const sendQuestions = async (question) => {
     try {
       const response = await axios.post(`${BASE_URL}/question/`, {
