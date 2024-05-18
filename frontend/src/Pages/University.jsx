@@ -26,7 +26,7 @@ const University = () => {
       }
     }
     fetchFacultyApi(id)
-  },[])
+  },[id])
 
   const fetchDepartment = async(fac_id) =>{
     try{

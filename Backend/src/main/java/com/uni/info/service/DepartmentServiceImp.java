@@ -44,4 +44,9 @@ public class DepartmentServiceImp implements DepartmentService{
     public List<Department> groupDepartment(Long f_id) {
         return departmentRepo.groupDep(f_id);
     }
+
+    @Override
+    public List<Department> getDepartment() {
+        return departmentRepo.findAll();
+    }
 }

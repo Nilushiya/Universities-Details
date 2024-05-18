@@ -11,4 +11,6 @@ public interface DepartmentService {
     void updateFaculty(Long depId, String departmentName);
 
     List<Department> groupDepartment(Long f_id);
+
+    List<Department> getDepartment();
 }

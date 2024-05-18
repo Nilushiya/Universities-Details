@@ -27,6 +27,16 @@ export const fetchFaculty = async(id) => {
   }
 }
 
+export const fetchAllDepartments = async() => {
+  try{
+    const response = await axios.get(`${BASE_URL}/department/get`)
+    return response
+  }
+  catch(err){
+    console.log("Error in Axios ",err);
+  }
+}
+
 export const fetchDepartments = async(fac_id) => {
   try{
       const response = await axios.get(`${BASE_URL}/department/gruopedepartment/${fac_id}`,fac_id)
