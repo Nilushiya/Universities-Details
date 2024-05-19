@@ -19,6 +19,8 @@ public interface EnglishDetailsService {
     List<English_details> updateDetails(Long edetailsId, Integer edegreeDuration, MultipartFile imageData, String edegreeDescription1, String edegreeJobs, Long edegId) throws IOException;
 
     List<English_details> courseDetail(Long edeg_id);
+
+    English_details getImage(Long edeg_id);
 //    english_details createEnglishDetails(Integer edegreeDuration, MultipartFile imageData, String edegreeDescription1, String edegreeJobs, Long edegId);
 //    void saveDetailsFromFile(MultipartFile file, Integer edegreeDuration, String edegreeDescription1, String edegreeJobs, Long edegId) throws IOException;
 //

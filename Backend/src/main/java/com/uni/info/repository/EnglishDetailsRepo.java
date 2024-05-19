@@ -7,12 +7,15 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 
 public interface EnglishDetailsRepo extends JpaRepository<English_details, Long> {
     @Query("Select e from English_details e where e.edeg_id = :edeg_id")
     List<English_details> findCourse(@Param("edeg_id") Long edeg_id);
+    @Query("SELECT e FROM English_details e WHERE e.edeg_id = :edeg_id")
+    Optional<English_details> findByEdegId(@Param("edeg_id") Long edeg_id);
 
 
 //    English_details update(English_details englishDetails);

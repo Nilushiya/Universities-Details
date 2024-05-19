@@ -8,6 +8,7 @@ import lombok.*;
 public class EnglishDetailsDto {
     private Long edetails_id;
     private Integer edegree_duration;
+    private String image_name;
     private byte[] image_data;
     private String edegree_description1;
     private String edegree_jobs;

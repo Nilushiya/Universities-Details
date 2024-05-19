@@ -5,6 +5,7 @@ import com.uni.info.entity.English_details;
 import com.uni.info.service.EnglishDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -56,6 +57,22 @@ public class EnglishDetailsController {
     public List<English_details> getDetail(@PathVariable ("edeg_id") Long edeg_id){
     List<English_details> details = englishDetailsService.courseDetail(edeg_id);
     return details;
-    }}
+    }
+
+    @GetMapping("/image/{edeg_id}")
+    public ResponseEntity<byte[]> getImage(@PathVariable Long edeg_id) {
+        System.out.println("Hoo");
+        English_details image = englishDetailsService.getImage(edeg_id);
+        if (image != null) {
+            System.out.println("if oooooooo");
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + image.getImage_name() + "\"")
+                    .body(image.getImage_data());
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+    }
+
+}
 
 
+//    @GetMapping("get")

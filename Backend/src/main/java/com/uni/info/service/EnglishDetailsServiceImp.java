@@ -25,6 +25,8 @@ public class EnglishDetailsServiceImp implements EnglishDetailsService {
         try {
             English_details englishDetails = new English_details();
             englishDetails.setEdegree_duration(edegreeDuration);
+            englishDetails.setImage_name(imageData.getOriginalFilename());
+            System.out.println("namee"+imageData.getOriginalFilename());
             englishDetails.setImage_data(imageData.getBytes());
             englishDetails.setEdegree_description1(edegreeDescription1);
             englishDetails.setEdegree_jobs(edegreeJobs);
@@ -43,7 +45,7 @@ public class EnglishDetailsServiceImp implements EnglishDetailsService {
     @Override
     public List<English_details> updateDetails(Long edetailsId, Integer edegreeDuration, MultipartFile imageData, String edegreeDescription1, String edegreeJobs, Long edegId) throws IOException {
         Optional<English_details> detailsId = englishDetailsRepo.findById(edetailsId);
-        if(detailsId.isPresent()) {
+        if (detailsId.isPresent()) {
             System.out.println("Present");
             English_details englishDetails = detailsId.get();
             englishDetails.setEdegree_duration(edegreeDuration);
@@ -53,8 +55,7 @@ public class EnglishDetailsServiceImp implements EnglishDetailsService {
             englishDetails.setEdeg_id(edegId);
             return Collections.singletonList(englishDetailsRepo.save(englishDetails));
 //            return Collections.singletonList(englishDetailsRepo.update(englishDetails));
-        }
-        else {
+        } else {
             throw new EntityNotFoundException("English_details not found with id: " + edetailsId);
         }
     }
@@ -64,40 +65,10 @@ public class EnglishDetailsServiceImp implements EnglishDetailsService {
         return englishDetailsRepo.findCourse(edeg_id);
     }
 
+    @Override
+    public English_details getImage(Long edeg_id) {
+        Optional<English_details> optionalImage = englishDetailsRepo.findByEdegId(edeg_id);
+        return optionalImage.orElse(null);
+    }
 
-//    @Override
-//    public void saveDetailsFromFile(MultipartFile file, Integer edegreeDuration, String edegreeDescription1, String edegreeJobs, Long edegId) throws IOException {
-//            byte[] imageData = file.getBytes();
-//        System.out.println("imageData" + imageData);
-//        EnglishDetails englishDetails = new EnglishDetails();
-//        englishDetails.setImageData(imageData);
-//        englishDetails.setEdegreeJobs(edegreeJobs);
-//        englishDetails.setEdegreeDuration(edegreeDuration);
-//        englishDetails.setEdeg_id(edegId);
-//
-//        englishDetailsRepo.save(englishDetails);
-//        System.out.println("save okay file");
-//    }
-//
-//    @Override
-//    public void saveDetailsUrl(String imageUrl, Integer edegreeDuration, String edegreeDescription1, String edegreeJobs, Long edegId) throws IOException {
-//        byte[] imageData = downloadImage(imageUrl);
-//        System.out.println("imageData" + imageData);
-//        EnglishDetails englishDetails = new EnglishDetails();
-//        englishDetails.setImageData(imageData);
-//        englishDetails.setEdegreeJobs(edegreeJobs);
-//        englishDetails.setEdegreeDuration(edegreeDuration);
-//        englishDetails.setEdeg_id(edegId);
-//
-//        englishDetailsRepo.save(englishDetails);
-//        System.out.println("save okay URL");
-//    }
-//
-//
-//    private byte[] downloadImage(String imageUrl) throws IOException{
-//        URL url = new URL(imageUrl);
-//        return Files.readAllBytes(Paths.get(url.getFile()));
-//    }
 }
-
-
