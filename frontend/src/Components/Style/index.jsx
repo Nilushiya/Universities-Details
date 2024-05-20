@@ -5,5 +5,6 @@ import contact from './Contact.css'
 import login from './login.css'
 import register from './register.css'
 import university from './university.css'
-
-export{navbar , about , contact , login , register , university}
+import courseDetails from './EngCourseDetails.css'
+import details from './Details.css'
+export{navbar , about , contact , login , register , university , courseDetails , details}

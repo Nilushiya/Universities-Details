@@ -1,15 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { getImage } from '../Context/UserContext';
-
+import { decodeToken, getImage } from '../Context/UserContext';
+import { courseDetails } from './Style/index';
+import { Link } from 'react-router-dom';
 const EngCourseDetails = ({course,departmentName}) => {
-  // console.log("depname" , departmentName)
+  console.log("course" , course)
   const [edegId, setEdegId] = useState('');
   const [imageData, setImageData] = useState(null);
   const [imageName, setImageName] = useState('');
   const [depId,setDepId] = useState('')
   const [probs, setProbs] = useState([])
+  const[userId , setUserId] = useState('');
+  const[name , setName] = useState('');
 
+  useEffect(() => {
+    const decode = decodeToken();
+    if(decode){
+     const user = decode.studentId;
+     const userName = decode.name;
+     setName(userName)
+     setUserId(user);
+     console.log('name' , name);
+    }
+    else{
+     const user = null;
+     const userName = null
+     setName(userName)
+     setUserId(user);
+    }
+  },[])
+  console.log("userIdEng : " , userId)
   useEffect(() => {
     if (course) {
       setProbs(course)
@@ -52,27 +72,41 @@ const EngCourseDetails = ({course,departmentName}) => {
 
   return (
     <div className='engCourseDetails'>
-      <div className="row">
-        <div className="col-lg-6">
-          {imageData && (
-            <div>
-              <img src={imageData} alt="Fetched from server" width="300" />
-            </div>
-          )}  
-        </div>
-        <div className="col-lg-6">
-         {departmentName &&(
-             <div>{departmentName}</div>
-              
-           
-         )}
-        </div>
-      </div>
-      <div className="row">
-          <div className="col-12">
-
+      {course.length > 0 && (
+        <div className="container coursebody">
+          <div className="row">
+            <h1 className='degreeName'>{departmentName &&(
+                <div>{departmentName}</div>  
+                )}
+            </h1>
           </div>
-      </div>                                        
+          <div className="row">
+            <div className="col-lg-6">
+              {imageData && (
+                <div className='courseImg'>
+                  <img src={imageData} alt="Fetched from server" width="300" />
+                </div>
+              )}  
+            </div>
+            <div className="col-lg-6 rightbody">
+                <p>Degree Program : {course[0].degree}</p>
+                <p>Course duration : {course[0].edegree_duration} year</p>
+            </div>
+          </div>
+          <div className="row">
+              <div className="col-12 coursebottom">
+                <h4>Do you want small information about this course </h4>
+                <p>Here read this...</p>
+                <p>{course[0].edegree_description1}</p>
+                <h4>Your available Jobs....</h4>
+                <p>{course[0].edegree_jobs}</p>
+              </div>
+              <div className="col-12">
+                <h4>Do you want to find a friend? <Link to="/detailform">Click here</Link> and fill in your details.</h4>
+              </div>
+          </div>      
+        </div>
+      )}                                    
     </div>
   )
 }

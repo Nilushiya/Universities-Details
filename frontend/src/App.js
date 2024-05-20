@@ -4,6 +4,7 @@ import Home from "./Pages/Home";
 import University from "./Pages/University";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import Detailfrom from "./Components/Detailfrom";
 // import CustomNavbar from "./Components/CustomNavbar";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="/university" element = {<University />}>
                 <Route path=":uni_id/:uniName" element = {<University />}/>
             </Route>
+            <Route path="/detailform" element={<Detailfrom />} />
           </Routes>
        </BrowserRouter>
     </div>

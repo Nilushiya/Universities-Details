@@ -1,0 +1,54 @@
+@import './color.css';
+@import url('https://fonts.googleapis.com/css2?family=Freeman&display=swap');
+
+.user-form-container {
+    font-family: "Freeman", sans-serif;
+    height: 100vh;
+    padding: 9% 10px;
+    background-color: var(--blue);
+  }
+  .user-form-container .info{
+    margin: auto;
+    /* background-color: aqua; */
+    padding: 2%;
+   max-width: 800px;
+  }
+  .user-form-container h1{
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+  .user-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .user-form input[type="text"],
+  .user-form input[type="tel"],
+  .user-form input[type="file"] {
+    width: 90%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .user-form button {
+    width: 100px;
+    grid-column: span 2;
+    padding: 10px 0;
+    background-color: var(--orange);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .user-form button:hover {
+    background-color: var(--orange);
+  }
+  
+  @media (max-width: 757px) {
+    .user-form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  

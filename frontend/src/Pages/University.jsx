@@ -62,8 +62,8 @@ const University = () => {
   return (
     <div className='university'>
       <CustomNavbar />
-      <div className="row m-0">
-        <div className="col-lg-3 leftSideBar">
+      <div className="row m-0 w-100">
+        <div className="col-lg-4 leftSideBar">
           <Navbar  expand="lg" style={{backgroundColor:"#072040"}}>
             <Container style={{backgroundColor:"#072040"}}>
               <Navbar.Toggle aria-controls="navbar-nav" style={{backgroundColor:"#072040" ,color:"white",border:"2px solid white" }}/>

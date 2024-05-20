@@ -32,8 +32,8 @@ const Contact = () => {
               <div className="details">
                 <div className="info">
                   <p>You questions will help to build the information more usefull</p>
-                  <p>Go and Get your informatins 
-                    <Link to='/university'>Here</Link>
+                  <p>Go and Get your informatins use navbar universities.
+                    {/* <Link to='/university'>Here</Link> */}
                   </p>
                 </div>
                 <div className="form">

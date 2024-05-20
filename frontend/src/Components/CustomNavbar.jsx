@@ -78,12 +78,14 @@ const CustomNavbar = () => {
                : <Nav.Link className='navbutt' href='/register'>
                   SignUp
                  </Nav.Link>}
-                 <Nav.Link className='navicon' href={userId ? '/profile'  : '/login'}>
+                 {/* <Nav.Link className='navicon' href={userId ? '/profile'  : '/login'}> */}
+                 <Nav.Link className='navicon' href={userId ? '/profile'  : '/profile'}>
                     {
                       <FontAwesomeIcon icon={faUser} color='#ff5b25' className='friendIcon' size='xl'/> 
                     }
                  </Nav.Link>
-                 <Nav.Link className='navicon navFriend' href={userId ? '/friend' : '/login'}>
+                 {/* <Nav.Link className='navicon navFriend' href={userId ? '/friend' : '/login'}> */}
+                 <Nav.Link className='navicon navFriend' href={userId ? '/friend' : '/friend'}>
                     {
                       <FontAwesomeIcon icon={faUserGroup}  className='friendIcon' size='xl' /> 
                     }

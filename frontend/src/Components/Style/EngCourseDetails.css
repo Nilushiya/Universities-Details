@@ -1,0 +1,35 @@
+@import './color.css';
+@import url('https://fonts.googleapis.com/css2?family=Freeman&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.engCourseDetails{
+    font-family: "Kanit", sans-serif;
+    background-color: rgb(219, 212, 212);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    box-shadow: 3px 3px 10px rgb(65, 64, 64);
+}
+.coursebody .degreeName{
+    text-align: center;
+    color: var(--blue);
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--blue);
+}
+.coursebody .courseImg{
+    border-right:  1px solid var(--blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.coursebody .rightbody{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+}
+
+.coursebody .coursebottom{
+    border-top: 1px solid var(--blue);
+    padding-top: 20px;
+}
