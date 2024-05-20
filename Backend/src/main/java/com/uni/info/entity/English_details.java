@@ -12,7 +12,7 @@ public class English_details {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long edetails_id;
     private Integer edegree_duration;
-
+    private String degree;
     private String image_name;
     @Lob
     private byte[] image_data;

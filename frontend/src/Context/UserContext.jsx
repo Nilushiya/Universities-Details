@@ -56,7 +56,18 @@ export const fetchCourseDetails = async(dep_id) => {
     console.log("Error in Axios ",err);
   }
 }
+export const getImage = async(depId) => {
+  try{
+    const response = await axios.get(`http://localhost:8080/api/v1/EngDetails/image/${depId}`, {
+      responseType: 'blob' 
+    });
 
+    return response;
+  }
+  catch(err){
+      console.log("error" , err)
+  }
+}
 export const sendQuestions = async (question) => {
     try {
       const response = await axios.post(`${BASE_URL}/question/`, {
@@ -84,7 +95,7 @@ export const sendQuestions = async (question) => {
 
     try {
       const response = await axios.post(`${BASE_URL}/login`, formData);
-      console.log("response  :" , response)
+      // console.log("response  :" , response)
       return response
     } 
     catch (error) {

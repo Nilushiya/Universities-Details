@@ -28,9 +28,10 @@ public class EnglishDetailsController {
                                                   @RequestParam("image_data") MultipartFile image_data,
                                                   @RequestParam("edegree_description1") String edegree_description1,
                                                   @RequestParam("edegree_jobs") String edegree_jobs,
+                                                  @RequestParam("degree") String degree,
                                                   @RequestParam("edeg_id") Long edeg_id) {
         try {
-            English_details createdEnglishDetails = englishDetailsService.createEnglishDetails(edegree_duration,image_data, edegree_description1, edegree_jobs, edeg_id);
+            English_details createdEnglishDetails = englishDetailsService.createEnglishDetails(edegree_duration,image_data, edegree_description1, edegree_jobs,degree, edeg_id);
             return new ResponseEntity<>(createdEnglishDetails, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -47,8 +48,9 @@ public class EnglishDetailsController {
                                                   @RequestParam("image_data") MultipartFile image_data,
                                                   @RequestParam("edegree_description1") String edegree_description1,
                                                   @RequestParam("edegree_jobs") String edegree_jobs,
+                                                  @RequestParam("degree") String degree,
                                                   @RequestParam("edeg_id") Long edeg_id) throws IOException {
-        List<English_details> saveUpdate =  englishDetailsService.updateDetails(edetails_id ,edegree_duration,image_data, edegree_description1, edegree_jobs, edeg_id);
+        List<English_details> saveUpdate =  englishDetailsService.updateDetails(edetails_id ,edegree_duration,image_data, edegree_description1, edegree_jobs,degree, edeg_id);
         return saveUpdate;
     }
 

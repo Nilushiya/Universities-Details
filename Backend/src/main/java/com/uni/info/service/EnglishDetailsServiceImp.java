@@ -21,7 +21,7 @@ public class EnglishDetailsServiceImp implements EnglishDetailsService {
     private EnglishDetailsRepo englishDetailsRepo;
 
     @Override
-    public English_details createEnglishDetails(Integer edegreeDuration, MultipartFile imageData, String edegreeDescription1, String edegreeJobs, Long edeg_id) {
+    public English_details createEnglishDetails(Integer edegreeDuration, MultipartFile imageData, String edegreeDescription1, String edegreeJobs,String degree, Long edeg_id) {
         try {
             English_details englishDetails = new English_details();
             englishDetails.setEdegree_duration(edegreeDuration);
@@ -30,6 +30,7 @@ public class EnglishDetailsServiceImp implements EnglishDetailsService {
             englishDetails.setImage_data(imageData.getBytes());
             englishDetails.setEdegree_description1(edegreeDescription1);
             englishDetails.setEdegree_jobs(edegreeJobs);
+            englishDetails.setDegree(degree);
             englishDetails.setEdeg_id(edeg_id);
             return englishDetailsRepo.save(englishDetails);
         } catch (Exception e) {
@@ -43,7 +44,7 @@ public class EnglishDetailsServiceImp implements EnglishDetailsService {
     }
 
     @Override
-    public List<English_details> updateDetails(Long edetailsId, Integer edegreeDuration, MultipartFile imageData, String edegreeDescription1, String edegreeJobs, Long edegId) throws IOException {
+    public List<English_details> updateDetails(Long edetailsId, Integer edegreeDuration, MultipartFile imageData, String edegreeDescription1, String edegreeJobs,String degree, Long edegId) throws IOException {
         Optional<English_details> detailsId = englishDetailsRepo.findById(edetailsId);
         if (detailsId.isPresent()) {
             System.out.println("Present");
@@ -52,6 +53,7 @@ public class EnglishDetailsServiceImp implements EnglishDetailsService {
             englishDetails.setImage_data(imageData.getBytes());
             englishDetails.setEdegree_description1(edegreeDescription1);
             englishDetails.setEdegree_jobs(edegreeJobs);
+            englishDetails.setDegree(degree);
             englishDetails.setEdeg_id(edegId);
             return Collections.singletonList(englishDetailsRepo.save(englishDetails));
 //            return Collections.singletonList(englishDetailsRepo.update(englishDetails));

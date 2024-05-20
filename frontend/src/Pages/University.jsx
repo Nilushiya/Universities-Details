@@ -11,6 +11,7 @@ const University = () => {
 
   const [faculties , setFaculty] = useState([])
   const [ departments , setDepartment] = useState([])
+  const [depName , setDepName] = useState('')
   const[course , setCourse] = useState([])
   const[display , setDisplay] = useState(false)
 
@@ -32,9 +33,10 @@ const University = () => {
   },[id])
 
   
-  const fetchCourse = async(dep_id) =>{
+  const fetchCourse = async(dep_id,departmentName) =>{
     setDisplay(true)
     try{
+      setDepName(departmentName)
       const CourseRespone = await fetchCourseDetails(dep_id)
       console.log("course  : ",CourseRespone )
       setCourse(CourseRespone.data)
@@ -43,7 +45,6 @@ const University = () => {
       console.log("Error in call Api" , err);
     }
   }
-
 
   const fetchDepartment = async(fac_id) =>{
     // setDisplay(false)
@@ -55,7 +56,8 @@ const University = () => {
       console.log("Error in call Api" , err);
     }
   }
-  console.log("boolean  : ",display)
+  // console.log("depName : ",depName)
+  // console.log("boolean  : ",display)
 // console.log("dep" ,departments )
   return (
     <div className='university'>
@@ -71,7 +73,7 @@ const University = () => {
                       {faculties.map((faculty, index) => (
                         <NavDropdown title={faculty.facultyName} id={`services-dropdown-${index}`} key={faculty.fac_id} onClick={() =>fetchDepartment(faculty.fac_id)} style={{padding:"10px",border:"1px solid #072040"}}>
                           {departments.map((department) => (
-                            <NavDropdown.Item   key={department.dep_id} style={{color:"#072040",backgroundColor: "#ff5b25",border:"1px solid #072040",paddingTop:"10px" }} onClick = {() =>fetchCourse(department.dep_id) } >
+                            <NavDropdown.Item   key={department.dep_id} style={{color:"#072040",backgroundColor: "#ff5b25",border:"1px solid #072040",paddingTop:"10px" }} onClick = {() =>fetchCourse(department.dep_id , department.departmentName) } >
                               {department.departmentName}
                             </NavDropdown.Item>))}
                         </NavDropdown>))
@@ -83,9 +85,10 @@ const University = () => {
           </Navbar>
         </div>
           <div className="col-lg-8 rightBody">
-            {display  ? 
+            {depName  ? 
             <EngCourseDetails 
-              course = {course}     />   :  
+              course = {course} 
+              departmentName = {depName}    />   :  
             <Details 
               name = {name}
               faculties = {faculties}/>}

@@ -11,12 +11,12 @@ import java.util.List;
 @Service
 
 public interface EnglishDetailsService {
-    English_details createEnglishDetails(Integer edegreeDuration, MultipartFile imageData, String edegreeDescription1, String edegreeJobs, Long edegId);
+    English_details createEnglishDetails(Integer edegreeDuration, MultipartFile imageData, String edegreeDescription1, String edegreeJobs,String degree, Long edegId);
 
     List<English_details> getEngDetails();
 
 
-    List<English_details> updateDetails(Long edetailsId, Integer edegreeDuration, MultipartFile imageData, String edegreeDescription1, String edegreeJobs, Long edegId) throws IOException;
+    List<English_details> updateDetails(Long edetailsId, Integer edegreeDuration, MultipartFile imageData, String edegreeDescription1, String edegreeJobs,String degree, Long edegId) throws IOException;
 
     List<English_details> courseDetail(Long edeg_id);
 
