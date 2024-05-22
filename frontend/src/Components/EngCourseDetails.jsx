@@ -11,7 +11,7 @@ const EngCourseDetails = ({course,departmentName}) => {
   const [depId,setDepId] = useState('')
   const [probs, setProbs] = useState([])
   const[userId , setUserId] = useState('');
-  const[name , setName] = useState('');
+  const[stuname , setName] = useState('');
 
   useEffect(() => {
     const decode = decodeToken();
@@ -20,7 +20,7 @@ const EngCourseDetails = ({course,departmentName}) => {
      const userName = decode.name;
      setName(userName)
      setUserId(user);
-     console.log('name' , name);
+     console.log('name' , stuname);
     }
     else{
      const user = null;
@@ -29,7 +29,6 @@ const EngCourseDetails = ({course,departmentName}) => {
      setUserId(user);
     }
   },[])
-  console.log("userIdEng : " , userId)
   useEffect(() => {
     if (course) {
       setProbs(course)
@@ -60,7 +59,6 @@ const EngCourseDetails = ({course,departmentName}) => {
         const fileName = contentDisposition
           ? contentDisposition.split('filename=')[1].replace(/['"]/g, '')
           : 'downloaded_image';
-          // console.log("file : ",fileName)
         setImageName(fileName);
       } 
       catch (error) {
@@ -102,7 +100,10 @@ const EngCourseDetails = ({course,departmentName}) => {
                 <p>{course[0].edegree_jobs}</p>
               </div>
               <div className="col-12">
-                <h4>Do you want to find a friend? <Link to="/detailform">Click here</Link> and fill in your details.</h4>
+                <h4>Do you want to find a friend? {userId ?<Link to={`/detailform/${userId}/${stuname}`} >Click here</Link> :
+                <Link to={`/detailform/${userId}/${stuname}`}>Click here</Link>
+                //  <Link to="/login">Click here</Link>
+                  } and fill in your details.</h4>
               </div>
           </div>      
         </div>

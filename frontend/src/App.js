@@ -19,7 +19,7 @@ function App() {
             <Route path="/university" element = {<University />}>
                 <Route path=":uni_id/:uniName" element = {<University />}/>
             </Route>
-            <Route path="/detailform" element={<Detailfrom />} />
+            <Route path="/detailform/:userId/:stuname" element={<Detailfrom />} />
           </Routes>
        </BrowserRouter>
     </div>

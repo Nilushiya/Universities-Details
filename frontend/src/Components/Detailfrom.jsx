@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { decodeToken } from '../Context/UserContext';
 import axios from 'axios';
 import { Details } from './Style';
+import { useParams } from 'react-router-dom';
 const Detailfrom = () => {
-    const[userId , setUserId] = useState('');
     const[name , setName] = useState('');
     const [formData, setFormData] = useState({
         address: '',
@@ -13,9 +13,13 @@ const Detailfrom = () => {
         phone: '',
         image: null,
         academic_year: '',
-        selected_course: '',
-        stu_id:''
+        selected_course: ''
       });
+
+      const URLParam =useParams()
+      const stu_id = URLParam.userId
+      const stu_name = URLParam.stuname
+
       const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -23,7 +27,7 @@ const Detailfrom = () => {
           [name]: value
         });
       };
-    
+
       const handleFileChange = (e) => {
         setFormData({
           ...formData,
@@ -33,13 +37,12 @@ const Detailfrom = () => {
     
       const handleSubmit = async (e) => {
         e.preventDefault();
-        const data = new FormData();
-        for (const key in formData) {
-          data.append(key, formData[key]);
-        }
-    
-        try {
-          const response = await axios.post('http://localhost:8080/api/v1/user', data, {
+            const data = new FormData();
+          for (const key in formData) {
+            data.append(key, formData[key]);
+          }
+               try {
+          const response = await axios.post('http://localhost:8080/api/v1/studentInfo/${stu_id}', data, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
@@ -48,29 +51,12 @@ const Detailfrom = () => {
         } catch (error) {
           console.error('Error submitting form:', error);
         }
-      };
+      }
 
-    useEffect(() => {
-        const decode = decodeToken();
-        if(decode){
-         const user = decode.studentId;
-         const userName = decode.name;
-         setName(userName)
-         setUserId(user);
-         console.log('name' , name);
-        }
-        else{
-         const user = null;
-         const userName = null
-         setName(userName)
-         setUserId(user);
-        }
-      },[])
-      console.log("stu_id" , userId)
       return (
         <div className="user-form-container">
             <div className="info">
-            <h1 >User Infrormation</h1>
+            <h1 >{stu_name} Infrormation</h1>
           <form className="user-form" onSubmit={handleSubmit}>
             <input
               type="text"
