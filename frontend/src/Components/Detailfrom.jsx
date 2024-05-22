@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { decodeToken } from '../Context/UserContext';
+import { fetchUniversity, studentInfo } from '../Context/UserContext';
 import axios from 'axios';
 import { Details } from './Style';
 import { useParams } from 'react-router-dom';
 const Detailfrom = () => {
-    const[name , setName] = useState('');
+    const [universities , setuniversities]  = useState([]);
     const [formData, setFormData] = useState({
         address: '',
         selected_university: '',
@@ -19,7 +19,18 @@ const Detailfrom = () => {
       const URLParam =useParams()
       const stu_id = URLParam.userId
       const stu_name = URLParam.stuname
-
+      useEffect(() => {
+        const fetchUniApi = async() =>{
+          try{
+            const universitiesData = await fetchUniversity();
+            setuniversities(universitiesData);
+          }
+          catch(err){
+            console.log("Error in fetchUniApi");
+          }
+        }
+        fetchUniApi();
+      } , [])
       const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -41,16 +52,14 @@ const Detailfrom = () => {
           for (const key in formData) {
             data.append(key, formData[key]);
           }
-               try {
-          const response = await axios.post('http://localhost:8080/api/v1/studentInfo/${stu_id}', data, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          });
-          console.log('Response:', response.data);
-        } catch (error) {
-          console.error('Error submitting form:', error);
-        }
+         try{
+          const studentData = await studentInfo(stu_id , data);
+          
+         }
+         catch(err){
+          console.log("Error ; ", err)
+         }
+          
       }
 
       return (
@@ -67,37 +76,49 @@ const Detailfrom = () => {
               required
             />
             <input
-              type="text"
-              name="selected_university"
-              placeholder="Selected University"
-              value={formData.selected_university}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="text"
-              name="gender"
-              placeholder="Gender"
-              value={formData.gender}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="text"
-              name="language"
-              placeholder="Language"
-              value={formData.language}
-              onChange={handleChange}
-              required
-            />
-            <input
               type="tel"
               name="phone"
               placeholder="Phone"
               value={formData.phone}
               onChange={handleChange}
               required
-            />
+            /> 
+             <select
+            name="selected_university"
+            value={formData.selected_university}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select University</option>
+            {universities.map((university) => (
+              <option key={university.uni_id} value={university.uniName}>
+                {university.uniName}
+              </option>
+            ))}
+          </select>
+              <select
+            name="gender"
+            value={formData.gender}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Gender</option>
+            <option value="Man">Man</option>
+            <option value="Woman">Woman</option>
+            <option value="Non-binary person">Non-binary person</option>
+          </select>
+             <select
+            name="language"
+            value={formData.language}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Language</option>
+            <option value="Tamil">Tamil</option>
+            <option value="Sinhala">Sinhala</option>
+            <option value="English">English</option>
+          </select>
+            
             <input
               type="file"
               name="image"
@@ -109,7 +130,7 @@ const Detailfrom = () => {
             <input
               type="text"
               name="academic_year"
-              placeholder="Academic Year"
+              placeholder="Academic Year (2020/2021)"
               value={formData.academic_year}
               onChange={handleChange}
               required

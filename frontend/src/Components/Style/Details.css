@@ -3,7 +3,7 @@
 
 .user-form-container {
     font-family: "Freeman", sans-serif;
-    height: 100vh;
+    min-height: 100vh;
     padding: 9% 10px;
     background-color: var(--blue);
   }
@@ -29,8 +29,13 @@
     width: 90%;
     padding: 10px;
     box-sizing: border-box;
+    color: black;
   }
-  
+  .user-form select{
+    width: 90%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
   .user-form button {
     width: 100px;
     grid-column: span 2;

@@ -2,6 +2,7 @@ package com.uni.info.service;
 
 import com.uni.info.entity.English_details;
 import com.uni.info.entity.StudentInfo;
+import com.uni.info.exception.DuplicateStudentIdException;
 import com.uni.info.repository.StudentInfoRepo;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,15 @@ public class StudentInfoServiceImp implements StudentInfoService{
         studentInfo.setSelected_course(selectedCourse);
 
 //        System.out.println("studentInfo   : "+ studentInfo);
+        StudentInfo existingStudent = studentInfoRepo.findStuById(stuId);
+        if (existingStudent != null) {
+            // Handle duplicate case
+            throw new DuplicateStudentIdException("Duplicate student ID: " + stuId);
+        } else {
+            // Save new student information
+            return studentInfoRepo.save(studentInfo);
+        }
 
-        return studentInfoRepo.save(studentInfo);
     }
 
     @Override

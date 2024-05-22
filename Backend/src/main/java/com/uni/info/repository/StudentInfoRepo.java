@@ -3,6 +3,7 @@ package com.uni.info.repository;
 import com.uni.info.entity.StudentInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface StudentInfoRepo extends JpaRepository<StudentInfo , Long> {
     @Query("Select s , st FROM StudentInfo s JOIN Student st ON s.stu_id = st.studentId where s.studentinfo_id = :studentinfoId")
 
     List<Object[]> findFriend(Long studentinfoId);
+    @Query("SELECT s FROM StudentInfo s WHERE s.stu_id = :stuId")
+    StudentInfo findStuById(@Param("stuId") Long stuId);
 }

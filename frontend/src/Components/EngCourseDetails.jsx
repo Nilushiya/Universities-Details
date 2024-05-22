@@ -101,8 +101,8 @@ const EngCourseDetails = ({course,departmentName}) => {
               </div>
               <div className="col-12">
                 <h4>Do you want to find a friend? {userId ?<Link to={`/detailform/${userId}/${stuname}`} >Click here</Link> :
-                <Link to={`/detailform/${userId}/${stuname}`}>Click here</Link>
-                //  <Link to="/login">Click here</Link>
+                // <Link to={`/detailform/${userId}/${stuname}`}>Click here</Link>
+                 <Link to="/register">Click here</Link>
                   } and fill in your details.</h4>
               </div>
           </div>      

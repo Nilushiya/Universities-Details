@@ -68,6 +68,20 @@ export const getImage = async(depId) => {
       console.log("error" , err)
   }
 }
+export const studentInfo = async(stu_id , data ) => {
+  try {
+    console.log( "useContaxt")
+    const response = await axios.post(`http://localhost:8080/api/v1/studentInfo/${stu_id}`, data, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    console.log("res  : ", response)
+  } catch (error) {
+    alert(`${error.response.data} \n Your details already exists. don't need fill this form`)
+    console.error('Error submitting form:', error.response.data);
+  }
+}
 export const sendQuestions = async (question) => {
     try {
       const response = await axios.post(`${BASE_URL}/question/`, {
