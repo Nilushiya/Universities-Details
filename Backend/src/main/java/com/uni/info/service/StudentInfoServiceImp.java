@@ -61,9 +61,9 @@ public class StudentInfoServiceImp implements StudentInfoService{
     }
 
     @Override
-    public List<Object[]> getfriend(Long studentinfoId) {
+    public List<Object[]> getCusromer(Long stu_id) {
 //        System.out.println("id : "+studentinfoId);
-        return studentInfoRepo.findFriend(studentinfoId);
+        return studentInfoRepo.findFriend(stu_id);
     }
 
     @Override

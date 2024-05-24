@@ -17,7 +17,7 @@ public interface StudentInfoService {
 
     List<Object[]> getLanguage(String academicYear, String selectedUniversity, String language);
 
-    List<Object[]> getfriend(Long studentinfoId);
+    List<Object[]> getCusromer(Long stu_id);
 
 
     List<StudentInfo> updateStudentInformation(Long studentinfo_id, MultipartFile image, String address, String selectedUniversity, String gender, String language, Integer phone, String academicYear, String selectedCourse) throws IOException;

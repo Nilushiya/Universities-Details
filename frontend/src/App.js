@@ -5,6 +5,7 @@ import University from "./Pages/University";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Detailfrom from "./Components/Detailfrom";
+import Profile from "./Components/Profile";
 // import CustomNavbar from "./Components/CustomNavbar";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
             <Route path="/register" element={<Register />}/>
             <Route path="/login" element={<Login />}/>
             <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/university" element = {<University />}>
                 <Route path=":uni_id/:uniName" element = {<University />}/>
             </Route>

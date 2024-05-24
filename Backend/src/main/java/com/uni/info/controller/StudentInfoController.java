@@ -57,9 +57,9 @@ public class StudentInfoController {
     public List<Object[]> getLanguage(@PathVariable("academic_year") String academic_year, @PathVariable("selected_university") String selected_university , @PathVariable("language") String language){
         return studentInfoService.getLanguage(academic_year,selected_university, language);
     }
-    @GetMapping("/findfriend/{studentinfo_id}")
-    public List<Object[]> getOneFriend(@PathVariable("studentinfo_id") Long studentinfo_id){
-        return studentInfoService.getfriend(studentinfo_id);
+    @GetMapping("/findCuromer/{stu_id}")
+    public List<Object[]> getOneCusromer(@PathVariable("stu_id") Long stu_id){
+        return studentInfoService.getCusromer(stu_id);
     }
 
     @PutMapping("/update/{studentinfo_id}")

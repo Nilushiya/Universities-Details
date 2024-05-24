@@ -7,4 +7,5 @@ import register from './register.css'
 import university from './university.css'
 import courseDetails from './EngCourseDetails.css'
 import details from './Details.css'
-export{navbar , about , contact , login , register , university , courseDetails , details}
+import profile from './Profile.css'
+export{navbar , about , contact , login , register , university , courseDetails , details , profile}

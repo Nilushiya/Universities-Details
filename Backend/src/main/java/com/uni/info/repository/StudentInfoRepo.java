@@ -17,9 +17,9 @@ public interface StudentInfoRepo extends JpaRepository<StudentInfo , Long> {
     @Query("Select s , st FROM StudentInfo s JOIN Student st ON s.stu_id = st.studentId where s.academic_year = :academicYear and s.selected_university = :selectedUniversity and s.language = :language")
 
     List<Object[]> findLanguage(String academicYear, String selectedUniversity, String language);
-    @Query("Select s , st FROM StudentInfo s JOIN Student st ON s.stu_id = st.studentId where s.studentinfo_id = :studentinfoId")
+    @Query("Select s , st FROM StudentInfo s JOIN Student st ON s.stu_id = st.studentId where s.stu_id = :stu_id")
 
-    List<Object[]> findFriend(Long studentinfoId);
+    List<Object[]> findFriend(Long stu_id);
     @Query("SELECT s FROM StudentInfo s WHERE s.stu_id = :stuId")
     StudentInfo findStuById(@Param("stuId") Long stuId);
 }

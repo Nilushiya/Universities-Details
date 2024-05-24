@@ -58,7 +58,7 @@ export const fetchCourseDetails = async(dep_id) => {
 }
 export const getImage = async(depId) => {
   try{
-    const response = await axios.get(`http://localhost:8080/api/v1/EngDetails/image/${depId}`, {
+    const response = await axios.get(`${BASE_URL}/EngDetails/image/${depId}`, {
       responseType: 'blob' 
     });
 
@@ -71,7 +71,7 @@ export const getImage = async(depId) => {
 export const studentInfo = async(stu_id , data ) => {
   try {
     console.log( "useContaxt")
-    const response = await axios.post(`http://localhost:8080/api/v1/studentInfo/${stu_id}`, data, {
+    const response = await axios.post(`${BASE_URL}/studentInfo/${stu_id}`, data, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
