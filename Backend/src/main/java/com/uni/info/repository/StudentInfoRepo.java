@@ -1,5 +1,6 @@
 package com.uni.info.repository;
 
+import aj.org.objectweb.asm.commons.Remapper;
 import com.uni.info.entity.StudentInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,4 +23,6 @@ public interface StudentInfoRepo extends JpaRepository<StudentInfo , Long> {
     List<Object[]> findFriend(Long stu_id);
     @Query("SELECT s FROM StudentInfo s WHERE s.stu_id = :stuId")
     StudentInfo findStuById(@Param("stuId") Long stuId);
+
+//    Remapper findStuId(Long stuId);
 }

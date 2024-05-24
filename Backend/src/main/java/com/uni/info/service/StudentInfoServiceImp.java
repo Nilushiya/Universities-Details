@@ -1,5 +1,6 @@
 package com.uni.info.service;
 
+import com.uni.info.dto.StudentInfoDto;
 import com.uni.info.entity.English_details;
 import com.uni.info.entity.StudentInfo;
 import com.uni.info.exception.DuplicateStudentIdException;
@@ -87,6 +88,17 @@ public class StudentInfoServiceImp implements StudentInfoService{
             throw new EntityNotFoundException("English_details not found with id: " + studentinfo_id);
 
          }
+    }
+
+    @Override
+    public StudentInfo update(Long stuId, StudentInfoDto studentInfoDto) {
+        return studentInfoRepo.findStuById(stuId)
+                .map(user -> {
+                    if (studentInfoDto.getAddress() != null) user.setAddress(studentInfoDto.getAddress());
+                    if (studentInfoDto.getPhone() != null) user.setEmail(studentInfoDto.getPhone());
+                    return studentInfoRepo.save(user);
+                })
+                .orElseThrow(() -> new RuntimeException("User not found"));
     }
 
 

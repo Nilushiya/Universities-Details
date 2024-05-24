@@ -1,5 +1,6 @@
 package com.uni.info.service;
 
+import com.uni.info.dto.StudentInfoDto;
 import com.uni.info.entity.StudentInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,4 +22,6 @@ public interface StudentInfoService {
 
 
     List<StudentInfo> updateStudentInformation(Long studentinfo_id, MultipartFile image, String address, String selectedUniversity, String gender, String language, Integer phone, String academicYear, String selectedCourse) throws IOException;
+
+    StudentInfo update(Long stuId, StudentInfoDto studentInfoDto);
 }

@@ -75,6 +75,10 @@ public class StudentInfoController {
         List<StudentInfo> saveUpdate =  studentInfoService.updateStudentInformation(studentinfo_id , image ,address ,selected_university ,gender ,language ,phone ,academic_year ,selected_course);
         return saveUpdate;
     }
+    @PutMapping("stuInfoUpdate/{stu_id}")
+    public StudentInfo updatedetail(@PathVariable ("stu_id") Long stu_id , @RequestBody StudentInfoDto studentInfoDto){
+        return studentInfoService.update(stu_id,studentInfoDto);
+    }
 
 //    @GetMapping("/{imageId}")
 //    public ResponseEntity<byte[]> downloadImage(@PathVariable Long imageId) {
