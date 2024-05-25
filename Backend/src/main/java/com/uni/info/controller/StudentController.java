@@ -21,4 +21,8 @@ public class StudentController {
         return studentService.updateStudent(stu_id , studentDto);
 
     }
+    @PutMapping("/deactivateUser/{id}")
+    public void deactivateUser(@PathVariable Long id) {
+        studentService.deactivateUser(id);
+    }
 }

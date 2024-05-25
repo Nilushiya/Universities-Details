@@ -8,4 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface StudentService {
     Student updateStudent(Long stuId, StudentDto studentDto);
+
+    void deactivateUser(Long id);
 }

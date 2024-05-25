@@ -3,15 +3,13 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { profile } from './Style'
-import { decodeToken, updateStuProfile, updateStuinfoProfile } from '../Context/UserContext';
+import { decodeToken, deleteAcc, fetchAllDetails, updateStuProfile, updateStuinfoProfile } from '../Context/UserContext';
 const Profile = () => {
   const [user, setUser1] = useState({
-    // firstName: '',
     phone: '',
     address: ''
   });
   const [user1, setUser2] = useState({
-    // firstName: '',
     username: '',
     email: '',
   });
@@ -21,17 +19,19 @@ const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    console.log(stu_id)
-    axios.get(`http://localhost:8080/api/v1/studentInfo/findCuromer/${stu_id}`)
-      .then(response => {
-        console.log('get user :',response.data[0][0]);
-        console.log('get user1 :',response.data[0][1]);
+    const fetchDetails = async (stu_id) => { 
+      try {
+        const response = await fetchAllDetails(stu_id);  
         setUser1(response.data[0][0]);
         setUser2(response.data[0][1]);
-      })
-      .catch(error => {
+      } catch (error) {
         console.error('There was an error fetching the user details!', error);
-      });
+      }
+    };
+
+    if (stu_id) {  
+      fetchDetails(stu_id);
+    }
   }, [stu_id]);
 
   const handleChange = (e) => {
@@ -48,7 +48,6 @@ const Profile = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log(stu_id)
     try{
       const StuinfoProfile = await updateStuinfoProfile(stu_id , user);
       const StuProfile = await updateStuProfile(stu_id , user1);
@@ -58,14 +57,16 @@ const Profile = () => {
       };
   };
   
-  const handleDelete = () => {
-    axios.delete('/api/user/details')
-      .then(response => {
-        console.log('Account deleted successfully');
-      })
-      .catch(error => {
+  const handleDelete = async(e) => {
+    e.preventDefault();
+
+    try{
+      const deteleAccount = await deleteAcc(stu_id)
+
+    }
+    catch(error) {
         console.error('There was an error deleting the account!', error);
-      });
+      };
   };
   useEffect(() => {
     const decode = decodeToken();
@@ -73,7 +74,7 @@ const Profile = () => {
      const userName = decode.name;
      setName(userName)
      setStu_id(user);
-     console.log('user' , user);
+    //  console.log('user' , user);
   },[])
   return (
     <div className="profile-container">

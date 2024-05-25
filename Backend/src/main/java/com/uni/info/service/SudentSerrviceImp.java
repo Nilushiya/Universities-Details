@@ -24,5 +24,15 @@ public class SudentSerrviceImp implements StudentService{
                 })
                 .orElseThrow(() -> new RuntimeException("User not found"));
     }
+
+    @Override
+    public void deactivateUser(Long id) {
+        studentRepo.findById(id)
+                .map(user -> {
+                    user.setIsActive(false);
+                    return studentRepo.save(user);
+                })
+                .orElseThrow(() -> new RuntimeException("User not found"));
     }
+}
 

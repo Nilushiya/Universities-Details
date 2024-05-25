@@ -105,7 +105,16 @@ export const sendQuestions = async (question) => {
       console.error("Email or Password not match", error);
     }
   }
-
+  
+  export const fetchAllDetails = async(stu_id) => {
+    try{
+        const response = await axios.get(`${BASE_URL}/studentInfo/findCuromer/${stu_id}`)
+        return response;
+    }
+    catch(err){
+      console.log("Error in fetch All Details ", err);
+    }
+  }
   export const updateStuinfoProfile = async(stu_id , user) => {
     try{
       const response = await axios.put(`${BASE_URL}/studentInfo/stuInfoUpdate/${stu_id}`,user)
@@ -123,7 +132,15 @@ export const sendQuestions = async (question) => {
       console.error("Error in update email , name", error);
     }
   }
-
+  
+  export const deleteAcc = async(stu_id) => {
+    try{
+      const response = await axios.put(`${BASE_URL}/student/deactivateUser/${stu_id}`)
+    }
+    catch(err){
+      console.log("Error in delete Account ",err)
+    }
+  }
   export const checklogin = async(formData) => {
 
     try {
