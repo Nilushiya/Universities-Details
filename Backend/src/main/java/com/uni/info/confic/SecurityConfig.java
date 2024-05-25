@@ -42,6 +42,7 @@ public class SecurityConfig {
                                 .requestMatchers("/api/v1/EngDetails/**").permitAll()
                                 .requestMatchers("/api/v1/studentInfo/**").permitAll()
                                 .requestMatchers("/api/v1/question/**").permitAll()
+                                .requestMatchers("/api/v1/student/**").permitAll()
                                 .anyRequest()
                                 .authenticated()
                 ).userDetailsService(studentDetailsImp)

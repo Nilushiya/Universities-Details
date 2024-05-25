@@ -3,6 +3,7 @@ import { fetchUniversity, studentInfo } from '../Context/UserContext';
 import axios from 'axios';
 import { Details } from './Style';
 import { useParams } from 'react-router-dom';
+import CustomNavbar from './CustomNavbar';
 const Detailfrom = () => {
     const [universities , setuniversities]  = useState([]);
     const [formData, setFormData] = useState({
@@ -63,7 +64,10 @@ const Detailfrom = () => {
       }
 
       return (
-        <div className="user-form-container">
+        <div className="detailfrorm">
+                 
+           <div className="user-form-container">
+           <CustomNavbar />
             <div className="info">
             <h1 >{stu_name} Infrormation</h1>
           <form className="user-form" onSubmit={handleSubmit}>
@@ -147,6 +151,9 @@ const Detailfrom = () => {
           </form>
             </div>
         </div>
+        </div>
+
+       
       );
     };
     

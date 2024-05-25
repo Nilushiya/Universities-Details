@@ -34,7 +34,7 @@ public class StudentInfoServiceImp implements StudentInfoService{
         studentInfo.setSelected_course(selectedCourse);
 
 //        System.out.println("studentInfo   : "+ studentInfo);
-        StudentInfo existingStudent = studentInfoRepo.findStuById(stuId);
+        Optional<StudentInfo> existingStudent = studentInfoRepo.findStuById(stuId);
         if (existingStudent != null) {
             // Handle duplicate case
             throw new DuplicateStudentIdException("Duplicate student ID: " + stuId);
@@ -95,7 +95,7 @@ public class StudentInfoServiceImp implements StudentInfoService{
         return studentInfoRepo.findStuById(stuId)
                 .map(user -> {
                     if (studentInfoDto.getAddress() != null) user.setAddress(studentInfoDto.getAddress());
-                    if (studentInfoDto.getPhone() != null) user.setEmail(studentInfoDto.getPhone());
+                    if (studentInfoDto.getPhone() != null) user.setPhone(studentInfoDto.getPhone());
                     return studentInfoRepo.save(user);
                 })
                 .orElseThrow(() -> new RuntimeException("User not found"));

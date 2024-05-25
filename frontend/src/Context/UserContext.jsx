@@ -105,6 +105,25 @@ export const sendQuestions = async (question) => {
       console.error("Email or Password not match", error);
     }
   }
+
+  export const updateStuinfoProfile = async(stu_id , user) => {
+    try{
+      const response = await axios.put(`${BASE_URL}/studentInfo/stuInfoUpdate/${stu_id}`,user)
+    }
+    catch (error) {
+      console.error("Error in update address , phone", error);
+    }
+  }
+
+  export const updateStuProfile = async(stu_id , user1) => {
+    try{
+      const response = await axios.put(`${BASE_URL}/student/stuUpdate/${stu_id}`,user1)
+    }
+    catch (error) {
+      console.error("Error in update email , name", error);
+    }
+  }
+
   export const checklogin = async(formData) => {
 
     try {

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { profile } from './Style'
-import { decodeToken } from '../Context/UserContext';
+import { decodeToken, updateStuProfile, updateStuinfoProfile } from '../Context/UserContext';
 const Profile = () => {
   const [user, setUser1] = useState({
     // firstName: '',
@@ -46,17 +46,16 @@ const Profile = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log(stu_id)
-    axios.put(`http://localhost:8080/api/v1/studentInfo/updateUser/${stu_id}`, user)
-      .then(response => {
-        console.log('User details updated successfully',response);
-        setIsEditing(false);
-      })
-      .catch(error => {
+    try{
+      const StuinfoProfile = await updateStuinfoProfile(stu_id , user);
+      const StuProfile = await updateStuProfile(stu_id , user1);
+    }
+      catch(error) {
         console.error('There was an error updating the user details!', error);
-      });
+      };
   };
   
   const handleDelete = () => {
@@ -80,10 +79,6 @@ const Profile = () => {
     <div className="profile-container">
       <FontAwesomeIcon icon={faUser} size='3x'/> {isEditing ? (
         <form onSubmit={handleSubmit}>
-          {/* <div className="form-group">
-            <label>First Name:</label>
-            <input type="text" name="firstName" value={user.firstName} onChange={handleChange} />
-          </div> */}
           <div className="form-group">
             <label>Username:</label>
             <input type="text" name="name" value={user1.name} onChange={handleChange} />
@@ -94,7 +89,7 @@ const Profile = () => {
           </div>
           <div className="form-group">
             <label>Phone Number:</label>
-            <input type="number" name="phone" value={user.phone} onChange={handleChange} />
+            <input type="text" name="phone" value={user.phone} onChange={handleChange} />
           </div>
           <div className="form-group">
             <label>Address:</label>

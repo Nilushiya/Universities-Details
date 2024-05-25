@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface StudentInfoRepo extends JpaRepository<StudentInfo , Long> {
@@ -22,7 +23,7 @@ public interface StudentInfoRepo extends JpaRepository<StudentInfo , Long> {
 
     List<Object[]> findFriend(Long stu_id);
     @Query("SELECT s FROM StudentInfo s WHERE s.stu_id = :stuId")
-    StudentInfo findStuById(@Param("stuId") Long stuId);
+    Optional<StudentInfo> findStuById(@Param("stuId") Long stuId);
 
 //    Remapper findStuId(Long stuId);
 }
