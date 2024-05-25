@@ -1,0 +1,66 @@
+@import './color.css';
+@import url('https://fonts.googleapis.com/css2?family=Freeman&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.friend{
+    font-family: "Kanit", sans-serif;
+}
+.friend .buttonGroup{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: aqua;
+    padding: 20px;
+}
+.friend .buttonGroup button{
+    background-color: var(--white);
+    color: var(--blue);
+}
+.table-container {
+    overflow-x: auto;
+  }
+  
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .data-table th,
+  .data-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .data-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .data-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .data-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .download-button {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .download-button:hover {
+    background-color: #218838;
+  }
+  
+  @media (max-width: 600px) {
+    .data-table th,
+    .data-table td {
+      padding: 8px;
+    }
+  }
+  

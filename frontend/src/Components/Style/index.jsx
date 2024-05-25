@@ -8,4 +8,5 @@ import university from './university.css'
 import courseDetails from './EngCourseDetails.css'
 import details from './Details.css'
 import profile from './Profile.css'
-export{navbar , about , contact , login , register , university , courseDetails , details , profile}
+import friend from './Friend.css'
+export{navbar , about , contact , login , register , university , courseDetails , details , profile , friend}
