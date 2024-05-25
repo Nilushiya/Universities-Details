@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { profile } from './Style'
 import { decodeToken, deleteAcc, fetchAllDetails, updateStuProfile, updateStuinfoProfile } from '../Context/UserContext';
+import CustomNavbar from './CustomNavbar';
 const Profile = () => {
   const [user, setUser1] = useState({
     phone: '',
@@ -15,7 +16,6 @@ const Profile = () => {
   });
   const[stu_id , setStu_id] = useState('');
   const[customerName , setName] = useState('');
-
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
@@ -28,7 +28,6 @@ const Profile = () => {
         console.error('There was an error fetching the user details!', error);
       }
     };
-
     if (stu_id) {  
       fetchDetails(stu_id);
     }
@@ -59,7 +58,6 @@ const Profile = () => {
   
   const handleDelete = async(e) => {
     e.preventDefault();
-
     try{
       const deteleAccount = await deleteAcc(stu_id)
 
@@ -68,16 +66,19 @@ const Profile = () => {
         console.error('There was an error deleting the account!', error);
       };
   };
+
   useEffect(() => {
     const decode = decodeToken();
      const user = decode.studentId;
      const userName = decode.name;
      setName(userName)
      setStu_id(user);
-    //  console.log('user' , user);
   },[])
+
   return (
     <div className="profile-container">
+    <CustomNavbar />
+      <div className="profile_box">
       <FontAwesomeIcon icon={faUser} size='3x'/> {isEditing ? (
         <form onSubmit={handleSubmit}>
           <div className="form-group">
@@ -110,6 +111,7 @@ const Profile = () => {
           <button onClick={handleDelete}>Delete Account</button>
         </div>
       )}
+      </div>
     </div>
   );
 };
