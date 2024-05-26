@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {friend} from './Style'
 import CustomNavbar from './CustomNavbar'
-import { decodeToken, fetchAllDetails, fetchByLanguage, fetchbyYear } from '../Context/UserContext'
+import { decodeToken, fetchAllDetails, fetchByCourse, fetchByLanguage, fetchbyYear } from '../Context/UserContext'
 const Friend = () => {
   const [year , setYear] = useState('')
   const[uni , setUni] = useState('')
@@ -15,7 +15,7 @@ const Friend = () => {
   const [friendData , setFrienddata] = useState('accedemicYear')
   const[friendByYear, setFriendByYear] = useState([])
   const[friendByLanguage, setFriendByLanguage] = useState([])
-
+  const[friendByCourse,setFriendByCourse] = useState([])
   useEffect(() => {
     const fetchDetails = async (stu_id) => { 
       try {
@@ -49,6 +49,18 @@ const Friend = () => {
     }
   }
 
+  const fetchFriendByCourse = async() => {
+    try{
+      setFrienddata("friCourse")
+      const response = await fetchByCourse(uni , year , language , course);
+      console.log("Course  : ",response.data)
+      setFriendByCourse(response.data)
+      setFrienddata("selectCourse")
+    }
+    catch(err){
+      console.log("Error in fetch Friends by course ", err);
+    }
+  }
   const fetchFriend_year = async() => {
     setFrienddata("accedemicYear")
   }
@@ -83,7 +95,7 @@ const Friend = () => {
         <div className="buttonGroup">
             <button onClick={fetchFriend_year}>Year</button>
             <button onClick={fetchFriendByLanguage}>Language</button>
-            <button>Course</button>
+            <button onClick={fetchFriendByCourse}>Course</button>
         </div>
         <div className="table-container">
       <table className="data-table">
@@ -109,7 +121,7 @@ const Friend = () => {
       </td>
     </tr>
   ))
-) : (friendData === "friLanguage" ? (
+) : friendData === "friLanguage" ? (
   friendByLanguage.map((item, index) => (
     <tr key={index}>
       <td>{item[1].name}</td>
@@ -122,7 +134,21 @@ const Friend = () => {
       </td>
     </tr>
   ))
-) : null)}
+) : friendData === "selectCourse" ? (
+  friendByCourse.map((item, index) => (
+    <tr key={index}>
+      <td>{item[1].name}</td>
+      <td>{item[1].email}</td>
+      <td>{item[0].address}</td>
+      <td>
+        <a href={item[0].image} className="download-button" download>
+          Download PDF
+        </a>
+      </td>
+    </tr>
+  ))
+) : null}
+
 
         </tbody>
       </table>
