@@ -14,7 +14,7 @@ public interface StudentInfoService {
 
     List<Object[]> getstudentsByYear(String academicYear);
 
-    List<Object[]> getUniversities(String academicYear, String selectedUniversity);
+    List<Object[]> getUniversities(String academic_year, String selected_university);
 
     List<Object[]> getLanguage(String academicYear, String selectedUniversity, String language);
 

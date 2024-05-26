@@ -12,11 +12,11 @@ import java.util.Optional;
 
 @Repository
 public interface StudentInfoRepo extends JpaRepository<StudentInfo , Long> {
-    @Query("SELECT s , st FROM StudentInfo s JOIN Student st ON s.stu_id = st.studentId where s.academic_year = :academicYear")
+    @Query("SELECT s , st FROM StudentInfo s JOIN Student st ON s.stu_id = st.studentId where s.academic_year = :academicYear ")
     List<Object[]> findGroupByYear(String academicYear);
-    @Query("Select s , st FROM StudentInfo s JOIN Student st ON s.stu_id = st.studentId where s.academic_year = :academicYear and s.selected_university = :selectedUniversity")
-    List<Object[]> findUniversity(String academicYear, String selectedUniversity);
-    @Query("Select s , st FROM StudentInfo s JOIN Student st ON s.stu_id = st.studentId where s.academic_year = :academicYear and s.selected_university = :selectedUniversity and s.language = :language")
+    @Query("SELECT s, st FROM StudentInfo s JOIN Student st ON s.stu_id = st.studentId WHERE s.academic_year = :academic_year AND LOWER(s.selected_university) = LOWER(:selected_university) AND st.isActive = true")
+    List<Object[]> findUniversity(String academic_year, String selected_university);
+    @Query("Select s , st FROM StudentInfo s JOIN Student st ON s.stu_id = st.studentId where s.academic_year = :academicYear and s.selected_university = :selectedUniversity and s.language = :language AND st.isActive = true")
 
     List<Object[]> findLanguage(String academicYear, String selectedUniversity, String language);
     @Query("Select s , st FROM StudentInfo s JOIN Student st ON s.stu_id = st.studentId where s.stu_id = :stu_id")

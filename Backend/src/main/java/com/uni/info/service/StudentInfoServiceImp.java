@@ -25,17 +25,18 @@ public class StudentInfoServiceImp implements StudentInfoService{
         StudentInfo studentInfo = new StudentInfo();
         studentInfo.setStu_id(stuId);
         studentInfo.setImage(image.getBytes());
-        studentInfo.setAddress(address);
-        studentInfo.setSelected_university(selectedUniversity);
-        studentInfo.setGender(gender);
-        studentInfo.setLanguage(language);
+        studentInfo.setAddress(address.trim().toLowerCase());
+        studentInfo.setSelected_university(selectedUniversity.trim().toLowerCase());
+        studentInfo.setGender(gender.trim().toLowerCase());
+        studentInfo.setLanguage(language.trim().toLowerCase());
         studentInfo.setPhone(phone);
         studentInfo.setAcademic_year(academicYear);
-        studentInfo.setSelected_course(selectedCourse);
+        studentInfo.setSelected_course(selectedCourse.trim().toLowerCase());
 
 //        System.out.println("studentInfo   : "+ studentInfo);
         Optional<StudentInfo> existingStudent = studentInfoRepo.findStuById(stuId);
-        if (existingStudent != null) {
+        System.out.println("existingStudent"+existingStudent);
+        if (existingStudent.isPresent()){
             // Handle duplicate case
             throw new DuplicateStudentIdException("Duplicate student ID: " + stuId);
         } else {
@@ -52,8 +53,8 @@ public class StudentInfoServiceImp implements StudentInfoService{
     }
 
     @Override
-    public List<Object[]> getUniversities(String academicYear, String selectedUniversity) {
-        return studentInfoRepo.findUniversity(academicYear, selectedUniversity);
+    public List<Object[]> getUniversities(String academic_year, String selected_university) {
+        return studentInfoRepo.findUniversity(academic_year, selected_university.toLowerCase());
     }
 
     @Override

@@ -17,6 +17,38 @@ export const fetchUniversity = async() =>{
     }
 }
 
+export const fetchByLanguage = async(selected_university , academic_year , language) => {
+  
+  try{
+    // console.log("api try")
+    // const selected_university = encodeURIComponent(year);
+    // console.log("enyear  : ",selected_university)
+    // const academic_year = encodeURIComponent(uni);
+    // console.log("encodedUniversity  : ",academic_year)
+    const res = await axios.get(`${BASE_URL}/studentInfo/groupbylanguage/${academic_year}/${selected_university}/${language}`)
+    // console.log("res : ",res)
+    return res
+  }
+  catch(err){
+    console.log("Error in year by frined fetch language details ");
+  }
+} 
+export const fetchbyYear = async(selected_university , academic_year) => {
+  
+  try{
+    // console.log("api try")
+    // const selected_university = encodeURIComponent(year);
+    // console.log("enyear  : ",selected_university)
+    // const academic_year = encodeURIComponent(uni);
+    // console.log("encodedUniversity  : ",academic_year)
+    const res = await axios.get(`${BASE_URL}/studentInfo/groupbyuni/${academic_year}/${selected_university}`)
+    // console.log("res : ",res)
+    return res
+  }
+  catch(err){
+    console.log("Error in year by frined fetch  details ");
+  }
+} 
 export const fetchFaculty = async(id) => {
   try{
       const response = await axios.get(`${BASE_URL}/faculty/getfaculty/${id}`,id);
@@ -76,7 +108,7 @@ export const studentInfo = async(stu_id , data ) => {
         'Content-Type': 'multipart/form-data'
       }
     });
-    console.log("res  : ", response)
+    // console.log("res  : ", response)
   } catch (error) {
     alert(`${error.response.data} \n Your details already exists. don't need fill this form`)
     console.error('Error submitting form:', error.response.data);
@@ -86,7 +118,8 @@ export const sendQuestions = async (question) => {
     try {
       const response = await axios.post(`${BASE_URL}/question/`, {
         question: question
-      });console.log("Response: ", response.data);
+      });
+      // console.log("Response: ", response.data);
       return response.data;
     } catch (error) {
       console.error("Error in sending question: ", error);
@@ -96,9 +129,9 @@ export const sendQuestions = async (question) => {
   export const checkRegister = async(formData) => {
 
     try {
-      console.log("mdata   : ",formData)
+      // console.log("mdata   : ",formData)
       const response = await axios.post(`${BASE_URL}/register`, formData);
-      console.log("response  :" , response)
+      // console.log("response  :" , response)
       return response
     } 
     catch (error) {

@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @RestController
@@ -49,8 +53,18 @@ public class StudentInfoController {
     }
 
     @GetMapping("/groupbyuni/{academic_year}/{selected_university}")
-    public List<Object[]> getUniversity(@PathVariable("academic_year") String academic_year, @PathVariable("selected_university") String selected_university){
-        return studentInfoService.getUniversities(academic_year,selected_university);
+    public List<Object[]> getUniversity(@PathVariable("academic_year") String academic_year, @PathVariable("selected_university") String selected_university) {
+        try {
+            // Decode URL-encoded path variables
+            academic_year = URLDecoder.decode(academic_year, StandardCharsets.UTF_8.toString());
+            selected_university = URLDecoder.decode(selected_university, StandardCharsets.UTF_8.toString());
+        } catch (Exception e) {
+            // Handle decoding exception
+            e.printStackTrace();
+        }
+
+        System.out.println("Received academicYear: " + academic_year + ", selectedUniversity: " + selected_university);
+        return studentInfoService.getUniversities(academic_year, selected_university);
     }
 
     @GetMapping("/groupbylanguage/{academic_year}/{selected_university}/{language}")
