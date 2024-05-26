@@ -102,5 +102,10 @@ public class StudentInfoServiceImp implements StudentInfoService{
                 .orElseThrow(() -> new RuntimeException("User not found"));
     }
 
+    @Override
+    public List<Object[]> getCourse(String academicYear, String selectedUniversity, String language, String selectedCourse) {
+        return studentInfoRepo.findCourse(academicYear, selectedUniversity , language ,selectedCourse);
+    }
+
 
 }

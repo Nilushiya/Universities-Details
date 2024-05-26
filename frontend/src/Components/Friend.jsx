@@ -48,9 +48,11 @@ const Friend = () => {
       console.log("Error in fetch Friends by language ", err);
     }
   }
-  useEffect(() => {
-   
 
+  const fetchFriend_year = async() => {
+    setFrienddata("accedemicYear")
+  }
+  useEffect(() => {
     const fetchFriens_year =async(uni , year) => {
       console.log("Year frined")
       try{
@@ -79,7 +81,7 @@ const Friend = () => {
     <div className='friend'>
         <CustomNavbar />
         <div className="buttonGroup">
-            <button>Year</button>
+            <button onClick={fetchFriend_year}>Year</button>
             <button onClick={fetchFriendByLanguage}>Language</button>
             <button>Course</button>
         </div>

@@ -24,4 +24,6 @@ public interface StudentInfoService {
     List<StudentInfo> updateStudentInformation(Long studentinfo_id, MultipartFile image, String address, String selectedUniversity, String gender, String language, Integer phone, String academicYear, String selectedCourse) throws IOException;
 
     StudentInfo update(Long stuId, StudentInfoDto studentInfoDto);
+
+    List<Object[]> getCourse(String academicYear, String selectedUniversity, String language, String selectedCourse);
 }

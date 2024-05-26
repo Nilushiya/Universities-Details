@@ -71,6 +71,10 @@ public class StudentInfoController {
     public List<Object[]> getLanguage(@PathVariable("academic_year") String academic_year, @PathVariable("selected_university") String selected_university , @PathVariable("language") String language){
         return studentInfoService.getLanguage(academic_year,selected_university, language);
     }
+    @GetMapping("/groupbyCourse/{academic_year}/{selected_university}/{language}/{selected_course}")
+    public List<Object[]> getLanguage(@PathVariable("academic_year") String academic_year, @PathVariable("selected_university") String selected_university , @PathVariable("language") String language , @PathVariable("selected_course") String selected_course){
+        return studentInfoService.getCourse(academic_year,selected_university, language , selected_course);
+    }
     @GetMapping("/findCuromer/{stu_id}")
     public List<Object[]> getOneCusromer(@PathVariable("stu_id") Long stu_id){
         return studentInfoService.getCusromer(stu_id);
