@@ -107,5 +107,12 @@ public class StudentInfoServiceImp implements StudentInfoService{
         return studentInfoRepo.findCourse(academicYear, selectedUniversity , language ,selectedCourse);
     }
 
+    @Override
+    public byte[] getStudentPdf(Long studentinfo_id) {
+            StudentInfo studentInfo = studentInfoRepo.findById(studentinfo_id)
+                    .orElseThrow(() -> new RuntimeException("Student not found with id " + studentinfo_id));
+            return studentInfo.getImage();
+    }
+
 
 }

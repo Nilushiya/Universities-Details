@@ -26,4 +26,6 @@ public interface StudentInfoService {
     StudentInfo update(Long stuId, StudentInfoDto studentInfoDto);
 
     List<Object[]> getCourse(String academicYear, String selectedUniversity, String language, String selectedCourse);
+
+    byte[] getStudentPdf(Long studentinfo_id);
 }

@@ -3,17 +3,25 @@
 
 .friend{
     font-family: "Kanit", sans-serif;
+    min-width: 518px;
 }
 .friend .buttonGroup{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: aqua;
-    padding: 20px;
+    background-color: var(--white);
+    /* background-color: aqua; */
+    padding: 10px;
 }
 .friend .buttonGroup button{
-    background-color: var(--white);
-    color: var(--blue);
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: 10px;
+}
+.friend .buttonGroup button:hover{
+  background-color: var(--orange);
+  color: var(--white);
+  border-radius: 10px;
 }
 .table-container {
     overflow-x: auto;

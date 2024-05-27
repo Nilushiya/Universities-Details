@@ -69,7 +69,7 @@ const CustomNavbar = () => {
               </NavDropdown.Item>
             ))}
           </NavDropdown>
-          <h4 style={{color:"White"}}>Hi{name}</h4>
+          <h6 style={{color:"White",paddingLeft:"20px" }}>Hi <span>{name}</span></h6>
         </Nav>
         <Nav className='flexRight'>{userId
                ? <Nav.Link className='navbutt' href='/' onClick={logout}>
@@ -81,13 +81,13 @@ const CustomNavbar = () => {
                  <Nav.Link className='navicon' href={userId ? '/profile'  : '/login'}>
                  {/* <Nav.Link className='navicon' href={userId ? '/profile'  : '/profile'}> */}
                     {
-                      <FontAwesomeIcon icon={faUser} color='#ff5b25' className='friendIcon' size='xl'/> 
+                      <FontAwesomeIcon icon={faUser} color='#ff5b25' className='friendIcon' size='2x'/> 
                     }
                  </Nav.Link>
                  <Nav.Link className='navicon navFriend' href={userId ? '/friend' : '/login'}>
                  {/* <Nav.Link className='navicon navFriend' href={userId ? '/friend' : '/friend'}> */}
                     {
-                      <FontAwesomeIcon icon={faUserGroup}  className='friendIcon' size='xl' /> 
+                      <FontAwesomeIcon icon={faUserGroup}  className='friendIcon' size='2x' /> 
                     }
                  </Nav.Link>
         </Nav>

@@ -27,7 +27,15 @@ export const fetchByLanguage = async(selected_university , academic_year , langu
     console.log("Error in year by frined fetch language details ");
   }
 } 
- 
+export const downloadPdf = async(studentinfo_id) => {
+  try{
+    const res = await axios.get(`${BASE_URL}/studentInfo/downloadpdf/${studentinfo_id}`,{responseType: 'blob',})
+    return res
+  }
+  catch(err){
+    console.log("Error in Download api :" , err);
+  }
+}
 export const fetchByCourse = async(selected_university , academic_year , language , selected_course) => {
   try{
     const res = await axios.get(`${BASE_URL}/studentInfo/groupbyCourse/${academic_year}/${selected_university}/${language}/${selected_course}`)

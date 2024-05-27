@@ -41,6 +41,7 @@
 
 #basic-nav-dropdown{
     display: flex;
+    font-size: 20px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -63,6 +64,7 @@
     border: 2px solid var(--blue);
     text-align: center;
     color: var(--blue);
+    font-size: 20px;
 }
 
 #nav .navFriend{

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {friend} from './Style'
 import CustomNavbar from './CustomNavbar'
-import { decodeToken, fetchAllDetails, fetchByCourse, fetchByLanguage, fetchbyYear } from '../Context/UserContext'
+import { decodeToken, downloadPdf, fetchAllDetails, fetchByCourse, fetchByLanguage, fetchbyYear } from '../Context/UserContext'
 const Friend = () => {
   const [year , setYear] = useState('')
   const[uni , setUni] = useState('')
@@ -61,15 +61,31 @@ const Friend = () => {
       console.log("Error in fetch Friends by course ", err);
     }
   }
+
+  const pdfDownload = async(studentinfo_id) => {
+    try{
+      const response =await downloadPdf(studentinfo_id)
+      // console.log("respo :",response.data)
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'student_info.pdf');
+      document.body.appendChild(link);
+      link.click();
+    }
+    catch(err){
+      console.log("Error in download " , err)
+    }
+  }
   const fetchFriend_year = async() => {
     setFrienddata("accedemicYear")
   }
   useEffect(() => {
     const fetchFriens_year =async(uni , year) => {
-      console.log("Year frined")
+      // console.log("Year frined")
       try{
         const response =await fetchbyYear(uni , year)
-        console.log("year responses  : ", response.data[0][0])
+        // console.log("year responses  : ", response.data[0][0])
         setFriendByYear(response.data)
       }
       catch(err){
@@ -115,9 +131,10 @@ const Friend = () => {
       <td>{item[1].email}</td>
       <td>{item[0].address}</td>
       <td>
-        <a href={item[0].image} className="download-button" download>
+      <button onClick={() => pdfDownload(item[0].studentinfo_id)}>Download PDF</button>
+        {/* <a href={item[0].image} className="download-button" download>
           Download PDF
-        </a>
+        </a> */}
       </td>
     </tr>
   ))
@@ -128,9 +145,10 @@ const Friend = () => {
       <td>{item[1].email}</td>
       <td>{item[0].address}</td>
       <td>
-        <a href={item[0].image} className="download-button" download>
+      <button onClick={() => pdfDownload(item[0].studentinfo_id)}>Download PDF</button>
+        {/* <a href={item[0].image} className="download-button" download>
           Download PDF
-        </a>
+        </a> */}
       </td>
     </tr>
   ))
@@ -141,9 +159,10 @@ const Friend = () => {
       <td>{item[1].email}</td>
       <td>{item[0].address}</td>
       <td>
-        <a href={item[0].image} className="download-button" download>
+        <button onClick={() => pdfDownload(item[0].studentinfo_id)}>Download PDF</button>
+        {/* <a href={item[0].image} className="download-button" download>
           Download PDF
-        </a>
+        </a> */}
       </td>
     </tr>
   ))

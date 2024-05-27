@@ -17,7 +17,8 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 @RestController
 @CrossOrigin("*")
 @RequiredArgsConstructor
@@ -98,6 +99,16 @@ public class StudentInfoController {
         return studentInfoService.update(stu_id,studentInfoDto);
     }
 
+    @GetMapping("/downloadpdf/{studentinfo_id}")
+    public ResponseEntity<byte[]> downloadPdf(@PathVariable Long studentinfo_id) {
+        byte[] pdfBytes = studentInfoService.getStudentPdf(studentinfo_id);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(org.springframework.http.MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("attachment", "student_info.pdf");
+
+        return new ResponseEntity<>(pdfBytes, headers, HttpStatus.OK);
+    }
 //    @GetMapping("/{imageId}")
 //    public ResponseEntity<byte[]> downloadImage(@PathVariable Long imageId) {
 //        byte[] imageData = imageService.getImageDataById(imageId);
