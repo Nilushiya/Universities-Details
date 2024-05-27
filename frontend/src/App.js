@@ -7,7 +7,7 @@ import Register from "./Pages/Register";
 import Detailfrom from "./Components/Detailfrom";
 import Profile from "./Components/Profile";
 import Friend from "./Components/Friend";
-import Admin from "./Pages/Admin";
+import Admin from "./Components/Admin/Admin";
 // import CustomNavbar from "./Components/CustomNavbar";
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
             <Route path="/detailform/:userId/:stuname" element={<Detailfrom />} />
 
 
-            <Route path="/admin" element={<Admin />}/>
+            <Route path="/adminprofile" element={<Admin />}/>
           </Routes>
 
           

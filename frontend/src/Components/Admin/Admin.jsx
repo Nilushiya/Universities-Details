@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-// import {admin} from './Style'
+import {admin , profile} from '../Style'
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 // import { profile } from './Style'
-import { decodeToken, deleteAcc, fetchAdminDetails, fetchAllDetails, updateStuProfile, updateStuinfoProfile } from '../Context/UserContext';
+import { decodeToken, deleteAcc, fetchAdminDetails, fetchAllDetails, updateStuProfile, updateStuinfoProfile } from '../../Context/UserContext';
 const Admin = () => {
     // const [user, setUser1] = useState({
     //     phone: '',
@@ -71,31 +71,32 @@ const Admin = () => {
       },[])
       console.log("sid :",stu_id)
   return (
-    <div className="profile-container">
+    <div className="adminProfile-container">
+      
       <div className="profile_box">
-      <FontAwesomeIcon icon={faUser} size='3x'/> {isEditing ? (
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Username:</label>
-            <input type="text" name="name" value={user.name} onChange={handleChange} />
-          </div>
-          <div className="form-group">
-            <label>Email:</label>
-            <input type="email" name="email" value={user.email} onChange={handleChange} />
-          </div>
-          <button type="submit">Save</button>
-          <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
-        </form>
-      ) : (
-        <div>
-          <p><strong>Username:</strong> {user.name}</p>
-          <p><strong>Email:</strong> {user.email}</p>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
-          <button onClick={handleDelete}>Delete Account</button>
-        </div>
-      )}
+        <FontAwesomeIcon icon={faUser} size='3x'/> {isEditing ? (
+            <form onSubmit={handleSubmit}>
+            <div className="form-group">
+                <label>Username:</label>
+                <input type="text" name="name" value={user.name} onChange={handleChange} />
+            </div>
+            <div className="form-group">
+                <label>Email:</label>
+                <input type="email" name="email" value={user.email} onChange={handleChange} />
+            </div>
+            <button type="submit">Save</button>
+            <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
+            </form>
+        ) : (
+            <div>
+            <p><strong>Username:</strong> {user.name}</p>
+            <p><strong>Email:</strong> {user.email}</p>
+            <button onClick={() => setIsEditing(true)}>Edit</button>
+            <button onClick={handleDelete}>Delete Account</button>
+            </div>
+        )}
       </div>
-    </div>
+     </div>
   );
 };
 
