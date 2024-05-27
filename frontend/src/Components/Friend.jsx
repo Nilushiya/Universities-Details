@@ -120,7 +120,7 @@ const Friend = () => {
             <th>Friend Name</th>
             <th>Email </th>
             <th>Address </th>
-            <th>PDF File</th>
+            <th>Course Selection Form</th>
           </tr>
         </thead>
         <tbody>
@@ -131,7 +131,7 @@ const Friend = () => {
       <td>{item[1].email}</td>
       <td>{item[0].address}</td>
       <td>
-      <button onClick={() => pdfDownload(item[0].studentinfo_id)}>Download PDF</button>
+      <button className='pdfButton' onClick={() => pdfDownload(item[0].studentinfo_id)}>Download PDF</button>
         {/* <a href={item[0].image} className="download-button" download>
           Download PDF
         </a> */}
@@ -145,7 +145,7 @@ const Friend = () => {
       <td>{item[1].email}</td>
       <td>{item[0].address}</td>
       <td>
-      <button onClick={() => pdfDownload(item[0].studentinfo_id)}>Download PDF</button>
+      <button className='pdfButton' onClick={() => pdfDownload(item[0].studentinfo_id)}>Download PDF</button>
         {/* <a href={item[0].image} className="download-button" download>
           Download PDF
         </a> */}
@@ -159,7 +159,7 @@ const Friend = () => {
       <td>{item[1].email}</td>
       <td>{item[0].address}</td>
       <td>
-        <button onClick={() => pdfDownload(item[0].studentinfo_id)}>Download PDF</button>
+        <button className='pdfButton' onClick={() => pdfDownload(item[0].studentinfo_id)}>Download PDF</button>
         {/* <a href={item[0].image} className="download-button" download>
           Download PDF
         </a> */}

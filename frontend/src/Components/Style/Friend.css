@@ -18,7 +18,7 @@
     color: var(--white);
     border-radius: 10px;
 }
-.friend .buttonGroup button:hover{
+.friend .buttonGroup button:focus{
   background-color: var(--orange);
   color: var(--white);
   border-radius: 10px;
@@ -64,7 +64,11 @@
   .download-button:hover {
     background-color: #218838;
   }
-  
+  .pdfButton{
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: 15px;
+  }
   @media (max-width: 600px) {
     .data-table th,
     .data-table td {

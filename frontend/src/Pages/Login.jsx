@@ -34,7 +34,7 @@ const Login = () => {
             if(userType == 'USER')
             window.location.href = '/';
             else   
-            window.location.href = '/register'
+            window.location.href = '/admin'
             }
             catch(err){
                 alert('error', err);

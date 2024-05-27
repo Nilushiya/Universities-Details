@@ -5,8 +5,9 @@ import com.uni.info.entity.Student;
 import com.uni.info.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -24,5 +25,10 @@ public class StudentController {
     @PutMapping("/deactivateUser/{id}")
     public void deactivateUser(@PathVariable Long id) {
         studentService.deactivateUser(id);
+    }
+
+    @GetMapping("/admin/{studentId}")
+    public List<Student> getAdmin(@PathVariable Long studentId){
+       return studentService.getAdminDetails(studentId);
     }
 }

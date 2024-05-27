@@ -7,6 +7,7 @@ import Register from "./Pages/Register";
 import Detailfrom from "./Components/Detailfrom";
 import Profile from "./Components/Profile";
 import Friend from "./Components/Friend";
+import Admin from "./Pages/Admin";
 // import CustomNavbar from "./Components/CustomNavbar";
 
 function App() {
@@ -24,7 +25,12 @@ function App() {
                 <Route path=":uni_id/:uniName" element = {<University />}/>
             </Route>
             <Route path="/detailform/:userId/:stuname" element={<Detailfrom />} />
+
+
+            <Route path="/admin" element={<Admin />}/>
           </Routes>
+
+          
        </BrowserRouter>
     </div>
   );

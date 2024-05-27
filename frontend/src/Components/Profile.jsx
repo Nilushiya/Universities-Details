@@ -102,7 +102,6 @@ const Profile = () => {
         </form>
       ) : (
         <div>
-          {/* <p><strong>First Name:</strong> {user.firstName}</p> */}
           <p><strong>Username:</strong> {user1.name}</p>
           <p><strong>Email:</strong> {user1.email}</p>
           <p><strong>Phone Number:</strong> {user.phone}</p>

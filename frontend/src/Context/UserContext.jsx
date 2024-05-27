@@ -154,6 +154,17 @@ export const sendQuestions = async (question) => {
       console.log("Error in fetch All Details ", err);
     }
   }
+  
+  export const fetchAdminDetails = async(studentId) => {
+    try{
+        const response = await axios.get(`${BASE_URL}/student/admin/${studentId}`)
+        return response;
+    }
+    catch(err){
+      console.log("Error in fetch All Details ", err);
+    }
+  }
+
   export const updateStuinfoProfile = async(stu_id , user) => {
     try{
       const response = await axios.put(`${BASE_URL}/studentInfo/stuInfoUpdate/${stu_id}`,user)

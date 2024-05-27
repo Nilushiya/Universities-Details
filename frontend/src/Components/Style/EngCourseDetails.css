@@ -22,13 +22,6 @@
     align-items: center;
     padding: 20px;
 }
-.coursebody .rightbody{
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
-}
-
 .coursebody .coursebottom{
     border-top: 1px solid var(--blue);
     padding-top: 20px;
