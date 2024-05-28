@@ -64,12 +64,12 @@ const University = () => {
       <CustomNavbar />
       <div className="row m-0 w-100">
         <div className="col-lg-4 leftSideBar">
-          <Navbar  expand="lg" style={{backgroundColor:"#072040"}}>
-            <Container style={{backgroundColor:"#072040"}}>
-              <Navbar.Toggle aria-controls="navbar-nav" style={{backgroundColor:"#072040" ,color:"white",border:"2px solid white" }}/>
-                <Navbar.Collapse id="navbar-nav" style={{backgroundColor:"#072040", borderRadius:"20px"}}>
+          <Navbar  expand="lg" style={{backgroundColor:"#0F1035"}}>
+            <Container style={{backgroundColor:"#0F1035"}}>
+              <Navbar.Toggle aria-controls="navbar-nav" style={{backgroundColor:"#0F1035" ,color:"white",border:"2px solid white" }}/>
+                <Navbar.Collapse id="navbar-nav" style={{backgroundColor:"#0F1035", borderRadius:"20px"}}>
                   <Nav className="me-auto navList" style={{display:"flex" , flexDirection:"column",backgroundColor:"#072040"}}>
-                    <div className="dropdown-column" style={{backgroundColor:"#ff5b25", borderRadius:"10px" ,width:"300px"}}>
+                    <div className="dropdown-column" style={{backgroundColor:"#7FC7D9", borderRadius:"10px" ,width:"300px"}}>
                       {faculties.map((faculty, index) => (
                         <NavDropdown title={faculty.facultyName} id={`services-dropdown-${index}`} key={faculty.fac_id} onClick={() =>fetchDepartment(faculty.fac_id)} style={{padding:"10px",border:"1px solid #072040"}}>
                           {departments.map((department) => (

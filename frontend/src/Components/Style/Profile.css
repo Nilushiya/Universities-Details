@@ -19,26 +19,26 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }  
-  h2 {
+.profile_box  h2 {
     text-align: center;
   }
   
-  .form-group {
+.profile_box  .form-group {
     margin-bottom: 15px;
   }
   
-  .form-group label {
+  .profile_box  .form-group label {
     display: block;
     margin-bottom: 5px;
   }
   
-  .form-group input {
+  .profile_box  .form-group input {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
   }
   
-  button {
+  .profile_box button {
     margin: 5px;
     padding: 10px 15px;
     border: none;
@@ -46,17 +46,17 @@
     cursor: pointer;
   }
   
-  button[type="submit"] {
+  .profile_box  button[type="submit"] {
     background-color: #4CAF50;
     color: white;
   }
   
-  button[type="button"] {
+  .profile_box  button[type="button"] {
     background-color: #f44336;
     color: white;
   }
   
-  button + button {
+  .profile_box button + button {
     margin-left: 10px;
   }
   

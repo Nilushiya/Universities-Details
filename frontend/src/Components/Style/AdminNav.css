@@ -1,0 +1,46 @@
+.NavAdmin {
+    min-width: 100vw;
+    background-color: var(--blue);
+}
+
+#navbar .adminRight {
+    width: 1250px;
+    display: flex;
+    justify-content: end;
+}
+
+#navbar .logoutBtn {
+    margin-right: 20px; 
+    background-color: var(--blue);
+    border-radius: 10px;
+    color: var(--white);
+}
+
+#navbar .navicon {
+    margin-left: 10px; 
+}
+
+.friendIcon {
+    font-size: 1.5rem;
+}
+@media only screen and (max-width: 1080px) {
+    #navbar .adminRight {
+        width: 900px;
+    }
+    #navbar .logoutBtn {
+        padding-left: 10px; 
+    }
+}
+@media only screen and (max-width: 900px) {
+    #navbar .adminRight {
+        width: 250px;
+    }
+    #navbar .logoutBtn {
+        padding-left: 10px; 
+    }
+}
+@media only screen and (max-width: 260px) {
+    .NavAdmin {
+        width: 260px;
+    }
+}

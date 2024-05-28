@@ -3,7 +3,7 @@ import { Navbar as BootstrapNavbar, Nav, NavDropdown } from 'react-bootstrap';
 import brand from './Assets/Brand.png'
 import { navbar } from './Style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faUserGroup } from '@fortawesome/free-solid-svg-icons';
+import { faGraduationCap, faUser, faUserGroup } from '@fortawesome/free-solid-svg-icons';
 import {fetchUniversity , checklogin, decodeToken} from '../Context/UserContext'
 import { useNavigate } from 'react-router-dom';
 
@@ -54,7 +54,7 @@ const CustomNavbar = () => {
 
   return (
     <BootstrapNavbar  expand="lg" id='nav' > 
-      <BootstrapNavbar.Brand href="/" className='brand'><img src={brand} alt="" /></BootstrapNavbar.Brand>
+      <BootstrapNavbar.Brand href="/" className='brand'>    <FontAwesomeIcon icon={faGraduationCap} color="#ff5b25"  size='2x' /></BootstrapNavbar.Brand>
       <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" style={{ backgroundColor:'#ff5b25'}}/>
       <BootstrapNavbar.Collapse id="basic-navbar-nav" >
         <Nav className="me-auto" >
@@ -69,7 +69,7 @@ const CustomNavbar = () => {
               </NavDropdown.Item>
             ))}
           </NavDropdown>
-          <h6 style={{color:"White",paddingLeft:"20px" }}>Hi <span>{name}</span></h6>
+          {/* <h6 style={{color:"White",paddingLeft:"20px" }}>Hi <span>{name}</span></h6> */}
         </Nav>
         <Nav className='flexRight'>{userId
                ? <Nav.Link className='navbutt' href='/' onClick={logout}>
@@ -80,7 +80,7 @@ const CustomNavbar = () => {
                  </Nav.Link>}
                  <Nav.Link className='navicon' href={userId ? '/profile'  : '/login'}>
                     {
-                      <FontAwesomeIcon icon={faUser} color='#ff5b25' className='friendIcon' size='xl'/> 
+                      <FontAwesomeIcon icon={faUser} color='#7FC7D9' className='friendIcon' size='xl'/> 
                     }
                  </Nav.Link>
                  <Nav.Link className='navicon navFriend' href={userId ? '/friend' : '/login'}>
