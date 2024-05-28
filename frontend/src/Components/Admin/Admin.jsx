@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {admin } from '../Style'
+import {profile } from '../Style'
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Navbar as BootstrapNavbar, Nav, NavDropdown ,Container} from 'react-bootstrap';
@@ -72,34 +72,37 @@ const Admin = () => {
       return (
         <div className="adminProfile-container">
           <NavAdmin />
-            <div className="row m-0" style={{backgroundColor:"#EFECEC"}}>
-              <div className="col-lg-4  col-12  sidebarr" >
+            <div className="row m-0" style={{backgroundColor:"#DCF2F1"}}>
+              <div className="col-lg-4 col-md-4 col-12  sidebarr" >
                 <Sidebar />        
                 {/* <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est repellat repellendus corporis culpa aut laudantium sunt, a eveniet fugiat nesciunt sint vitae, quibusdam, dolore delectus assumenda eius? Tenetur, laborum sit.</p> */}
               </div>
-              <div className="col-lg-6 col-12  AdminPro">
-                <FontAwesomeIcon icon={faUser} size="3x" /> 
-                {isEditing ? (
-                  <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                      <label>Username:</label>
-                      <input type="text" name="name" value={user.name} onChange={handleChange} />
-                    </div>
-                    <div className="form-group">
-                      <label>Email:</label>
-                      <input type="email" name="email" value={user.email} onChange={handleChange} />
-                    </div>
-                    <button type="submit">Save</button>
-                    <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
-                  </form>
-                ) : (
-                  <div>
-                    <p><strong>Username:</strong> {user.name}</p>
-                    <p><strong>Email:</strong> {user.email}</p>
-                    <button onClick={() => setIsEditing(true)}>Edit</button>
-                    <button onClick={handleDelete}>Delete Account</button>
-                  </div>
-                )}
+              <div className="col-lg-6 col-md-6 col-12  AdminPro" style={{width:"300px"}}>
+              <div className="profileAdmincontainer">
+      <div className="profileBox">
+      <FontAwesomeIcon icon={faUser} size='3x' color='#7FC7D9' /> {isEditing ? (
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label >Username:</label>
+            <input type="text" name="name" value={user.name} onChange={handleChange} style={{backgroundColor:"#DCF2F1", color:"#365486"}}/>
+          </div>
+          <div className="form-group">
+            <label>Email:</label>
+            <input type="email" name="email" value={user.email} onChange={handleChange} style={{backgroundColor:"#DCF2F1", color:"#365486"}}/>
+          </div>
+          <button type="submit">Save</button>
+          <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
+        </form>
+      ) : (
+        <div>
+          <p><strong >Username:</strong> {user.name}</p>
+          <p><strong>Email:</strong> {user.email}</p>
+          <button onClick={() => setIsEditing(true)} style={{backgroundColor:"#7FC7D9"}}>Edit</button>
+          <button onClick={handleDelete} style={{backgroundColor:"#7FC7D9"}}>Delete Account</button>
+        </div>
+      )}
+      </div>
+    </div>
               </div>         
           </div>
         </div>

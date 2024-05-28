@@ -8,19 +8,19 @@ const Sidebar = () => {
     <div className='sidebar'>
          <Nav className="sidenav">
                 <Nav.Link href="/university" className="nav-link">
-                    <FontAwesomeIcon icon={faUniversity} className="icon" /> University
+                    <FontAwesomeIcon icon={faUniversity} className="icon" /> <span>University</span>
                 </Nav.Link>
                 <Nav.Link href="/faculty" className="nav-link">
-                    <FontAwesomeIcon icon={faUserTie} className="icon" /> Faculty
+                    <FontAwesomeIcon icon={faUserTie} className="icon" /> <span>Faculty</span>
                 </Nav.Link>
                 <Nav.Link href="/department" className="nav-link">
-                    <FontAwesomeIcon icon={faBuilding} className="icon" /> Department
+                    <FontAwesomeIcon icon={faBuilding} className="icon" /> <span>Department</span>
                 </Nav.Link>
                 <Nav.Link href="/details" className="nav-link">
-                    <FontAwesomeIcon icon={faInfoCircle} className="icon" /> Details
+                    <FontAwesomeIcon icon={faInfoCircle} className="icon" /> <span>Details</span>
                 </Nav.Link>
                 <Nav.Link href="/user-question" className="nav-link">
-                    <FontAwesomeIcon icon={faQuestionCircle} className="icon" /> User Questions
+                    <FontAwesomeIcon icon={faQuestionCircle} className="icon" /> <span>User Questions</span>
                 </Nav.Link>
             </Nav>
     </div>

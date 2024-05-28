@@ -1,3 +1,6 @@
+@import './color.css';
+@import url('https://fonts.googleapis.com/css2?family=Freeman&display=swap');
+
 .NavAdmin {
     min-width: 100vw;
     background-color: var(--blue);
@@ -7,13 +10,17 @@
     width: 1250px;
     display: flex;
     justify-content: end;
+    font-family: "Freeman", sans-serif;
 }
 
 #navbar .logoutBtn {
     margin-right: 20px; 
-    background-color: var(--blue);
+    background-color: var(--orange);
     border-radius: 10px;
-    color: var(--white);
+    color: var(--blue);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 #navbar .navicon {
@@ -23,15 +30,18 @@
 .friendIcon {
     font-size: 1.5rem;
 }
-@media only screen and (max-width: 1080px) {
+/* @media only screen and (max-width: 1080px) {
     #navbar .adminRight {
         width: 900px;
     }
     #navbar .logoutBtn {
         padding-left: 10px; 
     }
-}
-@media only screen and (max-width: 900px) {
+} */
+/* @media only screen and (max-width: 900px) {
+    .NavAdmin {
+        width: 500px;
+    }
     #navbar .adminRight {
         width: 250px;
     }
@@ -43,4 +53,4 @@
     .NavAdmin {
         width: 260px;
     }
-}
+} */

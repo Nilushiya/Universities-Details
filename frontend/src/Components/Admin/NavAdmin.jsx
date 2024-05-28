@@ -12,7 +12,7 @@ const NavAdmin = () => {
     <div className="NavAdmin">
         <BootstrapNavbar expand="lg" id="navbar">
             <BootstrapNavbar.Brand href="#" className="brandIcon">
-            <FontAwesomeIcon icon={faGraduationCap} color="#7FC7D9"  size='2x' />
+            <FontAwesomeIcon icon={faGraduationCap} color="#7FC7D9"  size='2x' style={{marginLeft:"20px"}} />
             </BootstrapNavbar.Brand>
             <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" style={{ backgroundColor: '#7FC7D9' }} />
             <BootstrapNavbar.Collapse id="basic-navbar-nav">

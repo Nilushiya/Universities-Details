@@ -1,0 +1,106 @@
+@import './color.css';
+@import url('https://fonts.googleapis.com/css2?family=Freeman&display=swap');
+.profileAdmincontainer {
+    max-width: 100vw;
+    margin: 0 auto;
+    background-color: var(--white);
+    font-family: "Freeman", sans-serif;
+    padding-bottom: 20px;
+    max-height: 100vh;
+  }
+.profileBox{
+  width:400px;
+  background-color: var(--blue);
+  margin-top: 100px;
+  margin-left: 80px;
+  border: 1px solid var(--blue);
+  color: var(--white);
+  font-size: 20px;
+  letter-spacing: 1px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+  text-align: center;
+}  
+.profileBox  h2 {
+    text-align: center;
+  }
+  
+.profileBox  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .profileBox  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .profileBox  .form-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .profileBox button {
+    margin: 5px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .profileBox  button[type="submit"] {
+    background-color: var(--orange);
+    color: var(--blue);
+  }
+  
+  .profileBox  button[type="button"] {
+    background-color: var(--orange);
+    color:var(--blue);
+  }
+  
+  .profileBox button + button {
+    margin-left: 10px;
+  }
+  /* @media only screen and (max-width: 767px) {
+    .profileAdmincontainer {
+        width: 500px;
+        height: 320px;
+      }
+    .profileBox{
+        width: 500px;
+        margin-top: 10%;
+        margin-left: 180px;
+    }
+  } */
+  /* @media only screen and (max-width: 600px) {
+    .profileAdmincontainer {
+        width: 748px;
+        height: 320px;
+      }
+    .profileBox{
+        padding-top: 50px;
+        width: 560px ;
+        min-height: 350px;
+        font-size: 25px;
+        margin-top: 15%;
+        margin-left: 100px;
+    }} */
+    /* @media only screen and (max-width: 500px) {
+        .profileBox{
+            padding-top: 50px;
+            width: 650px ;
+            min-height: 420px;
+            font-size: 30px;
+            margin-top: 20%;
+            margin-left: 60px;
+        }} */
+        /* @media only screen and (max-width: 500px) {
+            .profileBox{
+                padding-top: 50px;
+                width: 650px ;
+                min-height: 520px;
+                font-size: 40px;
+                margin-top: 20%;
+                margin-left: 60px;
+            }} */
