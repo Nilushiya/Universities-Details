@@ -63,17 +63,17 @@ const University = () => {
     <div className='university'>
       <CustomNavbar />
       <div className="row m-0 w-100">
-        <div className="col-lg-4 leftSideBar">
+        <div className="col-lg-3 leftSideBar">
           <Navbar  expand="lg" style={{backgroundColor:"#0F1035"}}>
             <Container style={{backgroundColor:"#0F1035"}}>
               <Navbar.Toggle aria-controls="navbar-nav" style={{backgroundColor:"#0F1035" ,color:"white",border:"2px solid white" }}/>
                 <Navbar.Collapse id="navbar-nav" style={{backgroundColor:"#0F1035", borderRadius:"20px"}}>
-                  <Nav className="me-auto navList" style={{display:"flex" , flexDirection:"column",backgroundColor:"#072040"}}>
+                  <Nav className="me-auto navList" style={{display:"flex" , flexDirection:"column",backgroundColor:"#0F1035"}}>
                     <div className="dropdown-column" style={{backgroundColor:"#7FC7D9", borderRadius:"10px" ,width:"300px"}}>
                       {faculties.map((faculty, index) => (
                         <NavDropdown title={faculty.facultyName} id={`services-dropdown-${index}`} key={faculty.fac_id} onClick={() =>fetchDepartment(faculty.fac_id)} style={{padding:"10px",border:"1px solid #072040"}}>
                           {departments.map((department) => (
-                            <NavDropdown.Item   key={department.dep_id} style={{color:"#072040",backgroundColor: "#ff5b25",border:"1px solid #072040",paddingTop:"10px" }} onClick = {() =>fetchCourse(department.dep_id , department.departmentName) } >
+                            <NavDropdown.Item   key={department.dep_id} style={{color:"#0F1035",backgroundColor: "#7FC7D9",border:"1px solid #072040",paddingTop:"10px" }} onClick = {() =>fetchCourse(department.dep_id , department.departmentName) } >
                               {department.departmentName}
                             </NavDropdown.Item>))}
                         </NavDropdown>))
@@ -84,7 +84,7 @@ const University = () => {
             </Container>
           </Navbar>
         </div>
-          <div className="col-lg-8 rightBody">
+          <div className="col-lg-9 rightBody">
             {depName  ? 
             <EngCourseDetails 
               course = {course} 

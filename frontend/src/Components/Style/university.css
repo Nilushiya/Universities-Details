@@ -4,23 +4,22 @@ body{
     font-family: "Kanit", sans-serif; 
 }
 .university{
-    min-height: 100vh;
+  
      background-color: var(--white);
 }
 .university .leftSideBar{
-    max-height: 100vh;
     background-color: var(--blue);
     color: var(--white);
     padding-top: 30px;
     font-family: "Kanit", sans-serif;
 }
 .university .rightBody{
-    height: 100vh;
+  
     padding: 30px;
     font-family: "Kanit", sans-serif;
 }
 .details .facname{
-    background-color: var(--blue);
+    background-color: var(--pink);
     color: var(--white);
     display: flex;
     flex-direction: column;

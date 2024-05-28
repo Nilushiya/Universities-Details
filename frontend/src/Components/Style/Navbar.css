@@ -13,6 +13,7 @@
     padding: 0 2%;
     width: 150px;
     border-radius: 5px;
+    letter-spacing: 1px;
 }
 
 #nav .uniDropdownItem{
@@ -65,6 +66,7 @@
     text-align: center;
     color: var(--blue);
     font-size: 20px;
+    letter-spacing: 1px;
 }
 
 #nav .navFriend{

@@ -54,8 +54,8 @@ const CustomNavbar = () => {
 
   return (
     <BootstrapNavbar  expand="lg" id='nav' > 
-      <BootstrapNavbar.Brand href="/" className='brand'>    <FontAwesomeIcon icon={faGraduationCap} color="#ff5b25"  size='2x' /></BootstrapNavbar.Brand>
-      <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" style={{ backgroundColor:'#ff5b25'}}/>
+      <BootstrapNavbar.Brand href="/" className='brand'>    <FontAwesomeIcon icon={faGraduationCap} color="#7FC7D9"  size='2x' /></BootstrapNavbar.Brand>
+      <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" style={{ backgroundColor:'#7FC7D9'}}/>
       <BootstrapNavbar.Collapse id="basic-navbar-nav" >
         <Nav className="me-auto" >
           <NavDropdown title="Universities" id="basic-nav-dropdown" className='uniDropdown'>

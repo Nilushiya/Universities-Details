@@ -79,35 +79,35 @@ const Profile = () => {
     <div className="profile-container">
     <CustomNavbar />
       <div className="profile_box">
-      <FontAwesomeIcon icon={faUser} size='3x'/> {isEditing ? (
+      <FontAwesomeIcon icon={faUser} size='3x' color='#7FC7D9' style={{paddingLeft:"37%",margin:"5%"}}/> {isEditing ? (
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Username:</label>
-            <input type="text" name="name" value={user1.name} onChange={handleChange} />
+            <label >Username:</label>
+            <input type="text" name="name" value={user1.name} onChange={handleChange} style={{backgroundColor:"#DCF2F1", color:"#365486"}}/>
           </div>
           <div className="form-group">
             <label>Email:</label>
-            <input type="email" name="email" value={user1.email} onChange={handleChange} />
+            <input type="email" name="email" value={user1.email} onChange={handleChange} style={{backgroundColor:"#DCF2F1", color:"#365486"}}/>
           </div>
           <div className="form-group">
             <label>Phone Number:</label>
-            <input type="text" name="phone" value={user.phone} onChange={handleChange} />
+            <input type="text" name="phone" value={user.phone} onChange={handleChange} style={{backgroundColor:"#DCF2F1", color:"#365486"}}/>
           </div>
           <div className="form-group">
             <label>Address:</label>
-            <input type="text" name="address" value={user.address} onChange={handleChange} />
+            <input type="text" name="address" value={user.address} onChange={handleChange} style={{backgroundColor:"#DCF2F1", color:"#365486"}} />
           </div>
           <button type="submit">Save</button>
           <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
         </form>
       ) : (
         <div>
-          <p><strong>Username:</strong> {user1.name}</p>
+          <p><strong >Username:</strong> {user1.name}</p>
           <p><strong>Email:</strong> {user1.email}</p>
           <p><strong>Phone Number:</strong> {user.phone}</p>
           <p><strong>Address:</strong> {user.address}</p>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
-          <button onClick={handleDelete}>Delete Account</button>
+          <button onClick={() => setIsEditing(true)} style={{backgroundColor:"#7FC7D9"}}>Edit</button>
+          <button onClick={handleDelete} style={{backgroundColor:"#7FC7D9"}}>Delete Account</button>
         </div>
       )}
       </div>

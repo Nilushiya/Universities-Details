@@ -45,7 +45,7 @@ import { faFaceSmile} from '@fortawesome/free-solid-svg-icons';
     <div className='details'>
       <div className="uniName">
         <h1>Hello              
-        <FontAwesomeIcon icon={faFaceSmile}  className='smile' size='1x' style={{color:"#ff5b25"}}/> 
+        <FontAwesomeIcon icon={faFaceSmile}  className='smile' size='1x' style={{color:"#365486"}}/> 
         <i>{custemer},</i> 
         <br />
         Welcome to {name}</h1>

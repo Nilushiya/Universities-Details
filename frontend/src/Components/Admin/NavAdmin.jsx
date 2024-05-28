@@ -12,16 +12,16 @@ const NavAdmin = () => {
     <div className="NavAdmin">
         <BootstrapNavbar expand="lg" id="navbar">
             <BootstrapNavbar.Brand href="#" className="brandIcon">
-            <FontAwesomeIcon icon={faGraduationCap} color="#ff5b25"  size='2x' />
+            <FontAwesomeIcon icon={faGraduationCap} color="#7FC7D9"  size='2x' />
             </BootstrapNavbar.Brand>
-            <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" style={{ backgroundColor: '#ff5b25' }} />
+            <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" style={{ backgroundColor: '#7FC7D9' }} />
             <BootstrapNavbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto adminRight">
                     <Nav.Link className="logoutBtn" href="#" onClick={logout}>
                         Logout
                     </Nav.Link>
                     <Nav.Link className="navicon" href="/adminprofile">
-                        <FontAwesomeIcon icon={faUser} color="#ff5b25" className="friendIcon" size='xl' />
+                        <FontAwesomeIcon icon={faUser} color="#7FC7D9"  size='2x' />
                     </Nav.Link>
                 </Nav>
             </BootstrapNavbar.Collapse>

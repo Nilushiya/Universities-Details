@@ -5,19 +5,19 @@
     margin: 0 auto;
     background-color: var(--white);
     font-family: "Freeman", sans-serif;
-    height: 100vh;
+    padding-bottom: 20px;
   }
 .profile_box{
   max-width:400px ;
   background-color: var(--blue);
   margin: 80px auto;
-  border: 1px solid #ccc;
+  border: 1px solid var(--blue);
   color: var(--white);
   font-size: 20px;
   letter-spacing: 1px;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
 }  
 .profile_box  h2 {
     text-align: center;
@@ -47,13 +47,13 @@
   }
   
   .profile_box  button[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--orange);
+    color: var(--blue);
   }
   
   .profile_box  button[type="button"] {
-    background-color: #f44336;
-    color: white;
+    background-color: var(--orange);
+    color:var(--blue);
   }
   
   .profile_box button + button {
