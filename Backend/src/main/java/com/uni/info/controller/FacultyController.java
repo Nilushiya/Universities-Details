@@ -35,9 +35,9 @@ public class FacultyController {
         return facultyService.groupedByUniversity(u_id);
     }
     @PutMapping("/updatefaculty/{fac_id}")
-    public String updatefac(@PathVariable Long fac_id , @RequestParam String facultyName){
-        facultyService.updateFaculty(fac_id , facultyName);
-        return "update okay";
+    public ResponseEntity<Void> updateFaculty(@PathVariable Long fac_id, @RequestBody FacultyDto facultyDto) {
+        facultyService.updateFaculty(fac_id, facultyDto);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/delete/{fac_id}")

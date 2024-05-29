@@ -163,9 +163,11 @@ export const fetchFaculty = async(fac_id) => {
 
 export const updateFaculty = async (fac_id, faculty) => {
   try {
-    const response = await axios.put(`${BASE_URL}/university/updatefaculty/${fac_id}`, null, {
-      params: { uniName: faculty.uniname },
-    });
+    console.log("iii:",fac_id)
+    console.log("faculty:",faculty)
+    const response = await axios.put(`${BASE_URL}/faculty/updatefaculty/${fac_id}`,
+      faculty
+    );
     return response.data;
   } catch (err) {
     console.error("Error updating university", err);

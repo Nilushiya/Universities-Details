@@ -5,6 +5,7 @@ import com.uni.info.entity.Faculty;
 import com.uni.info.exception.FacultyServiceException;
 import com.uni.info.exception.UniversityServiceException;
 import com.uni.info.repository.FacultyRepo;
+import jakarta.transaction.Transactional;
 import org.hibernate.sql.ast.tree.expression.Collation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,15 +43,19 @@ public class FacultyServiceImp implements FacultyService{
         return facultyRepo.groupByUniversity(u_id);
     }
 
-    @Override
-    public void updateFaculty(Long fac_id, String facultyName) {
-        facultyRepo.update(fac_id , facultyName);
-    }
+
 
     @Override
     public void deleteFaculty(Long facId) {
         facultyRepo.deleteById(facId);
     }
+
+    @Override
+    public void updateFaculty(Long facId, FacultyDto facultyDto) {
+        facultyRepo.update(facId, facultyDto.getFacultyName(), facultyDto.getU_id());
+    }
+
+
 
     @Override
     public List<Faculty> getFaculties() {

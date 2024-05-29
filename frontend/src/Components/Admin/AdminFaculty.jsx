@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { CreateFaculty, fetchAllFaculty } from '../../Context/UserContext';
+import { CreateFaculty, deleteFaculty, fetchAllFaculty, fetchUniversity, updateFaculty } from '../../Context/UserContext';
 import NavAdmin from './NavAdmin';
 import Sidebar from './Sidebar';
 
 const AdminFaculty = () => {
+  const [universities, setUniversities] = useState([]);
   const [faculties, setFaculties] = useState([]);
   const [facData, setFacData] = useState({
     facultyName: '',
-    uid: ''
+    uId: ''
   });
   const [selectedFaculty, setSelectedFaculty] = useState(null);
 
@@ -19,10 +20,18 @@ const AdminFaculty = () => {
     getFaculties();
   }, []);
 
+  useEffect(() => {
+    const getUniversities = async () => {
+      const universities = await fetchUniversity();
+      // console.log("uni" , universities[0])
+      setUniversities(universities);
+    };
+    getUniversities();
+  }, []);
   const handleCreate = async () => {
     const newFaculty = await CreateFaculty(facData);
     setFaculties([...faculties, newFaculty]);
-    setFacData({ facultyName: '', uid: '' }); // Reset form data
+    setFacData({ facultyName: '', uId: '' }); 
   };
 
   const handleChange = (e) => {
@@ -34,19 +43,21 @@ const AdminFaculty = () => {
   };
 
   const handleUpdate = async () => {
-    // Handle update logic here
-    // Update faculties state with the updated faculty
-    setSelectedFaculty(null); // Clear selected faculty after update
-  };
+    const updatedFaculty = await updateFaculty(selectedFaculty.fac_id, facData);
+    setFaculties(faculties.map((faculty) => (faculty.fac_id === selectedFaculty.faculties ? updatedFaculty : faculty)));
+    setSelectedFaculty(null); 
+    window.location.reload();
+    setFacData({ facultyName: '', uId: '' }); 
+    };
 
   const handleDelete = async (fac_id) => {
-    // Handle delete logic here
+    await deleteFaculty(fac_id);
     setFaculties(faculties.filter((faculty) => faculty.fac_id !== fac_id));
   };
 
   const handleEdit = (faculty) => {
     setSelectedFaculty(faculty);
-    setFacData({ facultyName: faculty.facultyName, uid: faculty.uid });
+    setFacData({ facultyName: faculty.facultyName, uId: faculty.uId });
   };
 
   const handleSubmit = (e) => {
@@ -57,7 +68,17 @@ const AdminFaculty = () => {
       handleCreate();
     }
   };
-
+  const groupByuId = (faculties) => {
+    return faculties.reduce((groups, faculty) => {
+      const { uId } = faculty;
+      if (!groups[uId]) {
+        groups[uId] = [];
+      }
+      groups[uId].push(faculty);
+      return groups;
+    }, {});
+  };
+  const groupedFaculties = groupByuId(faculties);
   return (
     <div className="adminFaculty">
       <div className="adminProfileContainer">
@@ -73,7 +94,7 @@ const AdminFaculty = () => {
                 <form onSubmit={handleSubmit} className="form">
                   <input
                     type="text"
-                    name="facultyName" // Corrected name attribute
+                    name="facultyName" 
                     value={facData.facultyName}
                     onChange={handleChange}
                     placeholder="Faculty Name"
@@ -81,8 +102,8 @@ const AdminFaculty = () => {
                   />
                   <input
                     type="text"
-                    name="uid" // Corrected name attribute
-                    value={facData.uid}
+                    name="uId" 
+                    value={facData.uId}
                     onChange={handleChange}
                     placeholder="University Id"
                     required
@@ -94,17 +115,33 @@ const AdminFaculty = () => {
           </div>
         </div>
         <div className="uniList">
-          <ul className="faculty-list">
-            {faculties.map((faculty) => (
-              <li key={faculty.fac_id} className="faculty-item">
-                {faculty.facultyName},{faculty.uid}
-                <div className="but">
-                  <button onClick={() => handleEdit(faculty)}>Edit</button>
-                  <button onClick={() => handleDelete(faculty.fac_id)}>Delete</button>
-                </div>
-              </li>
-            ))}
-          </ul>
+        <ul className="university-list">
+          <h2>Use this uniId to add Faculty</h2>
+              {universities.map((university ) => (
+                <li key={university.uni_id} className="university-item">
+                  {university.uniName} 
+                  <div className="id">
+                  {university.uni_id}
+                  </div>
+                </li>
+              ))}
+            </ul>
+        {Object.entries(groupedFaculties).map(([uId, faculties]) => (
+            <div key={uId} className="uId-group">
+              <h2>University ID: {uId}</h2>
+              <ul className="faculty-list">
+                {faculties.map((faculty) => (
+                  <li key={faculty.fac_id} className="faculty-item">
+                    {faculty.facultyName}
+                    <div className="but">
+                      <button onClick={() => handleEdit(faculty)}>Edit</button>
+                      <button onClick={() => handleDelete(faculty.fac_id)}>Delete</button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </div>
