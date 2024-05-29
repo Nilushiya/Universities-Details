@@ -22,7 +22,7 @@ public class UniversityController {
     @PostMapping("/create")
     public ResponseEntity<?> createUniversities(@RequestBody UniversityDto universityDto) {
         try {
-//            System.out.println("okey");
+            System.out.println("okey" + universityDto);
 
             UniversityDto createdUniversity = universityService.createUniversities(universityDto);
             return ResponseEntity.ok(createdUniversity);
@@ -45,5 +45,14 @@ public class UniversityController {
 
         int update = universityService.updateuniname(uni_id , uniName);
         return "update okay";
+    }
+    @DeleteMapping("/delete/{uni_id}")
+    public ResponseEntity<?> deleteUniversity(@PathVariable Long uni_id) {
+        try {
+            universityService.deleteUniversity(uni_id);
+            return ResponseEntity.ok("University deleted successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
 }

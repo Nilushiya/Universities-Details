@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Freeman&display=swap');
 
 .NavAdmin {
-    min-width: 100vw;
+    /* min-width: 100vw; */
     background-color: var(--blue);
 }
 
 #navbar .adminRight {
-    width: 1250px;
+    width: 97%;
     display: flex;
     justify-content: end;
     font-family: "Freeman", sans-serif;
@@ -15,6 +15,9 @@
 
 #navbar .logoutBtn {
     margin-right: 20px; 
+    width: 100px;
+    padding-left: 10px;
+    margin-left: 10px;
     background-color: var(--orange);
     border-radius: 10px;
     color: var(--blue);
@@ -38,7 +41,7 @@
         padding-left: 10px; 
     }
 } */
-/* @media only screen and (max-width: 900px) {
+ /* @media only screen and (max-width: 900px) {
     .NavAdmin {
         width: 500px;
     }
@@ -48,9 +51,9 @@
     #navbar .logoutBtn {
         padding-left: 10px; 
     }
-}
+} 
 @media only screen and (max-width: 260px) {
     .NavAdmin {
         width: 260px;
     }
-} */
+}  */

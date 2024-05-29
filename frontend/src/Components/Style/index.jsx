@@ -12,4 +12,5 @@ import friend from './Friend.css'
 import adminProfile from './Admin.css'
 import adminNav from './AdminNav.css'
 import sidebar from './Sidebar.css'
-export{navbar , about , contact , login , register , university , courseDetails , details , profile , friend ,adminProfile,adminNav , sidebar}
+import adminUni from './AdminUni.css'
+export{navbar , about , contact , login , register , university , courseDetails , details , profile , friend ,adminProfile,adminNav , sidebar , adminUni}

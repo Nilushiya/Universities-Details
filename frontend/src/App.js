@@ -8,6 +8,7 @@ import Detailfrom from "./Components/Detailfrom";
 import Profile from "./Components/Profile";
 import Friend from "./Components/Friend";
 import Admin from "./Components/Admin/Admin";
+import AdminUni from "./Components/Admin/AdminUni";
 // import CustomNavbar from "./Components/CustomNavbar";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
 
 
             <Route path="/adminprofile" element={<Admin />}/>
+            <Route path="/adminUniversity" element={<AdminUni />} />
           </Routes>
 
           

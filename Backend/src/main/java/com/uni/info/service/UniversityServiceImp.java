@@ -6,6 +6,7 @@ import com.uni.info.exception.UniversityServiceException;
 import com.uni.info.repository.UniversityRepo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,5 +44,9 @@ public class UniversityServiceImp implements UniversityService{
 //        System.out.println("repo : " + universityRepo.updateUniversity(uni_id,uniName));
         universityRepo.updateUniversity(uni_id, uniName);
         return 0;
+    }
+    @Override
+    public void deleteUniversity(Long uni_id) {
+        universityRepo.deleteById(uni_id);
     }
 }

@@ -13,4 +13,6 @@ public interface UniversityService {
     List<University> getUniversities();
 
     int updateuniname(Long uniId, String uniName);
+
+    void deleteUniversity(Long uniId);
 }
