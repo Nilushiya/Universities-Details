@@ -203,6 +203,25 @@ export const sendQuestions = async (question) => {
       throw error;
     }
   };
+  export const fetchQuestions = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/question/`);
+      return response.data;
+    } catch (error) {
+      console.error("Error in sending question: ", error);
+      throw error;
+    }
+  };
+  export const deleteQuestions = async (question_id) => {
+    try {
+      console.log("qid ; ",question_id)
+      const response = await axios.delete(`${BASE_URL}/question/delete/${question_id}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error in sending question: ", error);
+      throw error;
+    }
+  };
 
 
 
