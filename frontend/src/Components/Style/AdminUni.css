@@ -9,20 +9,28 @@
   }
   
   .uni {
-    max-width: 800px;
+    /* max-width: 800px; */
     margin: 0 auto;
     padding: 20px;
     text-align: center;
   }
   
-  h1 {
-    color: #333;
+  .uni  h1 {
+    color: var(--blue) !important;
+    margin-right: 15%;
+    margin-top: 5%;
   }
   
   .form {
+    max-width: 350px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 5px rgba(78, 172, 216, 0.9);
+    background-color: var(--blue);
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-top: 15%;
+    margin-left: 21%;
   }
   
   input {
@@ -31,31 +39,67 @@
     margin-right: 10px;
     flex: 1;
     max-width: 300px;
+    outline: none;
+    color: var(--blue);
+    margin-bottom: 15px !important;
   }
   
   button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    background-color: var(--orange);
+    color: var(--blue);
+    border-radius: 10px !important;
+    font-size: 18px !important;
+    font-weight: 600;
+    border: none;
+
   }
-  
   .university-list {
+    background-color: var(--white);
     list-style-type: none;
     padding: 0;
   }
-  
+
   .university-item {
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+    font-weight: 600;
     display: flex;
+    padding-left: 50px !important;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background: #f9f9f9;
+    background-color: var(--orange);
     margin: 10px 0;
+    color: var(--blue);
+    font-size: 18px;
     border: 1px solid #ddd;
     border-radius: 5px;
   }
   
   .university-item button {
     margin-left: 10px;
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    background-color: var(--blue);
   }
-  
+  @media only screen and (max-width: 900px) {
+    .form {
+        margin-left: 10%;
+      }
+  }
+  @media only screen and (max-width: 600px) {
+    .form {
+        margin-top: 25%;
+        margin-left: 4%;
+      }
+  } 
+  @media only screen and (max-width: 493px) {
+    .university-item {
+        flex-direction: column;
+        padding-left: 1% !important;
+      }
+  } 

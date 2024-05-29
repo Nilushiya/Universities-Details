@@ -52,40 +52,44 @@ const AdminUni = () => {
   };
   return (
     <div className='adminUni'>
-         <div className="adminProfileContainer">
-          <NavAdmin />
-            <div className="row m-0 adminRow" style={{backgroundColor:"#DCF2F1"}}>
-              <div className="col-lg-4 col-md-2 col-2  sidebarr" >
-                <Sidebar />        
-              </div>
-              <div className="col-lg-8 col-md-10 col-10  AdminPro" >
+      <div className="adminProfileContainer">
+        <NavAdmin />
+          <div className="row m-0 adminRow" style={{backgroundColor:"#DCF2F1"}}>
+            <div className="col-lg-4 col-md-2 col-2  sidebarr" >
+              <Sidebar />        
+            </div>
+            <div className="col-lg-8 col-md-10 col-10  AdminPro" >
               <div className="profileAdmincontainer">
-              <div className="uni">
-      <h1>University Management</h1>
-      <form onSubmit={handleSubmit} className="form">
-        <input 
-          type="text" 
-          value={uniname} 
-          onChange={(e) => setName(e.target.value)} 
-          placeholder="University Name" 
-          required 
-        />
-        <button type="submit">{selectedUniversity ? 'Update' : 'Add'}</button>
-      </form>
-      <ul className="university-list">
-        {universities.map((university ) => (
-          <li key={university.uni_id} className="university-item">
-            {university.uniName} 
-            <button onClick={() => handleEdit(university)}>Edit</button>
-            <button onClick={() => handleDelete(university.uni_id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+                <div className="uni">
+                  <h1>University Management</h1>
+                  <form onSubmit={handleSubmit} className="form">
+                    <input 
+                      type="text" 
+                      value={uniname} 
+                      onChange={(e) => setName(e.target.value)} 
+                      placeholder="University Name" 
+                      required 
+                    />
+                    <button type="submit">{selectedUniversity ? 'Update' : 'Add'}</button>
+                  </form>
+                </div>
               </div>
-              </div>         
+            </div>         
           </div>
-        </div>
+          <div className="uniList">
+            <ul className="university-list">
+              {universities.map((university ) => (
+                <li key={university.uni_id} className="university-item">
+                  {university.uniName} 
+                  <div className="but">
+                    <button onClick={() => handleEdit(university)}>Edit</button>
+                    <button onClick={() => handleDelete(university.uni_id)}>Delete</button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+      </div>
     </div>
   )
 }
