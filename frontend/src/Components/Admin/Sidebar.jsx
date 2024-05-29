@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUniversity, faUserTie, faBuilding, faInfoCircle, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUniversity, faUserTie, faBuilding, faInfoCircle, faQuestionCircle, faUserCheck } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import './App.css';
 
@@ -26,6 +26,9 @@ const Sidebar = () => {
                 </Nav.Link>
                 <Nav.Link href="/details" eventKey="/details" className={`nav-link ${activeLink === '/details' ? 'active' : ''}`} onClick={() => handleSelect('/details')}>
                     <FontAwesomeIcon icon={faInfoCircle} className="icon" /> <span>Details</span>
+                </Nav.Link>
+                <Nav.Link href="/user" eventKey="/user" className={`nav-link ${activeLink === '/user' ? 'active' : ''}`} onClick={() => handleSelect('/user')}>
+                    <FontAwesomeIcon icon={faUserCheck} className="icon" /> <span>User</span>
                 </Nav.Link>
                 <Nav.Link href="/user-question" eventKey="/user-question" className={`nav-link ${activeLink === '/user-question' ? 'active' : ''}`} onClick={() => handleSelect('/user-question')}>
                     <FontAwesomeIcon icon={faQuestionCircle} className="icon" /> <span>User Questions</span>

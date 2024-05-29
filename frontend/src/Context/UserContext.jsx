@@ -47,7 +47,7 @@ export const deleteUniversity = async (uni_id, university) => {
     const response = await axios.delete(`${BASE_URL}/university/delete/${uni_id}`);
     return response.data;
   } catch (err) {
-    console.error("Error updating university", err);
+    console.error("Error Deleting university", err);
     throw err;
   }
 };
@@ -130,15 +130,57 @@ export const updateStuinfoProfile = async(stu_id , user) => {
 
 
 // Faculty
-export const fetchFaculty = async(id) => {
+export const CreateFaculty = async(facData) =>{
   try{
-      const response = await axios.get(`${BASE_URL}/faculty/getfaculty/${id}`,id);
+    console.log("facdff" , facData)
+    const response = await axios.post(`${BASE_URL}/faculty/`,  facData );
+    console.log("fac" , response)
+    return response.data;
+  }
+  catch(err){
+      console.error("Error in Create Faculties" , err);
+      throw err;
+  }
+}
+export const fetchAllFaculty = async() => {
+  try{
+      const response = await axios.get(`${BASE_URL}/faculty/get`);
+      return response
+  }
+  catch(err){
+    console.log("Api error get All fac" , err)
+  }
+}
+export const fetchFaculty = async(fac_id) => {
+  try{
+      const response = await axios.get(`${BASE_URL}/faculty/getfaculty/${fac_id}`,fac_id);
       return response
   }
   catch(err){
     console.log("Api error" , err)
   }
 }
+
+export const updateFaculty = async (fac_id, faculty) => {
+  try {
+    const response = await axios.put(`${BASE_URL}/university/updatefaculty/${fac_id}`, null, {
+      params: { uniName: faculty.uniname },
+    });
+    return response.data;
+  } catch (err) {
+    console.error("Error updating university", err);
+    throw err;
+  }
+};
+export const deleteFaculty = async (fac_id, faculty) => {
+  try {
+    const response = await axios.delete(`${BASE_URL}/faculty/delete/${fac_id}`);
+    return response.data;
+  } catch (err) {
+    console.error("Error Deleting university", err);
+    throw err;
+  }
+};
 
 
 

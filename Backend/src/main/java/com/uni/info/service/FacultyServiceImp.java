@@ -48,6 +48,11 @@ public class FacultyServiceImp implements FacultyService{
     }
 
     @Override
+    public void deleteFaculty(Long facId) {
+        facultyRepo.deleteById(facId);
+    }
+
+    @Override
     public List<Faculty> getFaculties() {
         return facultyRepo.findAll();
     }

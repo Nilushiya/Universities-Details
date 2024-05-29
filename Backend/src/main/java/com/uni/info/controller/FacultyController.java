@@ -5,6 +5,8 @@ import com.uni.info.entity.Faculty;
 import com.uni.info.service.FacultyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,5 +38,15 @@ public class FacultyController {
     public String updatefac(@PathVariable Long fac_id , @RequestParam String facultyName){
         facultyService.updateFaculty(fac_id , facultyName);
         return "update okay";
+    }
+
+    @DeleteMapping("/delete/{fac_id}")
+    public ResponseEntity<?> deleteFaculty(@PathVariable Long fac_id) {
+        try {
+            facultyService.deleteFaculty(fac_id);
+            return ResponseEntity.ok("Faculty deleted successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
 }

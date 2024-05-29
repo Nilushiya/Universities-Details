@@ -16,4 +16,6 @@ public interface FacultyService {
     List<Faculty> groupedByUniversity(Long u_id);
 
     void updateFaculty(Long facId, String facultyName);
+
+    void deleteFaculty(Long facId);
 }
