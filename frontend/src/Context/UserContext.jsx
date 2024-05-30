@@ -200,7 +200,7 @@ export const deleteFaculty = async (fac_id, faculty) => {
 export const CreateDeparment = async(facData) =>{
   try{
     console.log("facdff" , facData)
-    const response = await axios.post(`${BASE_URL}/department/post`,  facData );
+    const response = await axios.post(`${BASE_URL}/department/post`,facData );
     console.log("res" , response)
     return response.data;
   }
@@ -211,7 +211,7 @@ export const CreateDeparment = async(facData) =>{
 }
 export const fetchAllDepartments = async() => {
   try{
-    const response = await axios.get(`${BASE_URL}/department/get`)
+    const response = await axios.get(`${BASE_URL}//get`)
     return response
   }
   catch(err){
@@ -238,18 +238,20 @@ export const fetchDepartments = async(fac_id) => {
 }
 export const updateDepartment = async (dep_id, department) => {
   try {
-    // console.log("iii:",dep_id)
-    // console.log("department:",department)
+    console.log("iii:",dep_id)
+    console.log("department:",department)
     const response = await axios.put(`${BASE_URL}/department/updateDepartment/${dep_id}`,
     department
     );
+    console.log("res",response)
     return response.data;
   } catch (err) {
     console.error("Error updating department", err);
     throw err;
   }
 };
-export const deleteDepartment = async (dep_id, department) => {
+export const deleteDepartment = async (dep_id) => {
+  console.log("deId :",dep_id)
   try {
     const response = await axios.delete(`${BASE_URL}/department/delete/${dep_id}`);
     return response.data;

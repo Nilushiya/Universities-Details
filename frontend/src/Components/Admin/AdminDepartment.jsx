@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {adminDepartment} from '../Style'
-import { fetchAllDepartments, fetchAllFaculty, fetchWithUni } from '../../Context/UserContext';
+import { CreateDeparment, deleteDepartment, fetchAllDepartments, fetchAllFaculty, fetchByJoin, fetchWithUni, updateDepartment } from '../../Context/UserContext';
 import NavAdmin from './NavAdmin';
 import Sidebar from './Sidebar';
 const AdminDepartment = () => {
@@ -14,7 +14,7 @@ const AdminDepartment = () => {
 
   useEffect(() => {
     const getDepartments = async () => {
-      const fetchAllDepartment = await fetchAllDepartments();
+      const fetchAllDepartment = await fetchByJoin();
       console.log("All Fac: ", fetchAllDepartment.data[0]);
       setDepartments(fetchAllDepartment.data);
     };
@@ -31,56 +31,75 @@ const AdminDepartment = () => {
     getFaculties();
   }, []);
   const handleCreate = async () => {
-    // const newFaculty = await CreateFaculty(facData);
-    // setDepartments([...faculties, newFaculty]);
-    // setFacData({ departmentName: '', f_id: '' }); 
+    const newDepartment = await CreateDeparment(facData);
+    console.log("new:",newDepartment)
+        const faculty = faculties.find(f => f[0].fac_id === newDepartment.f_id);
+        const university = faculty[1];
+        const newDepartmentEntry = [
+          { fac_id: faculty[0].fac_id, facultyName: faculty[0].facultyName, uid: faculty[0].uid },
+          { uni_id: university.uni_id, uniName: university.uniName },
+          { dep_id: newDepartment.dep_id, departmentName: newDepartment.departmentName, f_id: newDepartment.f_id }
+        ];
+        
+        setDepartments([...departments, newDepartmentEntry]);
+    
+    setFacData({ departmentName: '', f_id: '' }); 
   };
 
   const handleChange = (e) => {
-    // const { name, value } = e.target;
-    // setFacData((prevData) => ({
-    //   ...prevData,
-    //   [name]: value
-    // }));
+    const { name, value } = e.target;
+    setFacData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
   };
 
   const handleUpdate = async () => {
-    // const updatedFaculty = await updateFaculty(selectedFaculty.fac_id, facData);
-    // setFaculties(faculties.map((faculty) => (faculty.fac_id === selectedFaculty.faculties ? updatedFaculty : faculty)));
-    // setSelectedFaculty(null); 
-    // window.location.reload();
-    // setFacData({ departmentName: '', f_id: '' }); 
+    const updatedFaculty = await updateDepartment(selectedFaculty[2].dep_id, facData);
+    // const faculty = faculties.find(f => f[0].fac_id === updatedFaculty.f_id);
+    // const university = faculty[1];
+    // const newDepartmentEntry = [
+    //   { fac_id: faculty[0].fac_id, facultyName: faculty[0].facultyName, uid: faculty[0].uid },
+    //   { uni_id: university.uni_id, uniName: university.uniName },
+    //   { dep_id: updatedFaculty.dep_id, departmentName: updatedFaculty.departmentName, f_id: updatedFaculty.f_id }
+    // ];
+    // setDepartments(departments.map((department) => (department.f_id === selectedFaculty.departments ? updatedFaculty : department)));
+    setSelectedFaculty(null); 
+    window.location.reload();
+    setFacData({ departmentName: '', f_id: '' }); 
     };
 
-  const handleDelete = async (fac_id) => {
-    // await deleteFaculty(fac_id);
-    // setFaculties(faculties.filter((faculty) => faculty.fac_id !== fac_id));
+  const handleDelete = async (dep_id) => {
+ 
+   const res =  await deleteDepartment(dep_id);
+   console.log("res:",res)
+    setDepartments(departments.filter((department) => department[2].dep_id !== dep_id));
   };
 
-  const handleEdit = (faculty) => {
-    // setSelectedFaculty(faculty);
-    // setFacData({ departmentName: faculty.departmentName, f_id: faculty.f_id });
+  const handleEdit = (department) => {
+    setSelectedFaculty(department);
+    setFacData({ departmentName: department[2].departmentName, f_id: department[2].f_id });
   };
 
   const handleSubmit = (e) => {
-    // e.preventDefault();
-    // if (selectedFaculty) {
-    //   handleUpdate();
-    // } else {
-    //   handleCreate();
-    // }
+    e.preventDefault();
+    if (selectedFaculty) {
+      handleUpdate();
+    } else {
+      handleCreate();
+    }
   };
-//   const groupByf_id = (faculties) => {
-//     return faculties.reduce((groups, faculty) => {
-//       const { f_id } = faculty;
-//       if (!groups[f_id]) {
-//         groups[f_id] = [];
-//       }
-//       groups[f_id].push(faculty);
-//       return groups;
-//     }, {});
-//   };
-//   const groupedFaculties = groupByf_id(faculties);
+  const groupDepartmentsByUniversity = () => {
+    const groupedDepartments = {};
+    departments.forEach(department => {
+        const universityName = department[1].uniName;
+        if (!groupedDepartments[universityName]) {
+            groupedDepartments[universityName] = [];
+        }
+        groupedDepartments[universityName].push(department);
+    });
+    return groupedDepartments;
+};
 
 const groupFacultiesByUniversity = () => {
     const groupedFaculties = {};
@@ -119,7 +138,7 @@ const groupFacultiesByUniversity = () => {
                     name="f_id" 
                     value={facData.f_id}
                     onChange={handleChange}
-                    placeholder="University Id"
+                    placeholder="Faculty Id"
                     required
                   />
                   <button type="submit">{selectedFaculty ? 'Update' : 'Add'}</button>
@@ -148,22 +167,22 @@ const groupFacultiesByUniversity = () => {
                         </li>
                     ))}
                 </ul>
-        {/* {Object.entries(groupedFaculties).map(([f_id, faculties]) => ( */}
-            {/* <div key={f_id} className="f_id-group">
-              <h2>University ID: {f_id}</h2> */}
+                {Object.entries(groupDepartmentsByUniversity()).map(([universityName, departments]) => (
+                 <div key={departments} className="f_id-group">
+                <h2> {universityName}</h2> 
               <ul className="faculty-list">
                 {departments.map((department) => (
-                  <li key={department.dep_id} className="department-item">
-                    {department.departmentName}, {department.f_id}
+                  <li key={department[2].dep_id} className="department-item">
+                    {department[2].departmentName}, {department[2].f_id}
                     <div className="but">
                       <button onClick={() => handleEdit(department)}>Edit</button>
-                      <button onClick={() => handleDelete(department.dep_id)}>Delete</button>
+                      <button onClick={() => handleDelete(department[2].dep_id)}>Delete</button>
                     </div>
                   </li>
                 ))}
               </ul>
-            {/* </div> */}
-          {/* ))} */}
+             </div> 
+         ))}  
         </div>
       </div>
     </div>
