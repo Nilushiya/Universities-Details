@@ -2,8 +2,10 @@ package com.uni.info.service;
 
 import com.uni.info.dto.StudentDto;
 import com.uni.info.entity.Student;
+import com.uni.info.enums.Role;
 import com.uni.info.repository.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -45,6 +47,28 @@ public class SudentSerrviceImp implements StudentService{
             return Collections.emptyList(); // Or handle this case as needed
         }
     }
+
+    @Override
+    public ResponseEntity<?> changeType(StudentDto studentDto) {
+                Optional<Student> existingUser = studentRepo.findEmail(studentDto.getEmail());
+        if (existingUser.isPresent()) {
+            Student updateUser = existingUser.get();
+           if(updateUser.getUserType() == Role.ADMIN){
+               return ResponseEntity.ok().body("Already, This user are Admin");
+           }
+           else {
+               updateUser.setUserType(Role.ADMIN);
+               studentRepo.save(updateUser);
+               return ResponseEntity.ok().body("User type updated successfully");
+           }
+//            updateUser.setUserType(studentDto.getUserType());
+
+        } else {
+            return ResponseEntity.status(404).body("User not found");
+        }
+
+    }
+
 
 }
 

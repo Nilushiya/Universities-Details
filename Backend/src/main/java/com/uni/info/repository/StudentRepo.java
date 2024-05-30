@@ -1,7 +1,5 @@
 package com.uni.info.repository;
 
-import aj.org.objectweb.asm.commons.Remapper;
-import com.uni.info.entity.StudentInfo;
 import com.uni.info.enums.Role;
 import com.uni.info.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,8 +13,8 @@ public interface StudentRepo extends JpaRepository<Student, Long>{
     Student findByUserType(Role userType);
     boolean existsByEmail(String userEmail);
     Optional<Student> findByEmail(String userEmail);
-
-
+    @Query("SELECT s FROM Student s WHERE s.email = :email AND s.isActive = true")
+    Optional<Student> findEmail(@Param("email") String email);
 
 //    Optional<Student> findByUsername(String username);
 

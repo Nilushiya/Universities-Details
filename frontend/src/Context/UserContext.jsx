@@ -346,6 +346,17 @@ export const fetchAdminDetails = async(studentId) => {
     console.log("Error in fetch All Details ", err);
   }
 }
+export const changeUserType = async(email) => {
+  try{
+    console.log("Email",email)
+    const response = await axios.post(`${BASE_URL}/student/changeType`,  { email })
+    console.log("reees:",response)
+    return response;
+}   
+catch(err){
+  console.log("Error in change userType ", err);
+}
+}
 
 export const updateStuProfile = async(stu_id , user1) => {
   try{

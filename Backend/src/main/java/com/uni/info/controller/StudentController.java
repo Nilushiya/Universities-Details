@@ -5,9 +5,11 @@ import com.uni.info.entity.Student;
 import com.uni.info.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
@@ -27,6 +29,11 @@ public class StudentController {
         studentService.deactivateUser(id);
     }
 
+    @PostMapping("/changeType")
+    public ResponseEntity<?> changeUserType(@RequestBody StudentDto studentDto) {
+                return studentService.changeType(studentDto);
+
+    }
     @GetMapping("/admin/{studentId}")
     public List<Student> getAdmin(@PathVariable Long studentId){
        return studentService.getAdminDetails(studentId);

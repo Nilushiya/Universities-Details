@@ -1,5 +1,6 @@
 package com.uni.info.dto;
 
+import com.uni.info.entity.Student;
 import com.uni.info.enums.Role;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

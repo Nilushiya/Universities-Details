@@ -12,6 +12,7 @@ import AdminUni from "./Components/Admin/AdminUni";
 import AdminFaculty from "./Components/Admin/AdminFaculty";
 import Queston from "./Components/Admin/Queston";
 import AdminDepartment from "./Components/Admin/AdminDepartment";
+import UserManagement from "./Components/Admin/UserManagement";
 // import CustomNavbar from "./Components/CustomNavbar";
 
 function App() {
@@ -36,6 +37,8 @@ function App() {
             <Route path="/adminFac" element={<AdminFaculty />} />
             <Route path="/user-question" element={<Queston />} />
             <Route path="/adminDepartment" element={<AdminDepartment />} />
+            <Route path="/user" element={<UserManagement />} />
+
     
           </Routes>
 
