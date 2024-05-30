@@ -36,11 +36,6 @@ public class DepartmentServiceImp implements DepartmentService{
     }
 
     @Override
-    public void updateFaculty(Long dep_id, String departmentName) {
-        departmentRepo.update(dep_id , departmentName);
-    }
-
-    @Override
     public List<Department> groupDepartment(Long f_id) {
         return departmentRepo.groupDep(f_id);
     }
@@ -48,5 +43,15 @@ public class DepartmentServiceImp implements DepartmentService{
     @Override
     public List<Department> getDepartment() {
         return departmentRepo.findAll();
+    }
+
+    @Override
+    public void updateDepartment(Long depId, DepartmentDto departmentDto) {
+        departmentRepo.update(depId, departmentDto.getDepartmentName(), departmentDto.getF_id());
+    }
+
+    @Override
+    public void deleteDepartment(Long depId) {
+        departmentRepo.deleteById(depId);
     }
 }

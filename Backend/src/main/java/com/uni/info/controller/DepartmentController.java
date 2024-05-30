@@ -1,11 +1,14 @@
 package com.uni.info.controller;
 
 import com.uni.info.dto.DepartmentDto;
+import com.uni.info.dto.FacultyDto;
 import com.uni.info.entity.Department;
 import com.uni.info.entity.Faculty;
 import com.uni.info.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,11 +28,7 @@ public class DepartmentController {
         return departmentService.createDepartment(departmentDto);
     }
 
-    @PutMapping("/updatedepartment/{dep_id}")
-    public String updatefac(@PathVariable Long dep_id , @RequestParam String departmentName){
-        departmentService.updateFaculty(dep_id , departmentName);
-        return "update okay";
-    }
+
     @GetMapping("/get")
     public List<Department> getAllDepartmeny() {
         return departmentService.getDepartment();
@@ -37,5 +36,21 @@ public class DepartmentController {
     @GetMapping("/gruopedepartment/{f_id}")
     public List<Department> groupOfDepartment(@PathVariable Long f_id){
         return departmentService.groupDepartment(f_id);
+    }
+
+    @PutMapping("/updateDepartment/{dep_id}")
+    public ResponseEntity<Void> updateDepartment(@PathVariable Long dep_id, @RequestBody DepartmentDto departmentDto) {
+        departmentService.updateDepartment(dep_id, departmentDto);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/delete/{dep_id}")
+    public ResponseEntity<?> deleteDepartment(@PathVariable Long dep_id) {
+        try {
+            departmentService.deleteDepartment(dep_id);
+            return ResponseEntity.ok("Department deleted successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
 }

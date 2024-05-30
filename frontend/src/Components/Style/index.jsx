@@ -18,8 +18,9 @@ import sidebar from './Sidebar.css'
 import adminUni from './AdminUni.css'
 import adminFac from './AdminFac.css'
 import queston from './Queston.css'
+import adminDepartment from './AdminDepartment.css'
 
 export{navbar , about , contact , login , register , 
     university , courseDetails , details , profile , 
     friend ,adminProfile,adminNav , sidebar , adminUni ,
-     adminFac , queston}
+     adminFac , queston , adminDepartment}

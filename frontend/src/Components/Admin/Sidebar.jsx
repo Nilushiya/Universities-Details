@@ -21,7 +21,7 @@ const Sidebar = () => {
                 <Nav.Link href="/adminFac" eventKey="/adminFac" className={`nav-link ${activeLink === '/adminFac' ? 'active' : ''}`} onClick={() => handleSelect('/adminFac')}>
                     <FontAwesomeIcon icon={faUserTie} className="icon" /> <span>Faculty</span>
                 </Nav.Link>
-                <Nav.Link href="/department" eventKey="/department" className={`nav-link ${activeLink === '/department' ? 'active' : ''}`} onClick={() => handleSelect('/department')}>
+                <Nav.Link href="/adminDepartment" eventKey="/adminDepartment" className={`nav-link ${activeLink === '/adminDepartment' ? 'active' : ''}`} onClick={() => handleSelect('/adminDepartment')}>
                     <FontAwesomeIcon icon={faBuilding} className="icon" /> <span>Department</span>
                 </Nav.Link>
                 <Nav.Link href="/details" eventKey="/details" className={`nav-link ${activeLink === '/details' ? 'active' : ''}`} onClick={() => handleSelect('/details')}>

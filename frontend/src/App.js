@@ -11,6 +11,7 @@ import Admin from "./Components/Admin/Admin";
 import AdminUni from "./Components/Admin/AdminUni";
 import AdminFaculty from "./Components/Admin/AdminFaculty";
 import Queston from "./Components/Admin/Queston";
+import AdminDepartment from "./Components/Admin/AdminDepartment";
 // import CustomNavbar from "./Components/CustomNavbar";
 
 function App() {
@@ -29,11 +30,12 @@ function App() {
             </Route>
             <Route path="/detailform/:userId/:stuname" element={<Detailfrom />} />
 
-
+            {/* Admin */}
             <Route path="/adminprofile" element={<Admin />}/>
             <Route path="/adminUniversity" element={<AdminUni />} />
             <Route path="/adminFac" element={<AdminFaculty />} />
             <Route path="/user-question" element={<Queston />} />
+            <Route path="/adminDepartment" element={<AdminDepartment />} />
     
           </Routes>
 

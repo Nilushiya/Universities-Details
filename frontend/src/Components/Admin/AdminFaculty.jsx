@@ -8,13 +8,14 @@ const AdminFaculty = () => {
   const [faculties, setFaculties] = useState([]);
   const [facData, setFacData] = useState({
     facultyName: '',
-    uId: ''
+    uid: ''
   });
   const [selectedFaculty, setSelectedFaculty] = useState(null);
 
   useEffect(() => {
     const getFaculties = async () => {
       const facultiesAll = await fetchAllFaculty();
+      // console.log("All Fac: ",facultiesAll)
       setFaculties(facultiesAll.data);
     };
     getFaculties();
@@ -31,7 +32,7 @@ const AdminFaculty = () => {
   const handleCreate = async () => {
     const newFaculty = await CreateFaculty(facData);
     setFaculties([...faculties, newFaculty]);
-    setFacData({ facultyName: '', uId: '' }); 
+    setFacData({ facultyName: '', uid: '' }); 
   };
 
   const handleChange = (e) => {
@@ -47,7 +48,7 @@ const AdminFaculty = () => {
     setFaculties(faculties.map((faculty) => (faculty.fac_id === selectedFaculty.faculties ? updatedFaculty : faculty)));
     setSelectedFaculty(null); 
     window.location.reload();
-    setFacData({ facultyName: '', uId: '' }); 
+    setFacData({ facultyName: '', uid: '' }); 
     };
 
   const handleDelete = async (fac_id) => {
@@ -57,7 +58,7 @@ const AdminFaculty = () => {
 
   const handleEdit = (faculty) => {
     setSelectedFaculty(faculty);
-    setFacData({ facultyName: faculty.facultyName, uId: faculty.uId });
+    setFacData({ facultyName: faculty.facultyName, uid: faculty.uid });
   };
 
   const handleSubmit = (e) => {
@@ -70,11 +71,11 @@ const AdminFaculty = () => {
   };
   const groupByuId = (faculties) => {
     return faculties.reduce((groups, faculty) => {
-      const { uId } = faculty;
-      if (!groups[uId]) {
-        groups[uId] = [];
+      const { uid } = faculty;
+      if (!groups[uid]) {
+        groups[uid] = [];
       }
-      groups[uId].push(faculty);
+      groups[uid].push(faculty);
       return groups;
     }, {});
   };
@@ -103,7 +104,7 @@ const AdminFaculty = () => {
                   <input
                     type="text"
                     name="uId" 
-                    value={facData.uId}
+                    value={facData.uid}
                     onChange={handleChange}
                     placeholder="University Id"
                     required
@@ -126,9 +127,9 @@ const AdminFaculty = () => {
                 </li>
               ))}
             </ul>
-        {Object.entries(groupedFaculties).map(([uId, faculties]) => (
-            <div key={uId} className="uId-group">
-              <h2>University ID: {uId}</h2>
+        {Object.entries(groupedFaculties).map(([uid, faculties]) => (
+            <div key={uid} className="uId-group">
+              <h2>University ID: {uid}</h2>
               <ul className="faculty-list">
                 {faculties.map((faculty) => (
                   <li key={faculty.fac_id} className="faculty-item">

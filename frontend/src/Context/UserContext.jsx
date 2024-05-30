@@ -132,9 +132,9 @@ export const updateStuinfoProfile = async(stu_id , user) => {
 // Faculty
 export const CreateFaculty = async(facData) =>{
   try{
-    console.log("facdff" , facData)
+    // console.log("facdff" , facData)
     const response = await axios.post(`${BASE_URL}/faculty/`,  facData );
-    console.log("fac" , response)
+    // console.log("res" , response)
     return response.data;
   }
   catch(err){
@@ -163,14 +163,14 @@ export const fetchFaculty = async(fac_id) => {
 
 export const updateFaculty = async (fac_id, faculty) => {
   try {
-    console.log("iii:",fac_id)
-    console.log("faculty:",faculty)
+    // console.log("iii:",fac_id)
+    // console.log("faculty:",faculty)
     const response = await axios.put(`${BASE_URL}/faculty/updatefaculty/${fac_id}`,
       faculty
     );
     return response.data;
   } catch (err) {
-    console.error("Error updating university", err);
+    console.error("Error updating Faculty", err);
     throw err;
   }
 };
@@ -187,6 +187,18 @@ export const deleteFaculty = async (fac_id, faculty) => {
 
 
 // Department
+export const CreateDeparment = async(facData) =>{
+  try{
+    console.log("facdff" , facData)
+    const response = await axios.post(`${BASE_URL}/department/post`,  facData );
+    console.log("res" , response)
+    return response.data;
+  }
+  catch(err){
+      console.error("Error in Create Department" , err);
+      throw err;
+  }
+}
 export const fetchAllDepartments = async() => {
   try{
     const response = await axios.get(`${BASE_URL}/department/get`)
@@ -206,6 +218,28 @@ export const fetchDepartments = async(fac_id) => {
     console.log("Error in Axios ",err);
   }
 }
+export const updateDepartment = async (dep_id, department) => {
+  try {
+    // console.log("iii:",dep_id)
+    // console.log("department:",department)
+    const response = await axios.put(`${BASE_URL}/department/updateDepartment/${dep_id}`,
+    department
+    );
+    return response.data;
+  } catch (err) {
+    console.error("Error updating department", err);
+    throw err;
+  }
+};
+export const deleteDepartment = async (dep_id, department) => {
+  try {
+    const response = await axios.delete(`${BASE_URL}/department/delete/${dep_id}`);
+    return response.data;
+  } catch (err) {
+    console.error("Error Deleting Department", err);
+    throw err;
+  }
+};
 
 
 
