@@ -37,7 +37,10 @@ public class DepartmentController {
     public List<Department> groupOfDepartment(@PathVariable Long f_id){
         return departmentService.groupDepartment(f_id);
     }
-
+    @GetMapping("/getAll")
+    public List<Object[]> getWithUniName() {
+        return departmentService.getwithAll();
+    }
     @PutMapping("/updateDepartment/{dep_id}")
     public ResponseEntity<Void> updateDepartment(@PathVariable Long dep_id, @RequestBody DepartmentDto departmentDto) {
         departmentService.updateDepartment(dep_id, departmentDto);

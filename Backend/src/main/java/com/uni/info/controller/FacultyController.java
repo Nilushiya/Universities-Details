@@ -30,9 +30,14 @@ public class FacultyController {
         return facultyService.getFaculties();
     }
 
+    @GetMapping("/getwithUni")
+    public List<Object[]> getWithUniName() {
+        return facultyService.getAllwithUni();
+    }
+
     @GetMapping("/getfaculty/{u_id}")
     public List<Faculty> groupedUniversity(@PathVariable ("u_id") Long u_id){
-        return facultyService.groupedByUniversity(u_id);
+        return facultyService.groupedByfaculty(u_id);
     }
     @PutMapping("/updatefaculty/{fac_id}")
     public ResponseEntity<Void> updateFaculty(@PathVariable Long fac_id, @RequestBody FacultyDto facultyDto) {

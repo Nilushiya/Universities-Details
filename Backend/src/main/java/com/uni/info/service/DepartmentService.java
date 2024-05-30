@@ -16,4 +16,6 @@ public interface DepartmentService {
     void updateDepartment(Long depId, DepartmentDto departmentDto);
 
     void deleteDepartment(Long depId);
+
+    List<Object[]> getwithAll();
 }

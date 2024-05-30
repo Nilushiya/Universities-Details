@@ -5,13 +5,10 @@ import com.uni.info.entity.Faculty;
 import com.uni.info.exception.FacultyServiceException;
 import com.uni.info.exception.UniversityServiceException;
 import com.uni.info.repository.FacultyRepo;
-import jakarta.transaction.Transactional;
-import org.hibernate.sql.ast.tree.expression.Collation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -39,7 +36,7 @@ public class FacultyServiceImp implements FacultyService{
     }
 
     @Override
-    public List<Faculty> groupedByUniversity(Long u_id) {
+    public List<Faculty> groupedByfaculty(Long u_id) {
         return facultyRepo.groupByUniversity(u_id);
     }
 
@@ -55,6 +52,10 @@ public class FacultyServiceImp implements FacultyService{
         facultyRepo.update(facId, facultyDto.getFacultyName(), facultyDto.getU_id());
     }
 
+    @Override
+    public List<Object[]> getAllwithUni() {
+        return facultyRepo.findUni();
+    }
 
 
     @Override

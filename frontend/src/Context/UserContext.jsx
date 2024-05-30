@@ -151,6 +151,16 @@ export const fetchAllFaculty = async() => {
     console.log("Api error get All fac" , err)
   }
 }
+export const fetchWithUni = async() => {
+  try{
+      const response = await axios.get(`${BASE_URL}/faculty/getwithUni`);
+      return response
+  }
+  catch(err){
+    console.log("Api error get All fac" , err)
+  }
+}
+
 export const fetchFaculty = async(fac_id) => {
   try{
       const response = await axios.get(`${BASE_URL}/faculty/getfaculty/${fac_id}`,fac_id);
@@ -208,7 +218,15 @@ export const fetchAllDepartments = async() => {
     console.log("Error in Axios ",err);
   }
 }
-
+export const fetchByJoin = async() => {
+  try{
+    const response = await axios.get(`${BASE_URL}/department/getAll`)
+    return response
+  }
+  catch(err){
+    console.log("Error in Axios ",err);
+  }
+}
 export const fetchDepartments = async(fac_id) => {
   try{
       const response = await axios.get(`${BASE_URL}/department/gruopedepartment/${fac_id}`,fac_id)

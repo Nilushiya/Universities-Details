@@ -54,4 +54,9 @@ public class DepartmentServiceImp implements DepartmentService{
     public void deleteDepartment(Long depId) {
         departmentRepo.deleteById(depId);
     }
+
+    @Override
+    public List<Object[]> getwithAll() {
+        return departmentRepo.findAllDetails();
+    }
 }

@@ -3,7 +3,6 @@ package com.uni.info.service;
 import com.uni.info.dto.FacultyDto;
 import com.uni.info.entity.Faculty;
 import com.uni.info.exception.FacultyServiceException;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,9 +12,11 @@ public interface FacultyService {
 
     FacultyDto createFaculties(FacultyDto facultyDto) throws FacultyServiceException;
 
-    List<Faculty> groupedByUniversity(Long u_id);
+    List<Faculty> groupedByfaculty(Long u_id);
 
     void deleteFaculty(Long facId);
 
     void updateFaculty(Long facId, FacultyDto facultyDto);
+
+    List<Object[]> getAllwithUni();
 }

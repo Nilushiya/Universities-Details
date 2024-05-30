@@ -1,0 +1,41 @@
+.department-list {
+    background-color: var(--white);
+    list-style-type: none;
+    width:600px ;
+    padding: 0;
+  }
+
+.department-item {
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+    font-weight: 600;
+    display: flex;
+    padding-left: 50px !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: var(--white) !important;
+    background-color: var(--pink);
+    margin: 10px 0;
+    color: var(--blue);
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .department-item button {
+    margin-left: 10px;
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    background-color: var(--blue);
+  }
+  @media only screen and (max-width: 900px) {
+    .department-list {width: 500px;}
+  }
+  @media only screen and (max-width: 600px) {
+    .department-list {width: 400px;}
+  } 
+  @media only screen and (max-width: 493px) {
+    .department-list {width: 300px;}
+  } 
