@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import NavAdmin from './NavAdmin'
 import Sidebar from './Sidebar'
 import { changeUserType } from '../../Context/UserContext';
-
+import { userManagement } from '../Style';
 const UserManagement = () => {
     const [email, setUserEmail] = useState('');
     const [message, setMessage] = useState('');
@@ -33,13 +33,14 @@ const UserManagement = () => {
               <Sidebar />        
             </div>
             <div className="col-lg-8 col-md-10 col-10  AdminPro" >
-              <div className="profileAdmincontainer">
-                <div className="uni">
-                  <h1>User Management</h1>
+              <div className="Admincontainer">
+              <h1>User Management</h1>
+                <div className="typeChange">
+                  <h4>Admin Privilege Restriction</h4>
                     <form onSubmit={handleSubmit}>
                         <div>
-                        <label htmlFor="email">User Email:</label>
-                        <input type="email" id="email" value={email} onChange={handleEmailChange} required />
+                        {/* <label htmlFor="email">User Email:</label> */}
+                        <input type="email" id="email" value={email} onChange={handleEmailChange} placeholder='User Email' required />
                         </div>
                         <button type="submit">Change User Type</button>
                     </form>

@@ -149,7 +149,7 @@ const groupFacultiesByUniversity = () => {
         </div>
         <div className="uniList">
         <ul className="university-list">
-                    <h2>Use this Fac_id to add Faculty</h2>
+                    <h2>Use this Fac_id to add Department</h2>
                     {Object.entries(groupFacultiesByUniversity()).map(([universityName, faculties]) => (
                         <li key={universityName} className="university-item">
                             <h3>{universityName}</h3>

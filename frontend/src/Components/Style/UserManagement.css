@@ -1,0 +1,35 @@
+@import './color.css';
+@import url('https://fonts.googleapis.com/css2?family=Freeman&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Freeman&display=swap');
+
+
+.AdminPro{
+    font-family: "Freeman", sans-serif;
+    margin-top: 80px !important;
+    text-align: center;
+    margin: auto;
+}
+.AdminPro .typeChange{
+    font-family: "Kanit", sans-serif;
+    margin-top: 60px !important;
+    width: 350px;
+    height: 200px;
+    margin: auto;
+    padding: 30px;
+    background-color: var(--blue);
+    border-radius: 10px;
+    color: var(--white);
+}
+.AdminPro .typeChange h4{
+    color: var(--pink);
+}
+.AdminPro .typeChange form{
+    outline: none;
+}
+.AdminPro form button{
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: var(--orange) !important;
+    border: none;
+}

@@ -77,10 +77,11 @@ const AdminUni = () => {
             </div>         
           </div>
           <div className="uniList">
+            <h1 style={{textAlign:"center"}}>Universities</h1>
             <ul className="university-list">
-              {universities.map((university ) => (
+              {universities.map((university  ) => (
                 <li key={university.uni_id} className="university-item">
-                  {university.uniName} 
+                {university.uniName} 
                   <div className="but">
                     <button onClick={() => handleEdit(university)}>Edit</button>
                     <button onClick={() => handleDelete(university.uni_id)}>Delete</button>

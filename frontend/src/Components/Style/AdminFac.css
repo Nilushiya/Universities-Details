@@ -1,6 +1,7 @@
 .fac  h1 {
+  /* text-align: center !important; */
     color: var(--blue) !important;
-    margin-left: 20% !important;
+    margin-left: -25% !important;
     margin-top: 5%;
   }
   
@@ -12,7 +13,7 @@
     background-color: var(--blue);
     display: flex;
     justify-content: center;
-    margin-top: 15%;
+    margin-top: 10%;
     margin-left: 18%;
   }
   
