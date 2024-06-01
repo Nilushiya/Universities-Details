@@ -7,9 +7,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
+
+//import static sun.awt.image.MultiResolutionCachedImage.map;
 
 @RestController
 @CrossOrigin("*")
@@ -24,9 +25,11 @@ public class StudentController {
         return studentService.updateStudent(stu_id , studentDto);
 
     }
-    @PutMapping("/deactivateUser/{id}")
-    public void deactivateUser(@PathVariable Long id) {
-        studentService.deactivateUser(id);
+    @PutMapping("/deactivateUser/{studentId}")
+    public Optional<Student> deactivateUser(@PathVariable Long studentId) {
+      return studentService.deactivateUser(studentId);
+//          .map(user -> ResponseEntity.ok("User has been deactivated"))
+//                .orElse(ResponseEntity.status(404).body("User not found"));
     }
 
     @PostMapping("/changeType")
@@ -34,8 +37,18 @@ public class StudentController {
                 return studentService.changeType(studentDto);
 
     }
+    @GetMapping("/getAllUser")
+    public  List<Object[]> getAllUser(){
+        return studentService.getUsers();
+    }
     @GetMapping("/admin/{studentId}")
     public List<Student> getAdmin(@PathVariable Long studentId){
        return studentService.getAdminDetails(studentId);
     }
+
+//    @PostMapping("/deactivate/{studentId}")
+//    public ResponseEntity<String> deactivateUser(@PathVariable Long studentId) {
+//        return studentService.deactivateUser(studentId)
+//
+//    }
 }

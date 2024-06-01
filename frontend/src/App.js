@@ -13,6 +13,7 @@ import AdminFaculty from "./Components/Admin/AdminFaculty";
 import Queston from "./Components/Admin/Queston";
 import AdminDepartment from "./Components/Admin/AdminDepartment";
 import UserManagement from "./Components/Admin/UserManagement";
+import Course from "./Components/Admin/Course";
 // import CustomNavbar from "./Components/CustomNavbar";
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
             <Route path="/user-question" element={<Queston />} />
             <Route path="/adminDepartment" element={<AdminDepartment />} />
             <Route path="/user" element={<UserManagement />} />
+            <Route path="/course/:departmentName/:dep_id" element = {<Course />} />
 
     
           </Routes>

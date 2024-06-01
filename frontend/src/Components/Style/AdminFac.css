@@ -2,7 +2,7 @@
   /* text-align: center !important; */
     color: var(--blue) !important;
     margin-left: -25% !important;
-    margin-top: 5%;
+    margin-top: 2%;
   }
   
   .fac .form {
@@ -13,7 +13,7 @@
     background-color: var(--blue);
     display: flex;
     justify-content: center;
-    margin-top: 10%;
+    margin-top: 6%;
     margin-left: 18%;
   }
   
@@ -78,30 +78,28 @@
   }
   @media only screen and (max-width: 900px) {
     .fac  h1 {
-        margin-top: 10%;
+        /* margin-top: 10%; */
       }
-    .form {
-        margin-left: 10%;
+      .fac .form {
+        margin-left: 8% !important;
       }
   }
   @media only screen and (max-width: 600px) {
     .fac  h1 {
-        margin-top: 15%;
+        margin-left: 5%;
       }
-    .form {
-        margin-top: 25%;
+      .fac  .form {
+        margin-top: 15%;
         margin-left: 6% !important;
       }
   } 
   @media only screen and (max-width: 561px) {
-    .form {
-        margin-top: 30% !important;
-      }
     .fac  h1 {
-        margin-top: 20%;
-      }
+      margin-left: 5% !important;
+    }
+ 
     .faculty-item {
         flex-direction: column;
-        padding-left: 1% !important;
+        padding-left: 5% !important;
       }
   } 

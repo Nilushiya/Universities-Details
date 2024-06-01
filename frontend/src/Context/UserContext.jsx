@@ -346,6 +346,15 @@ export const fetchAdminDetails = async(studentId) => {
     console.log("Error in fetch All Details ", err);
   }
 }
+export const fetchAllUser = async() => {
+  try{
+      const response = await axios.get(`${BASE_URL}/student/getAllUser`)
+      return response;
+  }
+  catch(err){
+    console.log("Error in fetch All Users ", err);
+  }
+}
 export const changeUserType = async(email) => {
   try{
     console.log("Email",email)
@@ -368,6 +377,7 @@ export const updateStuProfile = async(stu_id , user1) => {
 }
 
 export const deleteAcc = async(stu_id) => {
+  console.log("ID Delete:",stu_id)
   try{
     const response = await axios.put(`${BASE_URL}/student/deactivateUser/${stu_id}`)
   }

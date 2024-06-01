@@ -3,6 +3,7 @@ import {adminDepartment} from '../Style'
 import { CreateDeparment, deleteDepartment, fetchAllDepartments, fetchAllFaculty, fetchByJoin, fetchWithUni, updateDepartment } from '../../Context/UserContext';
 import NavAdmin from './NavAdmin';
 import Sidebar from './Sidebar';
+import { Link } from 'react-router-dom';
 const AdminDepartment = () => {
     const [departments, setDepartments] = useState([]);
   const [faculties, setFaculties] = useState([]);
@@ -15,7 +16,7 @@ const AdminDepartment = () => {
   useEffect(() => {
     const getDepartments = async () => {
       const fetchAllDepartment = await fetchByJoin();
-      console.log("All Fac: ", fetchAllDepartment.data[0]);
+      // console.log("All Fac: ", fetchAllDepartment.data[0]);
       setDepartments(fetchAllDepartment.data);
     };
     getDepartments();
@@ -155,10 +156,11 @@ const groupFacultiesByUniversity = () => {
                             <h3>{universityName}</h3>
                             <ul className="department-list">
                                 {faculties.map(faculty => (
-                                    <li key={faculty[0].fac_id} className="department-item">
-                                        {faculty[0].facultyName}
+                                    <li key={faculty[0].fac_id} className="departments-item">
+                                       
                                         <div className="id">
-                                            {faculty[0].fac_id}
+                                        <div>{faculty[0].facultyName}</div>
+                                        {faculty[0].fac_id}
                                             {/* {faculty[0].facultyName} */}
                                         </div>
                                     </li>
@@ -174,9 +176,13 @@ const groupFacultiesByUniversity = () => {
                 {departments.map((department) => (
                   <li key={department[2].dep_id} className="department-item">
                     {department[2].departmentName}, {department[2].f_id}
+                    {/* <div className="infor"> */}
+                    
+                    {/* </div> */}
                     <div className="but">
                       <button onClick={() => handleEdit(department)}>Edit</button>
                       <button onClick={() => handleDelete(department[2].dep_id)}>Delete</button>
+                      <Link className='link' to={`/course/${department[2].departmentName}/${department[2].dep_id}`} style={{ textDecoration: 'none' }}>Add/Update Course details</Link>
                     </div>
                   </li>
                 ))}

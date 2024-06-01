@@ -12,10 +12,12 @@ import java.util.Optional;
 public interface StudentService {
     Student updateStudent(Long stuId, StudentDto studentDto);
 
-    void deactivateUser(Long id);
+    Optional<Student> deactivateUser(Long id);
 
     List<Student> getAdminDetails(Long studentId);
 
 
     ResponseEntity<?> changeType(StudentDto studentDto);
+
+    List<Object[]> getUsers();
 }

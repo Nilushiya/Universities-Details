@@ -16,6 +16,8 @@ import java.util.Optional;
 public class SudentSerrviceImp implements StudentService{
     @Autowired
     private StudentRepo studentRepo;
+//    @Autowired
+//    private EmailService emailService;
     @Override
     public Student updateStudent(Long studentId, StudentDto studentDto) {
         Object Optional;
@@ -29,13 +31,15 @@ public class SudentSerrviceImp implements StudentService{
     }
 
     @Override
-    public void deactivateUser(Long id) {
-        studentRepo.findById(id)
-                .map(user -> {
-                    user.setIsActive(false);
-                    return studentRepo.save(user);
-                })
-                .orElseThrow(() -> new RuntimeException("User not found"));
+    public Optional<Student> deactivateUser(Long id) {
+        Optional<Student> userOptional = studentRepo.findById(id);
+        if (userOptional.isPresent()) {
+            Student user = userOptional.get();
+            user.setIsActive(false);
+            studentRepo.save(user);
+//            emailService.sendDeactivationEmail(user.getEmail(), "Account Deactivated", "Your account is no longer active.");
+        }
+        return userOptional;
     }
 
     @Override
@@ -69,6 +73,10 @@ public class SudentSerrviceImp implements StudentService{
 
     }
 
+    @Override
+    public List<Object[]> getUsers() {
+        return studentRepo.findAllUser();
+    }
 
 }
 

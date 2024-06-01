@@ -1,19 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavAdmin from './NavAdmin'
 import Sidebar from './Sidebar'
-import { changeUserType } from '../../Context/UserContext';
+import { changeUserType, deleteAcc, fetchAllUser } from '../../Context/UserContext';
 import { userManagement } from '../Style';
 const UserManagement = () => {
     const [email, setUserEmail] = useState('');
     const [message, setMessage] = useState('');
+    const [allUser , setAllUser] = useState([])
   
+    useEffect(() =>{
+      const getAllUser = async() => {
+        try{
+          const response = await fetchAllUser()
+          // console.log("res : ",response.data)
+          setAllUser(response.data)
+        }
+        catch(err){
+          console.log("Error : ",err);
+        }
+      }
+      getAllUser()
+    },[])
     const handleEmailChange = (e) => setUserEmail(e.target.value);
   
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
         const response = await changeUserType(email);
-        console.log("res:",response)
+        // console.log("res:",response)
         setMessage(response.data);
       } catch (error) {
         if (error.response && error.response.status === 404) {
@@ -24,6 +38,12 @@ const UserManagement = () => {
       }
       setUserEmail('')
     };
+
+    const handleDelete = async(id) => {
+      const response = await deleteAcc(id)
+      window.location.reload()
+      // console.log("reszz : ",response)
+    }
   return (
     <div className='userManagement'>
          <div className="adminProfileContainer">
@@ -36,7 +56,7 @@ const UserManagement = () => {
               <div className="Admincontainer">
               <h1>User Management</h1>
                 <div className="typeChange">
-                  <h4>Admin Privilege Restriction</h4>
+                  <h3>Admin Privilege Restriction</h3>
                     <form onSubmit={handleSubmit}>
                         <div>
                         {/* <label htmlFor="email">User Email:</label> */}
@@ -49,19 +69,21 @@ const UserManagement = () => {
               </div>
             </div>         
           </div>
-          {/* <div className="uniList">
+          <div className="uniList">
+            <h1>All User</h1>
             <ul className="university-list">
-              {universities.map((university ) => (
-                <li key={university.uni_id} className="university-item">
-                  {university.uniName} 
+              <h3>{allUser.length} users are here</h3>
+              {allUser.map((user ) => (
+                <li key={user[1].studentId} className="university-item">
+                  {user[1].email} 
                   <div className="but">
-                    <button onClick={() => handleEdit(university)}>Edit</button>
-                    <button onClick={() => handleDelete(university.uni_id)}>Delete</button>
+                    {/* <button onClick={() => handleEdit(university)}>Edit</button> */}
+                    <button onClick={() => handleDelete(user[1].studentId)}>Delete</button>
                   </div>
                 </li>
               ))}
             </ul>
-          </div> */}
+          </div>
       </div>
     </div>
   )

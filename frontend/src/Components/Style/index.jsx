@@ -20,8 +20,10 @@ import adminFac from './AdminFac.css'
 import queston from './Queston.css'
 import adminDepartment from './AdminDepartment.css'
 import userManagement from './UserManagement.css'
+import course from './Course.css'
 
 export{navbar , about , contact , login , register , 
     university , courseDetails , details , profile , 
     friend ,adminProfile,adminNav , sidebar , adminUni ,
-     adminFac , queston , adminDepartment , userManagement}
+     adminFac , queston , adminDepartment , userManagement , 
+    course}

@@ -89,13 +89,13 @@
     background-color: var(--blue);
   }
   @media only screen and (max-width: 900px) {
-    .form {
+    .uni .form {
         margin-left: 10%;
       }
   }
   @media only screen and (max-width: 600px) {
-    .form {
-        margin-top: 25%;
+    .uni .form {
+        margin-top: 15%;
         margin-left: 4%;
       }
   } 

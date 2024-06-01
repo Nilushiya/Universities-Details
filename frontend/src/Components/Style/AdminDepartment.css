@@ -1,10 +1,16 @@
 .department-list {
-    background-color: var(--white);
+    /* background-color: var(--white); */
     list-style-type: none;
-    width:600px ;
+    width:90% ;
     padding: 0;
   }
-
+.departments-item .id{
+  margin-top: 15px;
+  /* background-color: red ; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between !important;
+}
 .department-item {
     margin-left: 5% !important;
     margin-right: 5% !important;
@@ -24,18 +30,41 @@
   }
   
   .department-item button {
+    width: 100px;
+    margin-top: 10px;
     margin-left: 10px;
     color: var(--white);
     border: none;
     border-radius: 10px;
     background-color: var(--blue);
   }
-  @media only screen and (max-width: 900px) {
-    .department-list {width: 500px;}
+  .department-item .but{
+    display: flex;
+    flex-direction: column;
   }
-  @media only screen and (max-width: 600px) {
+.department-item .link{
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: var(--orange);
+  color: var(--blue);
+  font-weight:700;
+}
+  /* @media only screen and (max-width: 900px) {
+    .department-list {width: 500px;}
+  } */
+  @media only screen and (max-width: 778px) {
+    
+    .department-item {
+      display: flex;
+    flex-direction: column;
+    justify-content: start !important;
+    align-items: flex-start;
+  }
+  }
+  /* @media only screen and (max-width: 600px) {
     .department-list {width: 400px;}
   } 
   @media only screen and (max-width: 493px) {
     .department-list {width: 300px;}
-  } 
+  }  */
