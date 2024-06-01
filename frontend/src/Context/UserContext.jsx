@@ -264,9 +264,24 @@ export const deleteDepartment = async (dep_id) => {
 
 
 // Details
-export const fetchCourseDetails = async(dep_id) => {
+export const addCourseDetails = async(facData ) =>{
   try{
-      const response = await axios.get(`${BASE_URL}/EngDetails/getDetails/${dep_id}`,dep_id)
+    console.log("facdff" , facData)
+    const response = await axios.post(`${BASE_URL}/EngDetails/`,facData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },} );
+    console.log("res" , response)
+    return response.data;
+  }
+  catch(err){
+      console.error("Error in Create details" , err);
+      throw err;
+  }
+}
+export const fetchCourseDetails = async(edeg_id) => {
+  try{
+      const response = await axios.get(`${BASE_URL}/EngDetails/getDetails/${edeg_id}`,edeg_id)
       return response
   }
   catch(err){
@@ -286,7 +301,29 @@ export const getImage = async(depId) => {
       console.log("error" , err)
   }
 }
-
+export const updateCourseDetails = async ( details) => {
+  try {
+    
+    let edetails_id = null;
+    for (let [key, value] of details.entries()) {
+      if (key === 'edetails_id') {
+        edetails_id = value;
+      }
+    }
+    console.log("iii:",edetails_id)
+    const response = await axios.put(`${BASE_URL}/EngDetails/update/${edetails_id}`,
+    details, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },} 
+    );
+    console.log("res",response)
+    return response.data;
+  } catch (err) {
+    console.error("Error updating details", err);
+    throw err;
+  }
+};
 
 
 // Question

@@ -45,12 +45,11 @@ public class EnglishDetailsController {
 
     @PutMapping("/update/{edetails_id}")
     public List<English_details> updateEngDetails(@PathVariable ("edetails_id") Long edetails_id ,@RequestParam("edegree_duration") Integer edegree_duration,
-                                                  @RequestParam("image_data") MultipartFile image_data,
                                                   @RequestParam("edegree_description1") String edegree_description1,
                                                   @RequestParam("edegree_jobs") String edegree_jobs,
                                                   @RequestParam("degree") String degree,
                                                   @RequestParam("edeg_id") Long edeg_id) throws IOException {
-        List<English_details> saveUpdate =  englishDetailsService.updateDetails(edetails_id ,edegree_duration,image_data, edegree_description1, edegree_jobs,degree, edeg_id);
+        List<English_details> saveUpdate =  englishDetailsService.updateDetails(edetails_id ,edegree_duration, edegree_description1, edegree_jobs,degree, edeg_id);
         return saveUpdate;
     }
 

@@ -44,13 +44,13 @@ public class EnglishDetailsServiceImp implements EnglishDetailsService {
     }
 
     @Override
-    public List<English_details> updateDetails(Long edetailsId, Integer edegreeDuration, MultipartFile imageData, String edegreeDescription1, String edegreeJobs,String degree, Long edegId) throws IOException {
+    public List<English_details> updateDetails(Long edetailsId, Integer edegreeDuration, String edegreeDescription1, String edegreeJobs,String degree, Long edegId) throws IOException {
         Optional<English_details> detailsId = englishDetailsRepo.findById(edetailsId);
         if (detailsId.isPresent()) {
             System.out.println("Present");
             English_details englishDetails = detailsId.get();
             englishDetails.setEdegree_duration(edegreeDuration);
-            englishDetails.setImage_data(imageData.getBytes());
+//            englishDetails.setImage_data(imageData.getBytes());
             englishDetails.setEdegree_description1(edegreeDescription1);
             englishDetails.setEdegree_jobs(edegreeJobs);
             englishDetails.setDegree(degree);

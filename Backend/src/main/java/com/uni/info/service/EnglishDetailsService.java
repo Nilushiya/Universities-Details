@@ -16,7 +16,7 @@ public interface EnglishDetailsService {
     List<English_details> getEngDetails();
 
 
-    List<English_details> updateDetails(Long edetailsId, Integer edegreeDuration, MultipartFile imageData, String edegreeDescription1, String edegreeJobs,String degree, Long edegId) throws IOException;
+    List<English_details> updateDetails(Long edetailsId, Integer edegreeDuration, String edegreeDescription1, String edegreeJobs,String degree, Long edegId) throws IOException;
 
     List<English_details> courseDetail(Long edeg_id);
 

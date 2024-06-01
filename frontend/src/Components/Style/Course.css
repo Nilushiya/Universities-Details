@@ -1,0 +1,71 @@
+
+ .coursedetails  h1 {
+    color: var(--blue) !important;
+    margin-right: 17%;
+    margin-top: -5%;
+  }
+  .coursedetails .form {
+    max-width: 550px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 5px rgba(78, 172, 216, 0.9);
+    background-color: var(--blue);
+    /* display: flex;
+    justify-content: center; */
+    margin-top: 2%;
+    margin-left: 10%;
+  }
+  .coursedetails form .tag{
+    padding: 10px;
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between ;
+  }
+  .coursedetails form label{
+    color: var(--white);
+    justify-self: center;
+    align-self: center;
+}
+  .coursedetails input {
+    width: 200px !important;
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+    flex: 1;
+    max-width: 200px;
+    outline: none;
+    color: var(--blue);
+    margin-bottom: 15px !important;
+    border-radius: 10px;
+  }
+  
+  .coursedetails button {
+    padding: 10px 20px !important;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: var(--orange);
+    color: var(--blue);
+    border-radius: 10px !important;
+    font-size: 18px !important;
+    font-weight: 600;
+    border: none;
+
+  }
+  @media only screen and (max-width: 600px){
+    .coursedetails  h1 {
+        margin-right: 5%;
+        margin-top: -8%;
+      }
+      .coursedetails .form {
+        margin-top: 2%;
+        margin-left: 5%;
+      }
+    .coursedetails form .tag{
+        width: 200px;
+        display: flex;
+        flex-direction: column ;
+        justify-content: start;
+        align-items: center;
+      }
+  }
