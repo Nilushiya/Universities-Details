@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {jwtDecode} from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
-
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const BASE_URL = 'http://localhost:8080/api/v1';
 
@@ -29,7 +29,6 @@ export const fetchUniversity = async() =>{
         throw err;
     }
 }
-
 export const updateUniversity = async (id, university) => {
   try {
     const response = await axios.put(`${BASE_URL}/university/updateuni/${id}`, null, {
@@ -41,7 +40,6 @@ export const updateUniversity = async (id, university) => {
     throw err;
   }
 };
-
 export const deleteUniversity = async (uni_id, university) => {
   try {
     const response = await axios.delete(`${BASE_URL}/university/delete/${uni_id}`);
@@ -64,7 +62,6 @@ export const fetchByLanguage = async(selected_university , academic_year , langu
     console.log("Error in year by frined fetch language details ");
   }
 } 
-
 export const downloadPdf = async(studentinfo_id) => {
   try{
     const res = await axios.get(`${BASE_URL}/studentInfo/downloadpdf/${studentinfo_id}`,{responseType: 'blob',})
@@ -74,7 +71,6 @@ export const downloadPdf = async(studentinfo_id) => {
     console.log("Error in Download api :" , err);
   }
 }
-
 export const fetchByCourse = async(selected_university , academic_year , language , selected_course) => {
   try{
     const res = await axios.get(`${BASE_URL}/studentInfo/groupbyCourse/${academic_year}/${selected_university}/${language}/${selected_course}`)
@@ -84,7 +80,6 @@ export const fetchByCourse = async(selected_university , academic_year , languag
     console.log("Error in year by frined fetch course details ");
   }
 }
-
 export const fetchbyYear = async(selected_university , academic_year) => {
   
   try{
@@ -108,7 +103,6 @@ export const studentInfo = async(stu_id , data ) => {
     console.error('Error submitting form:', error.response.data);
   }
 }
-
 export const fetchAllDetails = async(stu_id) => {
   try{
       const response = await axios.get(`${BASE_URL}/studentInfo/findCuromer/${stu_id}`)
@@ -118,7 +112,6 @@ export const fetchAllDetails = async(stu_id) => {
     console.log("Error in fetch All Details ", err);
   }
 }
-
 export const updateStuinfoProfile = async(stu_id , user) => {
   try{
     const response = await axios.put(`${BASE_URL}/studentInfo/stuInfoUpdate/${stu_id}`,user)
@@ -160,7 +153,6 @@ export const fetchWithUni = async() => {
     console.log("Api error get All fac" , err)
   }
 }
-
 export const fetchFaculty = async(fac_id) => {
   try{
       const response = await axios.get(`${BASE_URL}/faculty/getfaculty/${fac_id}`,fac_id);
@@ -170,7 +162,6 @@ export const fetchFaculty = async(fac_id) => {
     console.log("Api error" , err)
   }
 }
-
 export const updateFaculty = async (fac_id, faculty) => {
   try {
     // console.log("iii:",fac_id)
@@ -288,7 +279,6 @@ export const fetchCourseDetails = async(edeg_id) => {
     console.log("Error in Axios ",err);
   }
 }
-
 export const getImage = async(depId) => {
   try{
     const response = await axios.get(`${BASE_URL}/EngDetails/image/${depId}`, {
@@ -403,7 +393,6 @@ catch(err){
   console.log("Error in change userType ", err);
 }
 }
-
 export const updateStuProfile = async(stu_id , user1) => {
   try{
     const response = await axios.put(`${BASE_URL}/student/stuUpdate/${stu_id}`,user1)
@@ -412,7 +401,6 @@ export const updateStuProfile = async(stu_id , user1) => {
     console.error("Error in update email , name", error);
   }
 }
-
 export const deleteAcc = async(stu_id) => {
   console.log("ID Delete:",stu_id)
   try{
@@ -426,7 +414,6 @@ export const deleteAcc = async(stu_id) => {
 
   // Login
 export const checklogin = async(formData) => {
-
   try {
     const response = await axios.post(`${BASE_URL}/login`, formData);
     return response
@@ -449,4 +436,29 @@ export const decodeToken = () => {
   }
   
   }
-  
+
+
+
+  const UserContext = createContext();
+
+export const UserProvider = ({ children }) => {
+  const [userRole, setUserRole] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      setUserRole(decodedToken.role);
+    }
+    setLoading(false);
+  }, []);
+
+  return (
+    <UserContext.Provider value={{ userRole, setUserRole, loading }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
+
+export const useUserContext = () => useContext(UserContext);
