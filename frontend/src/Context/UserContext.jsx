@@ -103,9 +103,22 @@ export const studentInfo = async(stu_id , data ) => {
     console.error('Error submitting form:', error.response.data);
   }
 }
+
+export const checkinfo = async(stu_id) => {
+  try{
+      const response = await axios.get(`${BASE_URL}/studentInfo/checkinfo/${stu_id}`)
+      console.log("res",response)
+      return response;
+  }
+  catch(err){
+    console.log("Error in fetch user  Details ", err);
+  }
+}
 export const fetchAllDetails = async(stu_id) => {
   try{
       const response = await axios.get(`${BASE_URL}/studentInfo/findCuromer/${stu_id}`)
+  console.log(response.data)
+
       return response;
   }
   catch(err){
@@ -202,7 +215,7 @@ export const CreateDeparment = async(facData) =>{
 }
 export const fetchAllDepartments = async() => {
   try{
-    const response = await axios.get(`${BASE_URL}//get`)
+    const response = await axios.get(`${BASE_URL}/department/get`)
     return response
   }
   catch(err){

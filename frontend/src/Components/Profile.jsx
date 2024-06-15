@@ -22,6 +22,7 @@ const Profile = () => {
     const fetchDetails = async (stu_id) => { 
       try {
         const response = await fetchAllDetails(stu_id);  
+        console.log("pro" , response.data)
         setUser1(response.data[0][0]);
         setUser2(response.data[0][1]);
       } catch (error) {
@@ -101,7 +102,7 @@ const Profile = () => {
           <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
         </form>
       ) : (
-        <div>
+        <div> 
           <p><strong >Username:</strong> {user1.name}</p>
           <p><strong>Email:</strong> {user1.email}</p>
           <p><strong>Phone Number:</strong> {user.phone}</p>

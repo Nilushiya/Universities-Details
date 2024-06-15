@@ -56,12 +56,12 @@ import { faFaceSmile} from '@fortawesome/free-solid-svg-icons';
           {faculties.map((fac, index) => (
             <div className='facname' key={index}>
               {index + 1} = {fac.facultyName}
-               {departments.length > 0 
+               {departments && departments.length > 0 
                 ? (departments.map((department, i) => (
                   fac.fac_id === department.f_id ? (
                     <div className="dep" key={i} style={{paddingLeft:"5%"}}>
                       {department.departmentName}
-                    </div>) : null))) : (<p>no depart ment</p>)}
+                    </div>) : null))) : (<p>no department</p>)}
             </div>
           ))}
       </div>) 

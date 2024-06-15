@@ -99,12 +99,11 @@ const EngCourseDetails = ({course,departmentName}) => {
                 <h4>Your available Jobs....</h4>
                 <p>{course[0].edegree_jobs}</p>
               </div>
-              <div className="col-12">
+              {/* <div className="col-12">
                 <h4>Do you want to find a friend? {userId ?<Link to={`/detailform/${userId}/${stuname}`} >Click here</Link> :
-                // <Link to={`/detailform/${userId}/${stuname}`}>Click here</Link>
                  <Link to="/register">Click here</Link>
                   } and fill in your details.</h4>
-              </div>
+              </div> */}
           </div>      
         </div>
       )}                                    

@@ -12,15 +12,25 @@ import Ruhuna from '../Components/Assets/Ruhuna.jpg'
 import Uwa from '../Components/Assets/Uwa.jpg'
 import About from '../Components/About';
 import Contact from '../Components/Contact';
-import { decodeToken } from '../Context/UserContext';
+import { decodeToken, useUserContext } from '../Context/UserContext';
 import {about} from '../Components/Style/index'
+import { useNavigate } from 'react-router-dom';
+import Detailfrom from '../Components/Detailfrom';
 // import { checklogin } from '../Context/UserContext';
 // import './HomeDp.css'
 
 const Home = () => {
-  
+  // const[stu_id , setStu_id] = useState('');
+  // const[customerName , setName] = useState('');
 
- 
+  // useEffect(() => {
+  //   const decode = decodeToken();
+  //    const user = decode.studentId;
+  //    const userName = decode.name;
+  //    setName(userName)
+  //    setStu_id(user);
+    
+  // },[])
   return (
     <div>
       <CustomNavbar />
@@ -126,6 +136,11 @@ const Home = () => {
       </Carousel.Caption>
     </Carousel.Item>
     </Carousel>
+    {/* <br />
+    <Detailfrom 
+      stu_id = {stu_id}
+      customerName = {customerName}
+    /> */}
     <br />
     <About />
     <br />

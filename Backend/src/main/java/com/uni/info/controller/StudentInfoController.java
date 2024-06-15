@@ -81,6 +81,11 @@ public class StudentInfoController {
         return studentInfoService.getCusromer(stu_id);
     }
 
+    @GetMapping("/checkinfo/{stu_id}")
+    public List<Object[]> checkinfo(@PathVariable("stu_id") Long stu_id){
+        return studentInfoService.check_info(stu_id);
+    }
+
     @PutMapping("/update/{studentinfo_id}")
     public List<StudentInfo> updateStudentInfo(@PathVariable ("studentinfo_id") Long studentinfo_id,
                                            @RequestParam ("image") MultipartFile image,

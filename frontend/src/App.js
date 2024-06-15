@@ -15,32 +15,33 @@ import AdminDepartment from "./Components/Admin/AdminDepartment";
 import UserManagement from "./Components/Admin/UserManagement";
 import Course from "./Components/Admin/Course";
 import { UserProvider, useUserContext } from "./Context/UserContext";
-import ProtectedRoute from "./Components/ProtectedRoute";
+// import ProtectedRoute from "./Components/ProtectedRoute.jsx";
 // import CustomNavbar from "./Components/CustomNavbar";
 
-const RedirectBasedOnRole = () => {
-  const { userRole, loading } = useUserContext();
-  const navigate = useNavigate();
+// const RedirectBasedOnRole = () => {
+//   const { userRole, loading } = useUserContext();
+//   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!loading) {
-      if (userRole === 'admin') {
-        navigate('/adminprofile');
-      } else {
-        navigate('/');
-      }
-    }
-  }, [userRole, loading, navigate]);
+//   useEffect(() => {
+//     if (!loading) {
+//       if (userRole === 'admin') {
+//         navigate('/adminprofile');
+//       }
+//       if(userRole === 'user') {
+//         navigate('/')
+//       }
+//     }
+//   }, [userRole, loading, navigate]);
 
-  return null;
-};
+//   return null;
+// };
 
 function App() {
   return (
     <div className="App">
       <UserProvider>
         <BrowserRouter>
-          <RedirectBasedOnRole />
+          {/* <RedirectBasedOnRole /> */}
           <Routes>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
@@ -54,39 +55,39 @@ function App() {
 
             {/* Admin Routes */}
             <Route path="/adminprofile" element={
-              <ProtectedRoute requiredRole="admin">
+              // <ProtectedRoute requiredRole="admin">
                 <Admin />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             } />
             <Route path="/adminUniversity" element={
-              <ProtectedRoute requiredRole="admin">
+              // <ProtectedRoute requiredRole="admin">
                 <AdminUni />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             } />
             <Route path="/adminFac" element={
-              <ProtectedRoute requiredRole="admin">
+              // <ProtectedRoute requiredRole="admin">
                 <AdminFaculty />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             } />
             <Route path="/user-question" element={
-              <ProtectedRoute requiredRole="admin">
+              // <ProtectedRoute requiredRole="admin">
                 <Queston />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             } />
             <Route path="/adminDepartment" element={
-              <ProtectedRoute requiredRole="admin">
+              // <ProtectedRoute requiredRole="admin">
                 <AdminDepartment />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             } />
             <Route path="/user" element={
-              <ProtectedRoute requiredRole="admin">
+              // <ProtectedRoute requiredRole="admin">
                 <UserManagement />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             } />
             <Route path="/course/:departmentName/:dep_id" element={
-              <ProtectedRoute requiredRole="admin">
+              // <ProtectedRoute requiredRole="admin">
                 <Course />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             } />
           </Routes>
         </BrowserRouter>

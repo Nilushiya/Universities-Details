@@ -39,18 +39,18 @@ public class JwtService {
     }
     private Claims extractAllClaims(String token){
         return Jwts
-                .parser()
-                .verifyWith(getSigninKey())
+                .parserBuilder()
+                .setSigningKey(getSigninKey())
                 .build()
-                .parseSignedClaims(token)
-                .getPayload();
+                .parseClaimsJws(token)
+                .getBody();
     }
     public String generateToken(Student student,String userType,String name, Long studentId){
         String token = Jwts
                 .builder()
 //                .subject(student.getUsername())
-                .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 24*60*60*1000*5))
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + 24*60*60*1000*5))
                 .claim("userType",userType)
                 .claim("name",name)
                 .claim("studentId",studentId)
@@ -62,8 +62,8 @@ public class JwtService {
 
     private SecretKey getSigninKey(){
         byte[] keyBytes =Decoders.BASE64URL.decode(SECRET_KEY);
-            return Keys.hmacShaKeyFor(keyBytes);
-        }
+        return Keys.hmacShaKeyFor(keyBytes);
+    }
 
 
 

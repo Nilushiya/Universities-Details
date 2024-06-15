@@ -8,8 +8,9 @@
     background-color: var(--blue);
   }
   .user-form-container .info{
-    margin: auto;
-    padding: 2%;
+   
+    margin: auto ;
+    padding: 10%;
     max-width: 800px;
   }
   .user-form-container h1{

@@ -55,19 +55,28 @@ const Detailfrom = () => {
           }
          try{
           const studentData = await studentInfo(stu_id , data);
-          
+          alert("Successfully Submitted")
+          setFormData({
+            address: '',
+            selected_university: '',
+            gender: '',
+            language: '',
+            phone: '',
+            image: null,
+            academic_year: '',
+            selected_course: ''
+          });
          }
          catch(err){
           console.log("Error ; ", err)
-         }
-          
+         } 
       }
 
       return (
         <div className="detailfrorm">
                  
            <div className="user-form-container">
-           <CustomNavbar />
+           {/* <CustomNavbar /> */}
             <div className="info">
             <h1 >{stu_name} Infrormation</h1>
           <form className="user-form" onSubmit={handleSubmit}>

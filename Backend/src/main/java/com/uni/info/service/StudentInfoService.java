@@ -28,4 +28,6 @@ public interface StudentInfoService {
     List<Object[]> getCourse(String academicYear, String selectedUniversity, String language, String selectedCourse);
 
     byte[] getStudentPdf(Long studentinfo_id);
+
+    List<Object[]> check_info(Long stuId);
 }

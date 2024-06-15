@@ -64,7 +64,9 @@ public class StudentInfoServiceImp implements StudentInfoService{
 
     @Override
     public List<Object[]> getCusromer(Long stu_id) {
-//        System.out.println("id : "+studentinfoId);
+        System.out.println("id : "+stu_id);
+        System.out.println("idss : "+studentInfoRepo.findFriend(stu_id));
+
         return studentInfoRepo.findFriend(stu_id);
     }
 
@@ -112,6 +114,17 @@ public class StudentInfoServiceImp implements StudentInfoService{
             StudentInfo studentInfo = studentInfoRepo.findById(studentinfo_id)
                     .orElseThrow(() -> new RuntimeException("Student not found with id " + studentinfo_id));
             return studentInfo.getImage();
+    }
+
+    @Override
+    public List<Object[]> check_info(Long stuId) {
+        List<Object[]> user= studentInfoRepo.checkuser(stuId);
+        if(user.isEmpty()){
+            return null;
+        }
+        else {
+            return user;
+        }
     }
 
 
