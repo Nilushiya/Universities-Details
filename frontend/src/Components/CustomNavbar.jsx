@@ -40,7 +40,7 @@ const CustomNavbar = () => {
     const check_info = async(userId) =>{
      try{
       const response = await checkinfo(userId);
-      console.log("res : " , response.data);
+      // console.log("res : " , response.data);
       setCheckUser(response.data);
      }
      catch(err){

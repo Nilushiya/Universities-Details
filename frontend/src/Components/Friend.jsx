@@ -23,6 +23,8 @@ const Friend = () => {
     const fetchDetails = async (stu_id) => {
       try {
         const response = await fetchAllDetails(stu_id);
+        console.log("user1: ",response.data[0][0] )
+        // console.log("user1: ",response.data[0][1] )
         setUser1(response.data[0][0]);
         setUser2(response.data[0][1]);
 
@@ -82,6 +84,7 @@ const Friend = () => {
 
   useEffect(() => {
     const fetchFriends_year = async (uni, year) => {
+      console.log("year : ",year,uni);
       try {
         const response = await fetchbyYear(uni, year);
         setFriendByYear(response.data);
@@ -123,7 +126,9 @@ const Friend = () => {
             </thead>
             <tbody>
               {friendData === 'accedemicYear' && friendByYear.length > 0 ? (
-                friendByYear.map((item, index) => (
+                friendByYear.filter((item) => item[1].studentId !== stu_id)
+                .map((item, index) => (
+
                   <tr key={index}>
                     <td>{item[1].name}</td>
                     <td>{item[1].email}</td>
@@ -133,10 +138,11 @@ const Friend = () => {
                         Download PDF
                       </button>
                     </td>
-                  </tr>
-                ))
+                  </tr>)
+                )
               ) : friendData === 'friLanguage' && friendByLanguage.length > 0 ? (
-                friendByLanguage.map((item, index) => (
+                friendByLanguage.filter((item) => item[1].studentId !== stu_id)
+                .map((item, index) => (
                   <tr key={index}>
                     <td>{item[1].name}</td>
                     <td>{item[1].email}</td>
@@ -149,7 +155,8 @@ const Friend = () => {
                   </tr>
                 ))
               ) : friendData === 'friCourse' && friendByCourse.length > 0 ? (
-                friendByCourse.map((item, index) => (
+                friendByCourse.filter((item) => item[1].studentId !== stu_id)
+                .map((item, index) => (
                   <tr key={index}>
                     <td>{item[1].name}</td>
                     <td>{item[1].email}</td>

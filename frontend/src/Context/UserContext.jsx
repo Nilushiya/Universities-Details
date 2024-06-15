@@ -81,6 +81,7 @@ export const fetchByCourse = async(selected_university , academic_year , languag
   }
 }
 export const fetchbyYear = async(selected_university , academic_year) => {
+  console.log("iii: ",academic_year,selected_university)
   
   try{
     const res = await axios.get(`${BASE_URL}/studentInfo/groupbyuni/${academic_year}/${selected_university}`)
@@ -107,7 +108,7 @@ export const studentInfo = async(stu_id , data ) => {
 export const checkinfo = async(stu_id) => {
   try{
       const response = await axios.get(`${BASE_URL}/studentInfo/checkinfo/${stu_id}`)
-      console.log("res",response)
+      // console.log("res",response)
       return response;
   }
   catch(err){
@@ -117,7 +118,7 @@ export const checkinfo = async(stu_id) => {
 export const fetchAllDetails = async(stu_id) => {
   try{
       const response = await axios.get(`${BASE_URL}/studentInfo/findCuromer/${stu_id}`)
-  console.log(response.data)
+  // console.log(response.data)
 
       return response;
   }
