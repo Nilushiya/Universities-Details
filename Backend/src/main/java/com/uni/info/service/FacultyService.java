@@ -10,7 +10,7 @@ import java.util.List;
 public interface FacultyService {
     List<Faculty> getFaculties();
 
-    FacultyDto createFaculties(FacultyDto facultyDto) throws FacultyServiceException;
+    String createFaculties(FacultyDto facultyDto) throws FacultyServiceException;
 
     List<Faculty> groupedByfaculty(Long u_id);
 

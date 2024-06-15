@@ -8,7 +8,7 @@ const AdminFaculty = () => {
   const [faculties, setFaculties] = useState([]);
   const [facData, setFacData] = useState({
     facultyName: '',
-    uid: ''
+    u_id: ''
   });
   const [selectedFaculty, setSelectedFaculty] = useState(null);
 
@@ -31,8 +31,10 @@ const AdminFaculty = () => {
   }, []);
   const handleCreate = async () => {
     const newFaculty = await CreateFaculty(facData);
+    alert(newFaculty);
     setFaculties([...faculties, newFaculty]);
-    setFacData({ facultyName: '', uid: '' }); 
+    window.location.reload();
+    setFacData({ facultyName: '', u_id: '' }); 
   };
 
   const handleChange = (e) => {
@@ -48,7 +50,7 @@ const AdminFaculty = () => {
     setFaculties(faculties.map((faculty) => (faculty.fac_id === selectedFaculty.faculties ? updatedFaculty : faculty)));
     setSelectedFaculty(null); 
     window.location.reload();
-    setFacData({ facultyName: '', uid: '' }); 
+    setFacData({ facultyName: '', u_id: '' }); 
     };
 
   const handleDelete = async (fac_id) => {
@@ -101,14 +103,27 @@ const AdminFaculty = () => {
                     placeholder="Faculty Name"
                     required
                   />
-                  <input
+                   <select
+                    name="u_id"
+                    value={facData.u_id}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select University</option>
+                    {universities.map((university) => (
+                      <option key={university.uni_id} value={university.uni_id} onChange={handleChange}>
+                        {university.uniName} 
+                      </option>
+                    ))}
+                  </select>
+                  {/* <input
                     type="text"
                     name="uId" 
                     value={facData.uid}
                     onChange={handleChange}
                     placeholder="University Id"
                     required
-                  />
+                  /> */}
                   <button type="submit">{selectedFaculty ? 'Update' : 'Add'}</button>
                 </form>
               </div>

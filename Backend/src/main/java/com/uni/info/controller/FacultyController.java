@@ -21,7 +21,8 @@ public class FacultyController {
     private FacultyService facultyService;
 
     @PostMapping("/")
-    public FacultyDto createFaculties(@RequestBody FacultyDto facultyDto){
+    public String createFaculties(@RequestBody FacultyDto facultyDto){
+        System.out.println("facultyDto"+facultyDto);
         return facultyService.createFaculties(facultyDto);
     }
 

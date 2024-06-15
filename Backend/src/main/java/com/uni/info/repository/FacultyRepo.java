@@ -20,4 +20,6 @@ public interface FacultyRepo extends JpaRepository<Faculty , Long> {
     void update(@Param("fac_id") Long fac_id, @Param("facultyName") String facultyName, @Param("uid") Long uid);
     @Query("select f,u from Faculty f join University u on f.uId = u.uni_id")
     List<Object[]> findUni();
+    @Query("SELECT f FROM Faculty f WHERE f.facultyName = :facultyName AND f.uId = :uId")
+    Faculty findByFacultyNameAndUId( @Param("facultyName") String facultyName,@Param("uId") Long uId);
 }

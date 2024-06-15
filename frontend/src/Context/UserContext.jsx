@@ -138,7 +138,7 @@ export const updateStuinfoProfile = async(stu_id , user) => {
 // Faculty
 export const CreateFaculty = async(facData) =>{
   try{
-    // console.log("facdff" , facData)
+    console.log("facdff" , facData)
     const response = await axios.post(`${BASE_URL}/faculty/`,  facData );
     // console.log("res" , response)
     return response.data;

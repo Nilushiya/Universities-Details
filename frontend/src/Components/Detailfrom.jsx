@@ -76,7 +76,7 @@ const Detailfrom = () => {
         <div className="detailfrorm">
                  
            <div className="user-form-container">
-           {/* <CustomNavbar /> */}
+           <CustomNavbar />
             <div className="info">
             <h1 >{stu_name} Infrormation</h1>
           <form className="user-form" onSubmit={handleSubmit}>
