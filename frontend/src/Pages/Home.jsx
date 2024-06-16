@@ -20,17 +20,31 @@ import Detailfrom from '../Components/Detailfrom';
 // import './HomeDp.css'
 
 const Home = () => {
-  // const[stu_id , setStu_id] = useState('');
-  // const[customerName , setName] = useState('');
+  const navigate = useNavigate()
+  const[stu_id , setStu_id] = useState('');
+  const[customerName , setName] = useState('');
+  const[role , setRole] = useState('');
 
-  // useEffect(() => {
-  //   const decode = decodeToken();
-  //    const user = decode.studentId;
-  //    const userName = decode.name;
-  //    setName(userName)
-  //    setStu_id(user);
-    
-  // },[])
+  const decode = decodeToken();
+
+  useEffect(() => {
+     if(decode){
+      const user = decode.studentId;
+      const userName = decode.name;
+      const userRole = decode.userType;
+      setRole(userRole)
+      setName(userName)
+      setStu_id(user);
+      if(userRole === 'ADMIN'){
+        navigate('/adminprofile')
+      }
+      else{
+        navigate('/')
+      }
+     }
+  },[])
+
+
   return (
     <div>
       <CustomNavbar />

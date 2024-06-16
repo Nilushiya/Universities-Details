@@ -1,24 +1,32 @@
-// // ProtectedRoute.js
-// import React from 'react';
-// import { Navigate } from 'react-router-dom';
-// import { useUserContext } from '../Context/UserContext';
+// ProtectedRoute.js
+import React, { Children, useEffect, useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { decodeToken, useUserContext } from '../Context/UserContext';
 
-// const ProtectedRoute = ({ children, requiredRole }) => {
-//   const { userRole, loading } = useUserContext();
+const ProtectedRoute = ({ children, requiredRole }) => {
+    const navigate = useNavigate()
+    const decodedToken = decodeToken();
+    const [userRole, setUserRole] = useState('')
+    useEffect(() => {
+        if(decodedToken){
+            const userRole = decodedToken.userType
+            setUserRole(userRole)
+        }
+        else{
+            setUserRole('')
+            navigate('/')
+        }
+    }, [decodeToken])
+    
+    if(!userRole){
+        navigate('/')
+    }
+    else if(userRole !== requiredRole){
+        navigate('/')
+    }
+    
+  
+  return children;
+};
 
-// //   if (loading) {
-// //     return <div>Loading...</div>;
-// //   }
-
-//   if (!userRole) {
-//     window.location.href = '/login';
-//   }
-
-//   if (userRole !== requiredRole) {
-//     window.location.href = '/';
-//   }
-
-//   return children;
-// };
-
-// export default ProtectedRoute;
+export default ProtectedRoute;

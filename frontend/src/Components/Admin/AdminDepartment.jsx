@@ -33,8 +33,10 @@ const AdminDepartment = () => {
   }, []);
   const handleCreate = async () => {
     const newDepartment = await CreateDeparment(facData);
+    alert(newDepartment);
     console.log("new:",newDepartment)
-        const faculty = faculties.find(f => f[0].fac_id === newDepartment.f_id);
+    if(newDepartment.f_id){
+      const faculty = faculties.find(f => f[0].fac_id === newDepartment.f_id);
         const university = faculty[1];
         const newDepartmentEntry = [
           { fac_id: faculty[0].fac_id, facultyName: faculty[0].facultyName, uid: faculty[0].uid },
@@ -44,7 +46,9 @@ const AdminDepartment = () => {
         
         setDepartments([...departments, newDepartmentEntry]);
     
-    setFacData({ departmentName: '', f_id: '' }); 
+    
+    }
+    setFacData({ departmentName: '', f_id: '' });    
   };
 
   const handleChange = (e) => {

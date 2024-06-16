@@ -23,8 +23,8 @@ public class DepartmentController {
     private DepartmentService departmentService;
 
     @PostMapping("/post")
-    public DepartmentDto createDep(@RequestBody DepartmentDto departmentDto){
-        System.out.println(departmentService.createDepartment(departmentDto));
+    public String createDep(@RequestBody DepartmentDto departmentDto){
+//        System.out.println(departmentService.createDepartment(departmentDto));
         return departmentService.createDepartment(departmentDto);
     }
 

@@ -59,15 +59,23 @@ const Admin = () => {
             console.error('There was an error deleting the account!', error);
           };
       };
+
+      const decode = decodeToken();
     
       useEffect(() => {
-        const decode = decodeToken();
-         const user = decode.studentId;
-         console.log("user :",user)
-         const userName = decode.name;
-         setName(userName)
-         setStu_id(user);
-      },[])
+         if(decode){
+          const user = decode.studentId;
+          console.log("user :",user)
+          const userName = decode.name;
+          setName(userName)
+          setStu_id(user);
+         }
+         else{
+          setName('')
+          setStu_id('')
+         }
+      },[decode])
+
       console.log("sid :",stu_id)
       return (
         <div className="adminProfileContainer">

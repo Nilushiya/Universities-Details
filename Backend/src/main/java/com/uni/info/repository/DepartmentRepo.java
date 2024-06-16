@@ -25,4 +25,8 @@ public interface DepartmentRepo extends JpaRepository<Department , Long> {
     void update(@Param("dep_id") Long dep_id,@Param("departmentName") String departmentName,@Param("f_id") Long f_id);
     @Query("select f,u,d from Faculty f join University u on f.uId = u.uni_id join Department d on d.f_id = f.fac_id")
     List<Object[]> findAllDetails();
+    @Query("select d from Department d where d.f_id = :fId and d.departmentName = :departmentName")
+    Department findExistdep(@Param("departmentName") String departmentName,@Param("fId") Long fId);
+    @Query("select f,d from Faculty f join Department d on d.f_id = f.fac_id where d.f_id = :fId")
+    List<Object[]> isFacId(@Param("fId") Long fId);
 }

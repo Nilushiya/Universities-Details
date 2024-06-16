@@ -204,9 +204,9 @@ export const deleteFaculty = async (fac_id, faculty) => {
 // Department
 export const CreateDeparment = async(facData) =>{
   try{
-    console.log("facdff" , facData)
+    // console.log("facdff" , facData)
     const response = await axios.post(`${BASE_URL}/department/post`,facData );
-    console.log("res" , response)
+    // console.log("res" , response)
     return response.data;
   }
   catch(err){
@@ -453,26 +453,26 @@ export const decodeToken = () => {
 
 
 
-  const UserContext = createContext();
+//   const UserContext = createContext();
 
-export const UserProvider = ({ children }) => {
-  const [userRole, setUserRole] = useState(null);
-  const [loading, setLoading] = useState(true);
+// export const UserProvider = ({ children }) => {
+//   const [userRole, setUserRole] = useState('');
+//   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const decodedToken = jwtDecode(token);
-      setUserRole(decodedToken.role);
-    }
-    setLoading(false);
-  }, []);
+//   useEffect(() => {
+//     const token = localStorage.getItem('token');
+//     if (token) {
+//       const decodedToken = jwtDecode(token);
+//       setUserRole(decodedToken.userType);
+//     }
+//     // setLoading(false);
+//   }, []);
+// console.log('poiuytrewqAXCVHJK :', children)
+  // return (
+  //   <UserContext.Provider value={{ userRole }}>
+  //     {children}
+  //   </UserContext.Provider>
+  // );
+// };
 
-  return (
-    <UserContext.Provider value={{ userRole, setUserRole, loading }}>
-      {children}
-    </UserContext.Provider>
-  );
-};
-
-export const useUserContext = () => useContext(UserContext);
+// export const useUserContext = () => useContext(UserContext);
